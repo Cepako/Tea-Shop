@@ -1,0 +1,33 @@
+.search {
+  width: 97%;
+  height: 35%;
+  margin-top: 2%;
+  label {
+    position: relative;
+    input {
+      height: 100%;
+      width: 100%;
+      padding: 5% 3%;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 1em;
+      &:hover {
+        background-color: #414141;
+        padding-bottom: 6%;
+        border-bottom: 1px solid white;
+      }
+      &::placeholder {
+        color: white;
+        font-weight: 100;
+      }
+    }
+    img {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+  }
+}

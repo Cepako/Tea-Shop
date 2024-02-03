@@ -1,0 +1,14 @@
+.App {
+  position: relative;
+  height: 80vh;
+  background:
+        /* top, transparent black, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    /* bottom, image */ url('../public/images/home-page-img.jpg');
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
