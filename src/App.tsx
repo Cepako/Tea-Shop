@@ -1,8 +1,14 @@
 import React from 'react';
-import './App.css';
+import Navigation from './components/Navigation';
+
+import './App.scss';
 
 const App: React.FC = () => {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <Navigation />
+    </div>
+  );
 };
 
 export default App;
