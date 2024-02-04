@@ -12,7 +12,8 @@ const Menu: React.FC = () => {
 
   const handleBurgerClick = () => {
     setIsMenuClicked((prevValue) => !prevValue);
-    if (isMenuClicked) {
+    const newMennuClickedValue = !isMenuClicked;
+    if (newMennuClickedValue) {
       setBarsStatus('burger__bar clicked');
       setMenuStatus('menu active');
       body.style.overflow = 'hidden';
