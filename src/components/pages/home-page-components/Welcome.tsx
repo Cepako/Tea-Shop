@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Navigation from '../../Navigation';
 
@@ -14,6 +15,9 @@ const Welcome: React.FC = () => {
           <br></br>
           <span>With Bloom's Herbal Tea</span>
         </h1>
+        <Link to="/teas" className="shop-now-button">
+          Shop Now
+        </Link>
       </div>
     </div>
   );

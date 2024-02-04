@@ -55,5 +55,22 @@
         }
       }
     }
+
+    .shop-now-button {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 55%;
+      height: 8%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: white;
+      border: 1px solid white;
+      font-weight: 300;
+    }
   }
 }
