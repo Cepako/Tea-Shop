@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import './Menu.scss';
 
@@ -34,12 +35,22 @@ const Menu: React.FC = () => {
           <img src="./images/user-icon.svg" alt="user icon" />
           Log In
         </p>
-        <ul>
-          <li>Teas</li>
-          <li>Extras</li>
-          <li>About</li>
-          <li>Blog</li>
-          <li>Contact</li>
+        <ul className="list">
+          <li className="list__item">
+            <NavLink to="/teas">Teas</NavLink>
+          </li>
+          <li className="list__item">
+            <NavLink to="/extras">Extras</NavLink>
+          </li>
+          <li className="list__item">
+            <NavLink to="/about">About</NavLink>
+          </li>
+          <li className="list__item">
+            <NavLink to="/blog">Blog</NavLink>
+          </li>
+          <li className="list__item">
+            <NavLink to="/contact">Contact</NavLink>
+          </li>
         </ul>
       </div>
     </>

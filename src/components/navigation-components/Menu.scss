@@ -19,15 +19,25 @@
       height: 5%;
     }
   }
-  ul {
+  .list {
     margin-left: 15%;
     list-style: none;
     font-size: 1.5em;
-
-    li {
+    &__item {
       margin-block: 10%;
       font-weight: 300;
       font-style: italic;
+      a {
+        color: white;
+        text-decoration: none;
+        &:hover {
+          color: #687fad;
+          cursor: pointer;
+        }
+        &.active {
+          color: #687fad;
+        }
+      }
     }
   }
   &.active {
@@ -51,7 +61,7 @@
     height: 2px;
     background-color: white;
     &.clicked:nth-child(1) {
-      transform: rotate(-45deg) translate(-1em, -0.3em);
+      transform: rotate(-45deg) translate(-0.3em, 0.4em);
       transition: ease-out 0.3s;
     }
     &.clicked:nth-child(2) {
@@ -59,7 +69,7 @@
       transition: ease-out 0.3s;
     }
     &.clicked:nth-child(3) {
-      transform: rotate(45deg) translate(-1em, 0.3em);
+      transform: rotate(45deg) translate(-0.3em, -0.4em);
       transition: ease-out 0.3s;
     }
     &.unclicked {
