@@ -1,14 +1,13 @@
 import React from 'react';
 
-import Navigation from '../Navigation';
+import Welcome from './home-page-components/Welcome';
 
 import './Home-page.scss';
 
 const Page: React.FC = () => {
   return (
     <div className="home-page">
-      <Navigation />
-      Page
+      <Welcome />
     </div>
   );
 };
