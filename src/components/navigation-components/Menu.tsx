@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import './Menu.scss';
@@ -23,6 +23,10 @@ const Menu: React.FC = () => {
       body.style.overflow = 'auto';
     }
   };
+
+  useEffect(() => {
+    body.style.overflow = 'auto';
+  }, []);
 
   return (
     <>
