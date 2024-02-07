@@ -4,7 +4,7 @@
   top: 0;
   left: 100%;
   width: 100vw;
-  height: 100vh;
+  height: 110vh;
   background-color: #242a35;
   color: #ffffff;
   transition: 0.5s ease-out;
@@ -49,9 +49,9 @@
   z-index: 2;
   position: absolute;
   right: 5%;
-  top: 4%;
+  top: 15%;
   width: 10%;
-  height: 5%;
+  height: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -62,7 +62,7 @@
     height: 2px;
     background-color: white;
     &.clicked:nth-child(1) {
-      transform: rotate(-45deg) translate(-0.3em, 0.4em);
+      transform: rotate(-45deg) translate(-0.4em, 0.5em);
       transition: ease-out 0.3s;
     }
     &.clicked:nth-child(2) {
@@ -70,7 +70,7 @@
       transition: ease-out 0.3s;
     }
     &.clicked:nth-child(3) {
-      transform: rotate(45deg) translate(-0.5em, -0.6em);
+      transform: rotate(45deg) translate(-0.5em, -0.5em);
       transition: ease-out 0.3s;
     }
     &.unclicked {

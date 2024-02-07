@@ -15,8 +15,8 @@ const Navigation: React.FC = () => {
           <h1>Blooms's Tea</h1>
         </Link>
         <Search />
+        <Menu />
       </div>
-      <Menu />
     </>
   );
 };
