@@ -1,0 +1,22 @@
+.new-arrivals {
+  margin-block: 5%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  color: #242a35;
+  &__title {
+    width: 90%;
+    padding-block: 5%;
+    font-weight: 500;
+    font-style: italic;
+    border-top: 1px solid #242a35;
+    border-bottom: 1px solid #242a35;
+  }
+  &__paragraph {
+    width: 90%;
+    margin-top: 8%;
+    font-weight: 300;
+  }
+}
