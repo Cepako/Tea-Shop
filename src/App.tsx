@@ -8,11 +8,14 @@ import About from './components/pages/About';
 import Blog from './components/pages/Blog';
 import Contact from './components/pages/Contact';
 
+import ScrollToTop from './components/ScrollToTop';
+
 import './App.scss';
 
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop />
       <div className="App">
         <Routes>
           <Route path="/" element={<Page />} />
