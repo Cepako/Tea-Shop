@@ -1,14 +1,19 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 
-import Card from './Card';
-import { responsive, homePageData } from './home-page-slider-data';
+import Card from './slider-components/Card';
 
 import 'react-multi-carousel/lib/styles.css';
 import './Slider.scss';
 
-const Slider: React.FC = () => {
-  const productsList = homePageData.map((card) => (
+import SliderModel from './slider.model';
+
+const Slider: React.FC<SliderModel> = ({
+  removeArrowOnDeviceType,
+  responsive,
+  data,
+}) => {
+  const productsList = data.map((card) => (
     <Card key={card.name} img={card.url} name={card.name} price={card.price} />
   ));
 
@@ -20,7 +25,7 @@ const Slider: React.FC = () => {
         responsive={responsive}
         infinite={true}
         renderButtonGroupOutside={true}
-        removeArrowOnDeviceType={['desktop']}
+        removeArrowOnDeviceType={removeArrowOnDeviceType}
       >
         {productsList}
       </Carousel>

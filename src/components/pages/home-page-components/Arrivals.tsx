@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Slider from './Slider';
+import Slider from '../../Slider';
+import { homePageData, responsive } from './home-page-slider-data';
 
 import './Arrivals.scss';
 
@@ -11,7 +12,11 @@ const Arrivals: React.FC = () => {
       <p className="new-arrivals__paragraph">
         Our special teas for different life needs. Choose wisely.
       </p>
-      <Slider />
+      <Slider
+        removeArrowOnDeviceType={['desktop']}
+        responsive={responsive}
+        data={homePageData}
+      />
     </div>
   );
 };
