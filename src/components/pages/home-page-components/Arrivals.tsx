@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Slider from './Slider';
+
 import './Arrivals.scss';
 
 const Arrivals: React.FC = () => {
@@ -9,6 +11,7 @@ const Arrivals: React.FC = () => {
       <p className="new-arrivals__paragraph">
         Our special teas for different life needs. Choose wisely.
       </p>
+      <Slider />
     </div>
   );
 };

@@ -1,0 +1,29 @@
+.slider {
+  position: relative;
+  margin: 10% 0;
+  width: 90%;
+  .gd-carousel {
+    position: unset;
+    .react-multi-carousel-item--active {
+      justify-content: center;
+    }
+
+    .react-multiple-carousel__arrow {
+      position: absolute;
+      background-color: transparent;
+      font-size: 30px;
+      &::before {
+        color: black;
+        font-size: 30px;
+      }
+    }
+
+    .react-multiple-carousel__arrow--left {
+      left: -8%;
+    }
+
+    .react-multiple-carousel__arrow--right {
+      right: -8%;
+    }
+  }
+}

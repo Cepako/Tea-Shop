@@ -3,7 +3,7 @@ import React from 'react';
 import Welcome from './home-page-components/Welcome';
 import Arrivals from './home-page-components/Arrivals';
 
-import './Home-page.scss';
+import './HomePage.scss';
 
 const Page: React.FC = () => {
   return (

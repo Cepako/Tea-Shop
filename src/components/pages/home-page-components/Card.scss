@@ -1,0 +1,20 @@
+.card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &__img {
+    width: 95%;
+  }
+  &__name {
+    width: 100%;
+    margin-block: 5%;
+    font-weight: 300;
+    font-style: italic;
+  }
+  &__price {
+    font-weight: 500;
+  }
+}
