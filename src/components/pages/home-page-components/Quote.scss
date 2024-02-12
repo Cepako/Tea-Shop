@@ -1,0 +1,23 @@
+.quote {
+  margin-block: 5%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #242a35;
+  p {
+    width: 65%;
+    line-height: 150%;
+    margin-block: 5%;
+    text-align: center;
+  }
+  &__text {
+    font-style: italic;
+    font-weight: 300;
+  }
+  &__author {
+    font-weight: 100;
+  }
+}
