@@ -1,6 +1,7 @@
 .new-arrivals {
-  margin-block: 5%;
+  margin-block: 8%;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -18,5 +19,17 @@
     width: 90%;
     margin-top: 8%;
     font-weight: 300;
+  }
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding: 15px;
+    font-weight: 100;
+    text-decoration: none;
+    background-color: #242a35;
+    color: white;
+    cursor: pointer;
   }
 }

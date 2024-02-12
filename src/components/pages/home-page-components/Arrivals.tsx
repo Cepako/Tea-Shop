@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Slider from '../../Slider';
 import { homePageData, responsive } from './home-page-slider-data';
@@ -17,6 +18,9 @@ const Arrivals: React.FC = () => {
         responsive={responsive}
         data={homePageData}
       />
+      <Link to="/teas" className="new-arrivals__button">
+        Shop All
+      </Link>
     </div>
   );
 };
