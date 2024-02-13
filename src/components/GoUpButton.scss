@@ -1,0 +1,27 @@
+.arrow-up {
+  display: none;
+  position: fixed;
+  bottom: 5%;
+  left: 5%;
+  width: 13%;
+  height: 6%;
+  background-color: rgba(36, 42, 53, 0.8);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1s;
+  img {
+    width: 50%;
+    height: 50%;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  &.active {
+    display: flex;
+  }
+}

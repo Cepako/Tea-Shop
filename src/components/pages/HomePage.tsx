@@ -7,6 +7,7 @@ import Info from '../Info';
 import Footer from '../Footer';
 
 import './HomePage.scss';
+import GoUpButton from '../GoUpButton';
 
 const Page: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const Page: React.FC = () => {
       <ReadOurBlog />
       <Info />
       <Footer />
+      <GoUpButton />
     </div>
   );
 };
