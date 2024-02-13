@@ -93,7 +93,10 @@ const Info: React.FC = () => {
           id="email"
           placeholder="Enter your email here*"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            inputRef.current!.style.border = '1px solid black';
+            setEmail(e.target.value);
+          }}
         />
         <button type="submit">Subscribe Now</button>
         {displayParagraph ? paragraph : null}

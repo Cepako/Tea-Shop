@@ -4,6 +4,7 @@ import Welcome from './home-page-components/Welcome';
 import Arrivals from './home-page-components/Arrivals';
 import ReadOurBlog from './home-page-components/ReadOurBlog';
 import Info from '../Info';
+import Footer from '../Footer';
 
 import './HomePage.scss';
 
@@ -14,6 +15,7 @@ const Page: React.FC = () => {
       <Arrivals />
       <ReadOurBlog />
       <Info />
+      <Footer />
     </div>
   );
 };
