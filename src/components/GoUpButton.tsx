@@ -1,17 +1,15 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './GoUpButton.scss';
 
 const GoUpButton: React.FC = () => {
-  const divRef = useRef<HTMLDivElement>(null);
-
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 550 && !isVisible) {
+      if (window.scrollY > 600 && !isVisible) {
         setIsVisible(true);
-      } else if (window.scrollY <= 550 && isVisible) {
+      } else if (window.scrollY <= 600 && isVisible) {
         setIsVisible(false);
       }
     };
@@ -32,7 +30,6 @@ const GoUpButton: React.FC = () => {
 
   return (
     <div
-      ref={divRef}
       className={`arrow-up${isVisible ? ' active' : ''}`}
       onClick={scrollUpHandler}
     >
