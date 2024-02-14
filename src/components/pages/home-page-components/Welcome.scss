@@ -5,8 +5,8 @@
     height: 90vh;
     background:
         /* top, transparent black, faked with gradient */ linear-gradient(
-        rgba(0, 0, 0, 0.4),
-        rgba(0, 0, 0, 0.4)
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
       ),
       /* bottom, image */ url('../../../../public/images/home-page-img.jpg');
 
@@ -67,6 +67,70 @@
       color: white;
       border: 1px solid white;
       font-weight: 300;
+    }
+  }
+}
+@media screen and (min-width: 500px) {
+  .welcome {
+    .background-image {
+      .header {
+        font-size: 2em;
+      }
+
+      .shop-now-button {
+        top: 75%;
+        width: 45%;
+        height: 8%;
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .welcome {
+    .background-image {
+      .header {
+        top: 50%;
+        font-size: 2.5em;
+      }
+      .shop-now-button {
+        top: 70%;
+        width: 35%;
+        height: 7%;
+        font-size: 1.3em;
+        transition: 0.5s;
+        &:hover {
+          background-color: #777;
+          border-color: #777;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .welcome {
+    .background-image {
+      .header {
+        font-size: 2.7em;
+      }
+      .shop-now-button {
+        top: 65%;
+        width: 15%;
+        height: 5%;
+        font-size: 1.1em;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1400px) {
+  .welcome {
+    .background-image {
+      .header {
+        font-size: 2.9em;
+      }
+      .shop-now-button {
+        width: 10%;
+      }
     }
   }
 }
