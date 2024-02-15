@@ -27,3 +27,48 @@
     background-color: #242a35;
   }
 }
+@media screen and (min-width: 768px) {
+  .blog {
+    height: 75vh;
+    &__title {
+      height: 45%;
+      background-attachment: fixed;
+      a {
+        font-size: 1.8em;
+      }
+    }
+    &__carousel {
+      height: 55%;
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .blog {
+    height: 80vh;
+    &__title {
+      height: 50%;
+
+      a {
+        font-size: 2em;
+      }
+    }
+    &__carousel {
+      height: 50%;
+    }
+  }
+}
+@media screen and (min-width: 1400px) {
+  .blog {
+    height: 90vh;
+    &__title {
+      height: 55%;
+
+      a {
+        font-size: 2.2em;
+      }
+    }
+    &__carousel {
+      height: 45%;
+    }
+  }
+}
