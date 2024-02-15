@@ -14,7 +14,13 @@ const Slider: React.FC<SliderModel> = ({
   data,
 }) => {
   const productsList = data.map((card) => (
-    <Card key={card.name} img={card.url} name={card.name} price={card.price} />
+    <Card
+      key={card.name}
+      defaultImg={card.url}
+      hoverImg={card.hoverUrl}
+      name={card.name}
+      price={card.price}
+    />
   ));
 
   return (

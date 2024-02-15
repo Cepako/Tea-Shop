@@ -14,5 +14,5 @@ export default interface SliderModel {
       items: number;
     };
   };
-  data: { url: string; name: string; price: string }[];
+  data: { url: string; hoverUrl: string; name: string; price: string }[];
 }

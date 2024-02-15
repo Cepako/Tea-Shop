@@ -1,5 +1,6 @@
 export default interface CardModel {
-  img: string;
+  defaultImg: string;
+  hoverImg: string;
   name: string;
   price: string;
 }
