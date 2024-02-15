@@ -12,6 +12,7 @@
       margin-block: 2%;
       a {
         text-decoration: none;
+        font-weight: 300;
       }
     }
   }
@@ -20,7 +21,6 @@
     padding-bottom: 3%;
     font-weight: 300;
     font-style: italic;
-
     border-bottom: 1px solid #242a35;
   }
 
@@ -32,8 +32,12 @@
       font-style: italic;
     }
     .list ~ a {
+      font-weight: 300;
       display: block;
       margin-block: 10% 3%;
+    }
+    p {
+      font-weight: 300;
     }
   }
   form {
@@ -57,6 +61,164 @@
     p {
       font-size: 0.8em;
       font-weight: 300;
+    }
+  }
+}
+@media screen and (min-width: 550px) {
+  .info {
+    h3 {
+      margin-block: 7% 5%;
+    }
+    &__default {
+      h2 {
+        margin-bottom: 2%;
+      }
+      .list ~ a {
+        margin-block: 7% 2%;
+      }
+    }
+    form {
+      input {
+        margin-block: 4%;
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .info {
+    .list {
+      &__item {
+        font-size: 1.2em;
+      }
+    }
+    h3 {
+      font-size: 1.6em;
+    }
+
+    &__default {
+      h2 {
+        font-size: 1.8em;
+      }
+      .list ~ a {
+        font-size: 1.2em;
+      }
+      p {
+        font-size: 1.1em;
+      }
+    }
+    form {
+      input {
+        font-size: 1.2em;
+      }
+      button {
+        font-size: 1.2em;
+      }
+      p {
+        font-size: 1em;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .info {
+    position: relative;
+    padding: 10% 5%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    .list {
+      &__item {
+        margin-block: 5%;
+      }
+    }
+    h3 {
+      margin-block: 10% 15%;
+      padding-bottom: 10%;
+    }
+    &__help {
+      width: 20%;
+    }
+    &__follow {
+      width: 20%;
+    }
+
+    &__default {
+      width: 30%;
+    }
+    form {
+      position: absolute;
+      width: 45%;
+      top: 68%;
+      left: 45%;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      input {
+        padding: 2%;
+        width: 55%;
+      }
+      button {
+        padding: 2%;
+        margin-bottom: 0;
+        width: 40%;
+        font-weight: 300;
+        transition: 0.5s;
+        &:hover {
+          cursor: pointer;
+          background-color: #777;
+        }
+      }
+      p {
+        font-size: 1em;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1300px) {
+  .info {
+    padding: 7% 15%;
+    &__help {
+      width: 25%;
+    }
+    &__follow {
+      width: 25%;
+    }
+
+    &__default {
+      width: 40%;
+    }
+    form {
+      width: 40%;
+      top: 70%;
+      left: 46%;
+      input {
+        padding: 2%;
+        width: 60%;
+      }
+      button {
+        width: 35%;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1500px) {
+  .info {
+    padding: 5% 20%;
+
+    &__default {
+      h2 {
+        font-size: 2em;
+      }
+    }
+    form {
+      width: 33%;
+      top: 70%;
+      input {
+        width: 65%;
+      }
+      button {
+        width: 30%;
+      }
     }
   }
 }
