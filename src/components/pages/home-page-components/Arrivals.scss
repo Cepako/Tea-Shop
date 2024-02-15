@@ -33,3 +33,88 @@
     cursor: pointer;
   }
 }
+@media screen and (min-width: 600px) {
+  .new-arrivals {
+    margin-block: 7%;
+    &__title {
+      width: 90%;
+      padding-block: 3%;
+    }
+    &__paragraph {
+      width: 50%;
+      margin-top: 5%;
+    }
+    &__button {
+      width: 40%;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .new-arrivals {
+    &__title {
+      width: 85%;
+      padding-block: 2%;
+    }
+    &__paragraph {
+      width: 40%;
+      margin-top: 4%;
+    }
+    &__button {
+      width: 30%;
+      transition: 0.5s;
+      &:hover {
+        background-color: rgb(119, 119, 119);
+        border-color: rgb(119, 119, 119);
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .new-arrivals {
+    margin-block: 5%;
+    &__title {
+      width: 85%;
+      font-size: 2em;
+    }
+    &__paragraph {
+      width: 40%;
+      margin-top: 3%;
+      font-size: 1.1em;
+    }
+    &__button {
+      width: 20%;
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .new-arrivals {
+    &__title {
+      font-size: 2.2em;
+    }
+    &__paragraph {
+      width: 35%;
+      font-size: 1.2em;
+    }
+    &__button {
+      width: 20%;
+      padding: 12px;
+    }
+  }
+}
+@media screen and (min-width: 1400px) {
+  .new-arrivals {
+    margin-block: 3%;
+    &__title {
+      font-size: 2.3em;
+    }
+    &__paragraph {
+      width: 30%;
+      margin-top: 2%;
+      font-size: 1.3em;
+    }
+    &__button {
+      width: 12%;
+      padding: 10px;
+    }
+  }
+}

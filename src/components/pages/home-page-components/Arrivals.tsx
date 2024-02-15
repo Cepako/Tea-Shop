@@ -11,7 +11,8 @@ const Arrivals: React.FC = () => {
     <div className="new-arrivals">
       <h2 className="new-arrivals__title">New Arrivals</h2>
       <p className="new-arrivals__paragraph">
-        Our special teas for different life needs. Choose wisely.
+        Our special teas for different life needs.
+        <br /> Choose wisely.
       </p>
       <Slider
         removeArrowOnDeviceType={['desktop']}

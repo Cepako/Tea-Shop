@@ -27,3 +27,22 @@
     }
   }
 }
+@media screen and (min-width: 600px) {
+  .slider {
+    margin: 5% 0;
+    .gd-carousel {
+      .react-multiple-carousel__arrow--left {
+        left: -6%;
+      }
+
+      .react-multiple-carousel__arrow--right {
+        right: -6%;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1400px) {
+  .slider {
+    margin: 3% 0;
+  }
+}
