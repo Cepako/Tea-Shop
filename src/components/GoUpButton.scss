@@ -25,3 +25,33 @@
     display: flex;
   }
 }
+@media screen and (min-width: 500px) {
+  .arrow-up {
+    width: 11%;
+  }
+}
+@media screen and (min-width: 600px) {
+  .arrow-up {
+    width: 9%;
+  }
+}
+@media screen and (min-width: 700px) {
+  .arrow-up {
+    width: 7%;
+  }
+}
+@media screen and (min-width: 900px) {
+  .arrow-up {
+    width: 6%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .arrow-up {
+    display: none;
+
+    &.active {
+      display: none;
+    }
+  }
+}
