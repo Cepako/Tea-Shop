@@ -24,6 +24,7 @@ const Card: React.FC<CardModel> = ({ defaultImg, hoverImg, name, price }) => {
       />
       <h3 className="card__name">{name}</h3>
       <p className="card__price">{`$${price}`}</p>
+      <p className="card__view">Quick View</p>
     </div>
   );
 };
