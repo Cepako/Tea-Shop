@@ -20,6 +20,7 @@ const Slider: React.FC<SliderModel> = ({
       hoverImg={card.hoverUrl}
       name={card.name}
       price={card.price}
+      code={card.code}
     />
   ));
 

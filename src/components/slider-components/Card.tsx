@@ -1,11 +1,37 @@
 import React, { useState } from 'react';
+import { useAppDispatch } from '../../redux/hooks';
 
 import './Card.scss';
 
 import CardModel from './card.model';
+import { editPopUp } from '../../redux/popUp';
 
-const Card: React.FC<CardModel> = ({ defaultImg, hoverImg, name, price }) => {
+const Card: React.FC<CardModel> = ({
+  defaultImg,
+  hoverImg,
+  name,
+  price,
+  code,
+}) => {
   const [over, setOver] = useState(false);
+
+  const dispatch = useAppDispatch();
+
+  const quickView = () => {
+    const wrapperElement = document.querySelector('.wrapper') as HTMLDivElement;
+
+    const payload = {
+      name,
+      price,
+      code,
+      imgUrl: defaultImg,
+    };
+    dispatch(editPopUp(payload));
+
+    if (wrapperElement) {
+      wrapperElement.style.display = 'block';
+    }
+  };
 
   return (
     <div
@@ -24,7 +50,9 @@ const Card: React.FC<CardModel> = ({ defaultImg, hoverImg, name, price }) => {
       />
       <h3 className="card__name">{name}</h3>
       <p className="card__price">{`$${price}`}</p>
-      <p className="card__view">Quick View</p>
+      <p className="card__view" onClick={quickView}>
+        Quick View
+      </p>
     </div>
   );
 };
