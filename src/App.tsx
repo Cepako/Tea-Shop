@@ -7,6 +7,7 @@ import Extras from './components/pages/Extras';
 import About from './components/pages/About';
 import Blog from './components/pages/Blog';
 import Contact from './components/pages/Contact';
+import PopUp from './components/PopUp';
 
 import ScrollToTop from './components/ScrollToTop';
 
@@ -25,6 +26,7 @@ const App: React.FC = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
+        <PopUp />
       </div>
     </Router>
   );
