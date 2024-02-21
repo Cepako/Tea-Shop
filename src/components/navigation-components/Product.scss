@@ -6,6 +6,25 @@
   justify-content: space-between;
   color: black;
   border-bottom: 1px solid black;
+  &__remove {
+    position: absolute;
+    right: 12%;
+    width: 5%;
+    height: 2%;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 40%;
+    padding-bottom: 2px;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.3s;
+    &.active {
+      opacity: 1;
+    }
+  }
   a {
     width: 30%;
     img {
