@@ -19,6 +19,10 @@ const Card: React.FC<CardModel> = ({
 
   const quickView = () => {
     const wrapperElement = document.querySelector('.wrapper') as HTMLDivElement;
+    const cartSideBar = document.querySelector(
+      '.cart-sidebar'
+    ) as HTMLDivElement;
+    if (cartSideBar) cartSideBar.className = 'cart-sidebar';
 
     const payload = {
       name,
