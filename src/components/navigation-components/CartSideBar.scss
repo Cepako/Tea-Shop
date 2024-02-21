@@ -1,0 +1,118 @@
+.cart-sidebar {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 30%;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-left: 1px solid black;
+  transition: 0.8s;
+  &.active {
+    transform: translateX(-100%);
+    i {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+
+  &__title {
+    position: relative;
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300;
+    font-style: italic;
+    background-color: #242a35;
+    i {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      transition: 0.8s;
+    }
+  }
+  &__products-list {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-block: 10%;
+    padding-inline: 10%;
+    height: 60%;
+    width: 100%;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  &__total-price {
+    margin-bottom: 5%;
+    padding-inline: 10%;
+    height: 10%;
+    width: 100%;
+    font-size: 1.5em;
+    color: #242a35;
+    border-bottom: 1px solid black;
+    font-weight: 500;
+    font-style: italic;
+    span {
+      font-style: normal;
+      font-weight: 300;
+    }
+  }
+  &__button {
+    margin-top: 7%;
+    width: 80%;
+    padding: 3.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-weight: 300;
+    background-color: #242a35;
+    border: none;
+    transition: 0.5s;
+    &:hover {
+      background-color: lighten(#242a35, 10%);
+      cursor: pointer;
+    }
+  }
+}
+@media screen and (min-width: 1250px) {
+  .cart-sidebar {
+    &__button {
+      margin-top: 5%;
+    }
+  }
+}
+@media screen and (min-width: 1300px) {
+  .cart-sidebar {
+    width: 25%;
+    &__button {
+      margin-top: 6%;
+    }
+  }
+}
+@media screen and (min-width: 1450px) {
+  .cart-sidebar {
+    &__button {
+      margin-top: 4%;
+    }
+  }
+}
+@media screen and (min-width: 1600px) {
+  .cart-sidebar {
+    width: 20%;
+  }
+}
+@media screen and (min-width: 1700px) {
+  .cart-sidebar {
+    &__button {
+      margin-top: 1%;
+    }
+  }
+}

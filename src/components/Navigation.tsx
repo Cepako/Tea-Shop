@@ -2,6 +2,7 @@ import React from 'react';
 import Cart from './navigation-components/Cart';
 import Menu from './navigation-components/Menu';
 import Search from './navigation-components/Search';
+import CartSideBar from './navigation-components/CartSideBar';
 import { Link } from 'react-router-dom';
 
 import './Navigation.scss';
@@ -16,6 +17,7 @@ const Navigation: React.FC = () => {
         </Link>
         <Search />
         <Menu />
+        <CartSideBar />
       </div>
     </>
   );
