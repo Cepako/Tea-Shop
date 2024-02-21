@@ -1,10 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../redux/hooks';
 
 import './Cart.scss';
 
 const Cart: React.FC = () => {
   const navigate = useNavigate();
+
+  const products = useAppSelector((state) => state.cart);
+  let productsCount = 0;
+  products.map((product) => (productsCount += product.quantity!));
 
   const cartClickHandler = () => {
     const cartSideBar = document.querySelector(
@@ -25,7 +30,7 @@ const Cart: React.FC = () => {
         onClick={cartClickHandler}
       />
       <span id="product-count" onClick={cartClickHandler}>
-        100
+        {productsCount}
       </span>
     </div>
   );
