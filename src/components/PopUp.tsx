@@ -1,21 +1,46 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../redux/hooks';
+import { useAppSelector, useAppDispatch } from '../redux/hooks';
+import { addToCart } from '../redux/cart';
 
 import './PopUp.scss';
 
 const PopUp: React.FC = () => {
-  const [quantity, setQuantity] = useState(1);
+  const [popUpQuantity, setPopUpQuantity] = useState(1);
 
-  const { name, price, code, imgUrl } = useAppSelector((state) => state.popUp);
+  const { name, price, code, imgUrl, quantity } = useAppSelector(
+    (state) => state.popUp
+  );
+
+  const dispatch = useAppDispatch();
 
   const closePopUp = () => {
     const wrapperElement = document.querySelector('.wrapper') as HTMLDivElement;
 
     if (wrapperElement) {
       wrapperElement.style.display = 'none';
-      setQuantity(1);
+      setPopUpQuantity(1);
     }
+  };
+  const addToCartHandler = () => {
+    const payload = {
+      name,
+      price,
+      code,
+      imgUrl,
+      quantity: popUpQuantity,
+    };
+    dispatch(addToCart(payload));
+    const cartSideBar = document.querySelector(
+      '.cart-sidebar'
+    ) as HTMLDivElement;
+    if (cartSideBar) cartSideBar.classList.add('active');
+    closePopUp();
+  };
+  const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    if (Number(e.target.value) < 1) setPopUpQuantity(1);
+    else if (Number(e.target.value) > 999) setPopUpQuantity(999);
+    else setPopUpQuantity(Number(e.target.value));
   };
 
   return (
@@ -38,12 +63,11 @@ const PopUp: React.FC = () => {
             <input
               type="number"
               id="quantity"
-              min={1}
-              value={quantity}
-              onChange={(e) => setQuantity(+e.target.value)}
+              value={popUpQuantity}
+              onChange={inputHandler}
             />
           </form>
-          <button>Add to Cart</button>
+          <button onClick={addToCartHandler}>Add to Cart</button>
           <Link to="/teas/chamomile-tea">View More Details</Link>
         </div>
       </div>
