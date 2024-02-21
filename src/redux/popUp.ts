@@ -1,22 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from './store';
 
-type payloadType = {
+export type payloadType = {
   name: string;
   price: string;
   code: string;
   imgUrl: string;
+  quantity?: number;
 };
 
-interface PopUpState {
+export interface ProductState {
   name: string;
   price: string;
   code: string;
   imgUrl: string;
+  quantity?: number;
 }
 
-const initialState: PopUpState = { name: '', price: '', code: '', imgUrl: '' };
+const initialState: ProductState = {
+  name: '',
+  price: '',
+  code: '',
+  imgUrl: '',
+  quantity: 1,
+};
 
 export const popUpSlice = createSlice({
   name: 'popUp',
@@ -32,5 +39,4 @@ export const popUpSlice = createSlice({
 });
 
 export const { editPopUp } = popUpSlice.actions;
-export const selectPopUp = (state: RootState) => state.popUp;
 export default popUpSlice.reducer;
