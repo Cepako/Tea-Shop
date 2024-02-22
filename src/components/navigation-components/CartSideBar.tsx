@@ -31,12 +31,8 @@ const CartSideBar: React.FC = () => {
     );
   });
 
-  return (
-    <div className="cart-sidebar" ref={sideBarRef}>
-      <h2 className="cart-sidebar__title">
-        <i className="fa-solid fa-chevron-left" onClick={arrowClickHandler}></i>
-        Cart
-      </h2>
+  const cartNotEmpty = (
+    <>
       <div className="cart-sidebar__products-list">{productsList}</div>
       <p className="cart-sidebar__total-price">
         Subtotal
@@ -46,6 +42,18 @@ const CartSideBar: React.FC = () => {
       <Link to="/cart" className="cart-sidebar__button">
         View Cart
       </Link>
+    </>
+  );
+
+  const cartEmpty = <h3>Cart is empty</h3>;
+
+  return (
+    <div className="cart-sidebar" ref={sideBarRef}>
+      <h2 className="cart-sidebar__title">
+        <i className="fa-solid fa-chevron-left" onClick={arrowClickHandler}></i>
+        Cart
+      </h2>
+      {products.length > 0 ? cartNotEmpty : cartEmpty}
     </div>
   );
 };

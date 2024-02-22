@@ -37,6 +37,11 @@
       transition: 0.8s;
     }
   }
+  h3 {
+    margin-top: 10%;
+    color: black;
+    font-weight: 300;
+  }
   &__products-list {
     overflow-y: scroll;
     overflow-x: hidden;
