@@ -70,7 +70,16 @@ const Product: React.FC<ProductModel> = ({
         <h3 className="details__name">{name}</h3>
         <p className="details__price">${price}</p>
         <div className="details__input-number">
-          <span onClick={decreaseHandler}>-</span>
+          <span
+            onClick={decreaseHandler}
+            style={
+              quantity === 1
+                ? { color: 'gray', fontWeight: '300', cursor: 'default' }
+                : {}
+            }
+          >
+            -
+          </span>
           <input type="number" value={quantity} onChange={inputHandler} />
           <span onClick={increaseHandler}>+</span>
         </div>
