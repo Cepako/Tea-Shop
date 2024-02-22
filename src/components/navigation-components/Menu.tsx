@@ -17,11 +17,13 @@ const Menu: React.FC = () => {
       setBarsStatus('burger__bar clicked');
       setMenuStatus('menu active');
       body.style.overflow = 'hidden';
-    } else {
-      setBarsStatus('burger__bar unclicked');
-      setMenuStatus('menu');
-      body.style.overflow = 'auto';
-    }
+    } else closeMenu();
+  };
+
+  const closeMenu = () => {
+    setBarsStatus('burger__bar unclicked');
+    setMenuStatus('menu');
+    body.style.overflow = 'auto';
   };
 
   useEffect(() => {
@@ -42,19 +44,29 @@ const Menu: React.FC = () => {
         </p>
         <ul className="list">
           <li className="list__item">
-            <NavLink to="/teas">Teas</NavLink>
+            <NavLink to="/teas" onClick={closeMenu}>
+              Teas
+            </NavLink>
           </li>
           <li className="list__item">
-            <NavLink to="/extras">Extras</NavLink>
+            <NavLink to="/extras" onClick={closeMenu}>
+              Extras
+            </NavLink>
           </li>
           <li className="list__item">
-            <NavLink to="/about">About</NavLink>
+            <NavLink to="/about" onClick={closeMenu}>
+              About
+            </NavLink>
           </li>
           <li className="list__item">
-            <NavLink to="/blog">Blog</NavLink>
+            <NavLink to="/blog" onClick={closeMenu}>
+              Blog
+            </NavLink>
           </li>
           <li className="list__item">
-            <NavLink to="/contact">Contact</NavLink>
+            <NavLink to="/contact" onClick={closeMenu}>
+              Contact
+            </NavLink>
           </li>
         </ul>
       </div>
