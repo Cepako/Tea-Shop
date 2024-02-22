@@ -1,14 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Navigation from '../../Navigation';
-
 import './Welcome.scss';
 
 const Welcome: React.FC = () => {
   return (
     <div className="welcome">
-      <Navigation />
       <div className="background-image">
         <h1 className="header">
           <span>It's Always Tea Time</span>
