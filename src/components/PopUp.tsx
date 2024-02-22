@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../redux/hooks';
 import { addToCart } from '../redux/cart';
 
@@ -8,11 +8,11 @@ import './PopUp.scss';
 const PopUp: React.FC = () => {
   const [popUpQuantity, setPopUpQuantity] = useState(1);
 
-  const { name, price, code, imgUrl, quantity } = useAppSelector(
-    (state) => state.popUp
-  );
+  const { name, price, code, imgUrl } = useAppSelector((state) => state.popUp);
 
   const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
 
   const closePopUp = () => {
     const wrapperElement = document.querySelector('.wrapper') as HTMLDivElement;
@@ -43,6 +43,13 @@ const PopUp: React.FC = () => {
     else setPopUpQuantity(Number(e.target.value));
   };
 
+  const linkClickHandler = () => {
+    closePopUp();
+    navigate(`/teas/${productLink}`);
+  };
+
+  const productLink = name.replace(' ', '-').toLowerCase();
+
   return (
     <div className="wrapper">
       <div className="pop-up">
@@ -68,7 +75,7 @@ const PopUp: React.FC = () => {
             />
           </form>
           <button onClick={addToCartHandler}>Add to Cart</button>
-          <Link to="/teas/chamomile-tea">View More Details</Link>
+          <span onClick={linkClickHandler}>View More Details</span>
         </div>
       </div>
     </div>

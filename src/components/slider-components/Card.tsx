@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../redux/hooks';
+import { Link } from 'react-router-dom';
 
 import './Card.scss';
 
@@ -37,6 +38,8 @@ const Card: React.FC<CardModel> = ({
     }
   };
 
+  const productLink = name.replace(' ', '-').toLowerCase();
+
   return (
     <div
       className="card"
@@ -47,13 +50,19 @@ const Card: React.FC<CardModel> = ({
         setOver(false);
       }}
     >
-      <img
-        className="card__img"
-        src={over ? hoverImg : defaultImg}
-        alt={over ? 'herbs' : 'teabag'}
-      />
-      <h3 className="card__name">{name}</h3>
-      <p className="card__price">{`$${price}`}</p>
+      <Link to={`/teas/${productLink}`}>
+        <img
+          className="card__img"
+          src={over ? hoverImg : defaultImg}
+          alt={over ? 'herbs' : 'teabag'}
+        />
+      </Link>
+      <Link to={`/teas/${productLink}`}>
+        <h3 className="card__name">{name}</h3>
+      </Link>
+      <Link to={`/teas/${productLink}`}>
+        <p className="card__price">{`$${price}`}</p>
+      </Link>
       <p className="card__view" onClick={quickView}>
         Quick View
       </p>
