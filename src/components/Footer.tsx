@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
     <div className="footer">
       &copy;2024 Sebastian Dragan
       <span onClick={scrollUpHandler}>
-        <img src="./images/arrow-up-black.svg" alt="arrow up" /> Back to top
+        <img src="/images/arrow-up-black.svg" alt="arrow up" /> Back to top
       </span>
     </div>
   );

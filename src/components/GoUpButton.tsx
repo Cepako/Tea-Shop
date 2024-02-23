@@ -33,7 +33,7 @@ const GoUpButton: React.FC = () => {
       className={`arrow-up${isVisible ? ' active' : ''}`}
       onClick={scrollUpHandler}
     >
-      <img src="./images/arrow-up-white.svg" alt="arrow up" />
+      <img src="/images/arrow-up-white.svg" alt="arrow up" />
     </div>
   );
 };

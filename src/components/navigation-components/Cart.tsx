@@ -25,7 +25,7 @@ const Cart: React.FC = () => {
   return (
     <div className="cart">
       <img
-        src="./images/shopping-bag-icon.svg"
+        src="/images/shopping-bag-icon.svg"
         alt="shopping bag"
         onClick={cartClickHandler}
       />

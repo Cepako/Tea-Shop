@@ -39,7 +39,7 @@ const Menu: React.FC = () => {
       </div>
       <div className={menuStatus}>
         <p className="log-in">
-          <img src="./images/user-icon.svg" alt="user icon" />
+          <img src="/images/user-icon.svg" alt="user icon" />
           Log In
         </p>
         <ul className="list">
