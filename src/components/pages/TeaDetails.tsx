@@ -4,6 +4,11 @@ import teasData from './tea-details-components/tea-details-data';
 import Header from './tea-details-components/Header';
 import TeaProduct from './tea-details-components/TeaProduct';
 import TeaProductInfo from './tea-details-components/TeaProductInfo';
+import {
+  responsive,
+  teaDetailsSliderData,
+} from './tea-details-components/tea-details-slider-data';
+import Slider from '../Slider';
 
 import './TeaDetails.scss';
 
@@ -24,6 +29,14 @@ const TeaDetails: React.FC = () => {
         product_description={product_description}
       />
       <TeaProductInfo product_info={product_info} />
+      <h3 className="tea-details__related">Related Products</h3>
+      <div className="tea-details__slider">
+        <Slider
+          removeArrowOnDeviceType={[]}
+          responsive={responsive}
+          data={teaDetailsSliderData}
+        />
+      </div>
     </div>
   );
 };
