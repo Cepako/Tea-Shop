@@ -19,6 +19,7 @@
       font-weight: 300;
       font-style: italic;
       padding-bottom: 5%;
+      cursor: pointer;
       span {
         position: absolute;
         top: 30%;
@@ -33,7 +34,98 @@
       font-weight: 300;
     }
     &.active {
-      height: 30vh;
+      height: 32vh;
     }
+  }
+}
+@media screen and (min-width: 400px) {
+  .product-info-wrapper {
+    div {
+      height: 4vh;
+      &.active {
+        height: 23vh;
+      }
+    }
+  }
+}
+@media screen and (min-width: 600px) {
+  .product-info-wrapper {
+    div {
+      &.active {
+        height: 20vh;
+      }
+    }
+  }
+}
+@media screen and (min-width: 650px) {
+  .product-info-wrapper {
+    div {
+      h3 {
+        span {
+          right: -1%;
+        }
+      }
+      &.active {
+        height: 18vh;
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .product-info-wrapper {
+    width: 100%;
+    padding-inline: 7%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    div {
+      width: 31%;
+      padding-inline: 2%;
+      height: auto;
+      overflow: hidden;
+      margin: 1% 0;
+      border-bottom: none;
+      h3 {
+        font-size: 1em;
+        font-weight: 500;
+        padding-bottom: 10%;
+        cursor: default;
+        span {
+          display: none;
+        }
+      }
+      p {
+        padding-bottom: 5%;
+        font-size: 0.9em;
+        line-height: 140%;
+      }
+      &.active {
+        height: auto;
+      }
+    }
+    div:nth-of-type(2) {
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .product-info-wrapper {
+    padding-inline: 12%;
+    margin-bottom: 5%;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .product-info-wrapper {
+    padding-inline: 17%;
+  }
+}
+@media screen and (min-width: 1500px) {
+  .product-info-wrapper {
+    padding-inline: 20%;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .product-info-wrapper {
+    padding-inline: 25%;
   }
 }

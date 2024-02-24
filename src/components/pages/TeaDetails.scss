@@ -2,6 +2,7 @@
   width: 100%;
   &__related {
     width: 100%;
+    font-size: 1.4em;
     text-align: center;
     font-weight: 300;
     font-style: italic;
@@ -11,6 +12,117 @@
     width: 95%;
     .card {
       text-align: center;
+    }
+  }
+}
+@media screen and (min-width: 600px) {
+  .tea-details {
+    &__related {
+      font-size: 1.6em;
+    }
+    &__slider {
+      width: 90%;
+      padding-inline: 5%;
+      padding-left: 10%;
+      .slider {
+        .gd-carousel {
+          .react-multiple-carousel__arrow--left {
+            left: -8%;
+          }
+
+          .react-multiple-carousel__arrow--right {
+            right: -8%;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .tea-details {
+    &__slider {
+      .card {
+        &__view {
+          top: 72%;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1100px) {
+  .tea-details {
+    &__slider {
+      .slider {
+        .gd-carousel {
+          .react-multiple-carousel__arrow--left {
+            left: -5%;
+          }
+
+          .react-multiple-carousel__arrow--right {
+            right: -5%;
+          }
+        }
+      }
+      .card {
+        &__view {
+          top: 73%;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
+  .tea-details {
+    &__slider {
+      .card {
+        &__view {
+          top: 74%;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1300px) {
+  .tea-details {
+    &__slider {
+      .card {
+        &__view {
+          top: 75%;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1450px) {
+  .tea-details {
+    &__slider {
+      .card {
+        &__view {
+          top: 76%;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1550px) {
+  .tea-details {
+    &__slider {
+      .card {
+        &__view {
+          top: 77%;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1700px) {
+  .tea-details {
+    &__slider {
+      .card {
+        &__view {
+          top: 78%;
+        }
+      }
     }
   }
 }

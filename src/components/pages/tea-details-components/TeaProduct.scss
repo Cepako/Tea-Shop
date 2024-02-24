@@ -50,6 +50,7 @@
       padding: 4%;
       font-size: 1.1em;
       font-weight: 300;
+      cursor: pointer;
     }
     .add-to-cart {
       margin-bottom: 5%;
@@ -74,5 +75,148 @@
       text-decoration: underline;
       cursor: pointer;
     }
+  }
+}
+@media screen and (min-width: 550px) {
+  .tea-product {
+    .description {
+      &__name {
+        font-size: 2.1em;
+      }
+      &__price {
+        font-size: 1.3em;
+      }
+      form {
+        label {
+          margin-top: 5%;
+          margin-bottom: 3%;
+        }
+        input {
+          padding: 3% 2%;
+          width: 15%;
+          outline: none;
+          margin-bottom: 10%;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 650px) {
+  .tea-product {
+    &__image {
+      width: 80%;
+    }
+    .description {
+      width: 80%;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .tea-product {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    &__image {
+      width: 50%;
+    }
+    .description {
+      width: 40%;
+      margin-top: 0;
+      display: grid;
+      grid-template-rows: repeat(6, auto);
+      &__name {
+        grid-row: 1;
+      }
+      &__price {
+        grid-row: 2;
+        margin-block: 3%;
+      }
+      form {
+        grid-row: 5;
+
+        input {
+          padding: 4% 3%;
+          width: 25%;
+        }
+      }
+      .short-description {
+        grid-row: 3;
+        font-size: 0.9em;
+      }
+      span {
+        grid-row: 4;
+        font-size: 0.8em;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .tea-product {
+    width: 85%;
+    margin: 0 auto;
+    padding-bottom: 5%;
+    &__image {
+      width: 55%;
+    }
+    .description {
+      width: 35%;
+      &__price {
+        margin-block: 4%;
+      }
+      form {
+        label {
+          margin-bottom: 5%;
+        }
+        select {
+          font-size: 1em;
+        }
+        input {
+          font-size: 0.9em;
+        }
+      }
+      .add-to-cart {
+        transition: 0.2s;
+        &:hover {
+          color: #888;
+        }
+      }
+      .buy-now {
+        transition: 0.5s;
+        &:hover {
+          background-color: rgb(119, 119, 119);
+        }
+      }
+    }
+    .short-description {
+      line-height: 140%;
+      margin-bottom: 2%;
+    }
+  }
+}
+@media screen and (min-width: 1300px) {
+  .tea-product {
+    width: 75%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .tea-product {
+    width: 75%;
+    &__image {
+      width: 60%;
+    }
+    .description {
+      width: 30%;
+    }
+  }
+}
+@media screen and (min-width: 1500px) {
+  .tea-product {
+    width: 70%;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .tea-product {
+    width: 60%;
   }
 }
