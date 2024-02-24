@@ -1,4 +1,5 @@
 .product {
+  position: relative;
   width: 100%;
   margin-bottom: 10%;
   padding-bottom: 10%;
@@ -8,9 +9,10 @@
   border-bottom: 1px solid black;
   &__remove {
     position: absolute;
-    right: 12%;
-    width: 5%;
-    height: 2%;
+    top: 0;
+    right: 0;
+    width: 6%;
+    height: 15%;
     font-weight: 300;
     display: flex;
     justify-content: center;
@@ -35,6 +37,7 @@
     width: 50%;
     margin-right: 15%;
     &__name {
+      margin-top: 0;
       margin-bottom: 5%;
       font-weight: 300;
       font-size: 1em;

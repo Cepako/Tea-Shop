@@ -39,7 +39,6 @@ const Card: React.FC<CardModel> = ({
   };
 
   let productLink = name.replace('& ', '').replace(/\s+/g, '-').toLowerCase();
-  console.log(productLink);
 
   return (
     <div

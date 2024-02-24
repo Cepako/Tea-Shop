@@ -10,6 +10,7 @@
 
     .react-multiple-carousel__arrow {
       position: absolute;
+      z-index: 0;
       background-color: transparent;
       font-size: 30px;
       &::before {
