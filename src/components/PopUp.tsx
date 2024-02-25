@@ -49,7 +49,7 @@ const PopUp: React.FC = () => {
     navigate(`/teas/${productLink}`);
   };
 
-  const productLink = name.replace(' ', '-').toLowerCase();
+  const productLink = name.replace('& ', '').replace(/\s+/g, '-').toLowerCase();
 
   return (
     <div className="wrapper">

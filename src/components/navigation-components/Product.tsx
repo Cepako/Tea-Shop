@@ -52,7 +52,7 @@ const Product: React.FC<ProductModel> = ({
     if (cartSideBar) cartSideBar.className = 'cart-sidebar';
   };
 
-  const productLink = name.replace(' ', '-').toLowerCase();
+  const productLink = name.replace('& ', '').replace(/\s+/g, '-').toLowerCase();
 
   return (
     <div
