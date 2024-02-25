@@ -30,6 +30,12 @@ const CartSideBar: React.FC = () => {
       />
     );
   });
+  const closeCart = () => {
+    const cartSideBar = document.querySelector(
+      '.cart-sidebar'
+    ) as HTMLDivElement;
+    if (cartSideBar) cartSideBar.className = 'cart-sidebar';
+  };
 
   const cartNotEmpty = (
     <>
@@ -39,7 +45,7 @@ const CartSideBar: React.FC = () => {
         <br />
         <span className="total-price">${totalPrice.toFixed(2)}</span>
       </p>
-      <Link to="/cart" className="cart-sidebar__button">
+      <Link to="/cart" className="cart-sidebar__button" onClick={closeCart}>
         View Cart
       </Link>
     </>

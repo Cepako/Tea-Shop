@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../redux/hooks';
 import { addToCart } from '../../../redux/cart';
@@ -26,7 +26,7 @@ const TeaProduct: React.FC<TPInterface> = ({
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const addToCartHandler = () => {
+  const addToCartHandler = (e: MouseEvent) => {
     const payload = {
       name,
       price,
@@ -42,6 +42,7 @@ const TeaProduct: React.FC<TPInterface> = ({
       ) as HTMLDivElement;
       if (cartSideBar) cartSideBar.classList.add('active');
     }
+    e.stopPropagation();
   };
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {

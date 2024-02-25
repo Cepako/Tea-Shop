@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { MouseEvent, ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../redux/hooks';
 import { addToCart } from '../redux/cart';
@@ -22,7 +22,7 @@ const PopUp: React.FC = () => {
       setPopUpQuantity(1);
     }
   };
-  const addToCartHandler = () => {
+  const addToCartHandler = (e: MouseEvent) => {
     const payload = {
       name,
       price,
@@ -36,6 +36,7 @@ const PopUp: React.FC = () => {
     ) as HTMLDivElement;
     if (cartSideBar) cartSideBar.classList.add('active');
     closePopUp();
+    e.stopPropagation();
   };
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     if (Number(e.target.value) < 1) setPopUpQuantity(1);

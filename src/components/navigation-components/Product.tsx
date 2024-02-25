@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductModel from './product.model';
 import { useAppDispatch } from '../../redux/hooks';
@@ -22,8 +22,9 @@ const Product: React.FC<ProductModel> = ({
 
   const dispatch = useAppDispatch();
 
-  const removeHandler = () => {
+  const removeHandler = (event: MouseEvent) => {
     dispatch(deleteFromCart(code));
+    event.stopPropagation();
   };
 
   const increaseHandler = () => {
@@ -44,6 +45,12 @@ const Product: React.FC<ProductModel> = ({
   const decreaseHandler = () => {
     dispatch(decreaseQuantity(code));
   };
+  const closeCart = () => {
+    const cartSideBar = document.querySelector(
+      '.cart-sidebar'
+    ) as HTMLDivElement;
+    if (cartSideBar) cartSideBar.className = 'cart-sidebar';
+  };
 
   const productLink = name.replace(' ', '-').toLowerCase();
 
@@ -63,7 +70,7 @@ const Product: React.FC<ProductModel> = ({
       >
         x
       </div>
-      <Link to={`/teas/${productLink}`}>
+      <Link to={`/teas/${productLink}`} onClick={closeCart}>
         <img src={imgUrl} alt="herbs" />
       </Link>
       <div className="details">
