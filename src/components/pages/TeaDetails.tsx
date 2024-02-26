@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import teasData from './tea-details-components/tea-details-data';
 import Header from './tea-details-components/Header';
@@ -19,6 +19,11 @@ const TeaDetails: React.FC = () => {
   const { name, price, code, product_img, product_description, product_info } =
     teaData[0];
 
+  useEffect(() => {
+    const teasButton = document.querySelector('.list__item a');
+    if (teasButton) teasButton.className = '';
+  }, []);
+
   return (
     <div className="tea-details">
       <Header />
@@ -34,6 +39,7 @@ const TeaDetails: React.FC = () => {
       <h3 className="tea-details__related">Related Products</h3>
       <div className="tea-details__slider">
         <Slider
+          key={keyForTeaProduct}
           removeArrowOnDeviceType={[]}
           responsive={responsive}
           data={teaDetailsSliderData}

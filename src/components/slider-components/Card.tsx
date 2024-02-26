@@ -37,6 +37,12 @@ const Card: React.FC<CardModel> = ({
       wrapperElement.style.display = 'block';
     }
   };
+  const closeCart = () => {
+    const cartSideBar = document.querySelector(
+      '.cart-sidebar'
+    ) as HTMLDivElement;
+    if (cartSideBar) cartSideBar.className = 'cart-sidebar';
+  };
 
   let productLink = name.replace('& ', '').replace(/\s+/g, '-').toLowerCase();
 
@@ -50,17 +56,17 @@ const Card: React.FC<CardModel> = ({
         setOver(false);
       }}
     >
-      <Link to={`/teas/${productLink}`}>
+      <Link to={`/teas/${productLink}`} onClick={closeCart}>
         <img
           className="card__img"
           src={over ? hoverImg : defaultImg}
           alt={over ? 'herbs' : 'teabag'}
         />
       </Link>
-      <Link to={`/teas/${productLink}`}>
+      <Link to={`/teas/${productLink}`} onClick={closeCart}>
         <h3 className="card__name">{name}</h3>
       </Link>
-      <Link to={`/teas/${productLink}`}>
+      <Link to={`/teas/${productLink}`} onClick={closeCart}>
         <p className="card__price">{`$${price}`}</p>
       </Link>
       <p className="card__view" onClick={quickView}>
