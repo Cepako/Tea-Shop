@@ -14,6 +14,7 @@ import './TeaDetails.scss';
 
 const TeaDetails: React.FC = () => {
   const { productLink } = useParams<string>();
+  const keyForTeaProduct = `tea-product-${productLink}`;
   const teaData = teasData.filter((tea) => tea.link === productLink);
   const { name, price, code, product_img, product_description, product_info } =
     teaData[0];
@@ -22,6 +23,7 @@ const TeaDetails: React.FC = () => {
     <div className="tea-details">
       <Header />
       <TeaProduct
+        key={keyForTeaProduct}
         name={name}
         price={price}
         code={code}
