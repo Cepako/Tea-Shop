@@ -11,9 +11,10 @@ const Cart: React.FC = () => {
   let productsCount = 0;
   products.map((product) => (productsCount += product.quantity!));
 
-  const cartSideBar = document.querySelector('.cart-sidebar') as HTMLDivElement;
+  let cartSideBar: HTMLDivElement;
 
   const cartClickHandler = (e: MouseEvent<HTMLDivElement>) => {
+    cartSideBar = document.querySelector('.cart-sidebar') as HTMLDivElement;
     if (window.innerWidth < 1024) navigate('/cart');
     else if (cartSideBar) {
       cartSideBar.classList.add('active');

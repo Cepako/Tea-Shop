@@ -9,10 +9,6 @@ import './CartSideBar.scss';
 const CartSideBar: React.FC = () => {
   const sideBarRef = useRef<HTMLDivElement>(null);
 
-  const arrowClickHandler = () => {
-    sideBarRef.current!.className = 'cart-sidebar';
-  };
-
   const products = useAppSelector((state) => state.cart);
 
   let totalPrice = 0;
@@ -31,10 +27,7 @@ const CartSideBar: React.FC = () => {
     );
   });
   const closeCart = () => {
-    const cartSideBar = document.querySelector(
-      '.cart-sidebar'
-    ) as HTMLDivElement;
-    if (cartSideBar) cartSideBar.className = 'cart-sidebar';
+    if (sideBarRef) sideBarRef.current!.className = 'cart-sidebar';
   };
 
   const cartNotEmpty = (
@@ -56,7 +49,7 @@ const CartSideBar: React.FC = () => {
   return (
     <div className="cart-sidebar" ref={sideBarRef}>
       <h2 className="cart-sidebar__title">
-        <i className="fa-solid fa-chevron-left" onClick={arrowClickHandler}></i>
+        <i className="fa-solid fa-chevron-left" onClick={closeCart}></i>
         Cart
       </h2>
       {products.length > 0 ? cartNotEmpty : cartEmpty}
