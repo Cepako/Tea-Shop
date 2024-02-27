@@ -1,10 +1,12 @@
-const teaDetailsData = [
+const data = [
   {
     link: 'hibicious-flower',
     name: 'Hibicious Flower',
     price: '7.00',
     code: 'SKU: 0002',
+    size: '125Gr',
     product_img: '/images/teas/teabag1.png',
+    hover_img: '/images/teas/herbs1.png',
     product_description:
       "Hibicious Flower is a unique tea that will enchant you with its delicate blend of flavors and aromas. It's a fusion of hibiscus and flowers, creating an incredibly refreshing beverage.",
     product_info:
@@ -15,7 +17,9 @@ const teaDetailsData = [
     name: 'Chamomile Tea',
     price: '8.00',
     code: 'SKU: 0003',
+    size: '125Gr',
     product_img: '/images/teas/teabag2.png',
+    hover_img: '/images/teas/herbs2.png',
     product_description:
       'Chamomile Tea is a harmonious blend of delicate chamomile tea that evokes a sense of tranquility and relaxation. The golden chamomile flowers not only provide a unique flavor but also offer health benefits, helping to alleviate stress and improve sleep quality.  ',
     product_info:
@@ -26,7 +30,9 @@ const teaDetailsData = [
     name: 'Raspberry Leaves',
     price: '8.00',
     code: 'SKU: 0004',
+    size: '125Gr',
     product_img: '/images/teas/teabag3.png',
+    hover_img: '/images/teas/herbs3.png',
     product_description:
       'Raspberry Leaves is a unique tea that transports you to a raspberry garden full of freshness and natural charm. The delicate raspberry leaves impart a distinctive flavor and aroma to the infusion, creating an unforgettable tea experience.       ',
     product_info:
@@ -37,7 +43,9 @@ const teaDetailsData = [
     name: 'Rosemary Specials',
     price: '5.00',
     code: 'SKU: 0005',
+    size: '200Gr',
     product_img: '/images/teas/teabag4.png',
+    hover_img: '/images/teas/herbs4.png',
     product_description:
       'Rosemary Specials is an extraordinary tea where the senses dance in the aroma of rosemary. This unique blend allows for delightful flavor experiences, where the freshness of rosemary harmonizes with a subtle touch of tea.',
     product_info:
@@ -48,7 +56,9 @@ const teaDetailsData = [
     name: 'Earl Grey',
     price: '6.00',
     code: 'SKU: 0006',
+    size: '200Gr',
     product_img: '/images/teas/teabag5.png',
+    hover_img: '/images/teas/herbs5.png',
     product_description:
       'Earl Grey is a classic black tea, known for its subtle taste of black tea leaves and a delicate hint of bergamot. This elegant blend captivates with not only a refined flavor but also the pleasant aroma of citrusy bergamot.',
     product_info:
@@ -59,7 +69,9 @@ const teaDetailsData = [
     name: 'Lavender Blend',
     price: '7.00',
     code: 'SKU: 0007',
+    size: '200Gr',
     product_img: '/images/teas/teabag6.png',
+    hover_img: '/images/teas/herbs6.png',
     product_description:
       'Lavender Blend is a harmonious tea mixture enriched with the subtle aroma of lavender. The delicacy of black tea combines with the gentleness of lavender, creating a beverage with a unique character.  ',
     product_info:
@@ -70,7 +82,9 @@ const teaDetailsData = [
     name: 'Almond Spice',
     price: '15.00',
     code: 'SKU: 0008',
+    size: '300Gr',
     product_img: '/images/teas/teabag7.png',
+    hover_img: '/images/teas/herbs7.png',
     product_description:
       'Almond Spice is a unique tea where the almond flavor blends with the aroma of spices, creating sensual sensations. The delicacy of black tea meets the almond note and spicy spices, forming a distinctive beverage.             ',
     product_info:
@@ -81,7 +95,9 @@ const teaDetailsData = [
     name: 'Rose Flowers',
     price: '13.00',
     code: 'SKU: 0010',
+    size: '300Gr',
     product_img: '/images/teas/teabag8.png',
+    hover_img: '/images/teas/herbs8.png',
     product_description:
       'Rose Flowers is a romantic tea where the delicacy of rose petals meets the aroma of a floral garden. This unique blend of black tea is enriched with a subtle taste of roses, creating a beverage full of elegance and charm.',
     product_info:
@@ -92,11 +108,13 @@ const teaDetailsData = [
     name: 'Mint & Melissa Mix',
     price: '15.00',
     code: 'SKU: 0009',
+    size: '300Gr',
     product_img: '/images/teas/teabag9.png',
+    hover_img: '/images/teas/herbs9.png',
     product_description:
       'Mint & Melissa Mix is a refreshing tea where the freshness of mint meets the gentleness of melissa. This harmonious blend of black tea is enriched with the intense aroma of mint and melissa, creating a beverage full of freshness and delicacy.',
     product_info:
       'Mint & Melissa Mix is a refreshing tea, combining the freshness of mint with the gentleness of melissa in a harmonious blend of black tea. The intense aroma of mint and melissa gives the beverage a unique character, creating an unforgettable taste experience.',
   },
 ];
-export default teaDetailsData;
+export default data;
