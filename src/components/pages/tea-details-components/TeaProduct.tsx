@@ -9,6 +9,7 @@ interface TPInterface {
   name: string;
   price: string;
   code: string;
+  size: string;
   product_img: string;
   product_description: string;
 }
@@ -17,6 +18,7 @@ const TeaProduct: React.FC<TPInterface> = ({
   name,
   price,
   code,
+  size,
   product_img,
   product_description,
 }) => {
@@ -31,7 +33,8 @@ const TeaProduct: React.FC<TPInterface> = ({
       name,
       price,
       code,
-      imgUrl: product_img,
+      size,
+      product_img,
       quantity: teaQuantity,
     };
     dispatch(addToCart(payload));
@@ -65,7 +68,7 @@ const TeaProduct: React.FC<TPInterface> = ({
         <form>
           <label htmlFor="size">Size</label>
           <select name="size" id="size">
-            <option value="250Gr">250Gr</option>
+            <option value={size}>{size}</option>
           </select>
           <label htmlFor="quantity">Quantity</label>
           <input

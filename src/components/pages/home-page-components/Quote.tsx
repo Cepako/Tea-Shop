@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 import './Quote.scss';
 
-import QuoteModel from './QuoteModel';
+import QuoteModel from './qoute.model';
 
 const Quote: React.FC<QuoteModel> = ({ text, author }) => {
   return (

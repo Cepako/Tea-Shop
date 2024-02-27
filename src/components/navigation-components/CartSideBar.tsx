@@ -25,7 +25,7 @@ const CartSideBar: React.FC = () => {
         name={product.name}
         price={product.price}
         code={product.code}
-        imgUrl={product.imgUrl}
+        product_img={product.product_img}
         quantity={product.quantity}
       />
     );

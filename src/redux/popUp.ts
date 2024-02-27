@@ -5,7 +5,8 @@ export type payloadType = {
   name: string;
   price: string;
   code: string;
-  imgUrl: string;
+  size: string;
+  product_img: string;
   quantity?: number;
 };
 
@@ -13,7 +14,8 @@ export interface ProductState {
   name: string;
   price: string;
   code: string;
-  imgUrl: string;
+  size: string;
+  product_img: string;
   quantity?: number;
 }
 
@@ -21,7 +23,8 @@ const initialState: ProductState = {
   name: '',
   price: '',
   code: '',
-  imgUrl: '',
+  size: '',
+  product_img: '',
   quantity: 1,
 };
 
@@ -33,7 +36,8 @@ export const popUpSlice = createSlice({
       state.name = action.payload.name;
       state.price = action.payload.price;
       state.code = action.payload.code;
-      state.imgUrl = action.payload.imgUrl;
+      state.size = action.payload.size;
+      state.product_img = action.payload.product_img;
     },
   },
 });

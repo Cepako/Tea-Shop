@@ -1,7 +1,7 @@
 export default interface ProductModel {
   name: string;
   price: string;
-  imgUrl: string;
+  product_img: string;
   code: string;
   quantity?: number;
 }

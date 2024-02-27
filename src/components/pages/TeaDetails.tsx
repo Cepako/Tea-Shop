@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import teasData from './tea-details-components/tea-details-data';
 import Header from './tea-details-components/Header';
 import TeaProduct from './tea-details-components/TeaProduct';
 import TeaProductInfo from './tea-details-components/TeaProductInfo';
-import {
-  responsive,
-  teaDetailsSliderData,
-} from './tea-details-components/tea-details-slider-data';
+import data from '../../data';
 import Slider from '../Slider';
 
 import './TeaDetails.scss';
@@ -15,9 +11,16 @@ import './TeaDetails.scss';
 const TeaDetails: React.FC = () => {
   const { productLink } = useParams<string>();
   const keyForTeaProduct = `tea-product-${productLink}`;
-  const teaData = teasData.filter((tea) => tea.link === productLink);
-  const { name, price, code, product_img, product_description, product_info } =
-    teaData[0];
+  const teaData = data.filter((tea) => tea.link === productLink);
+  const {
+    name,
+    price,
+    code,
+    size,
+    product_img,
+    product_description,
+    product_info,
+  } = teaData[0];
 
   useEffect(() => {
     const teasButton = document.querySelector('.list__item a');
@@ -32,6 +35,7 @@ const TeaDetails: React.FC = () => {
         name={name}
         price={price}
         code={code}
+        size={size}
         product_img={product_img}
         product_description={product_description}
       />
@@ -41,8 +45,7 @@ const TeaDetails: React.FC = () => {
         <Slider
           key={keyForTeaProduct}
           removeArrowOnDeviceType={[]}
-          responsive={responsive}
-          data={teaDetailsSliderData}
+          data={data}
         />
       </div>
     </div>

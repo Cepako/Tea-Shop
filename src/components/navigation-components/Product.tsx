@@ -14,7 +14,7 @@ import './Product.scss';
 const Product: React.FC<ProductModel> = ({
   name,
   price,
-  imgUrl,
+  product_img,
   code,
   quantity,
 }) => {
@@ -71,7 +71,7 @@ const Product: React.FC<ProductModel> = ({
         x
       </div>
       <Link to={`/teas/${productLink}`} onClick={closeCart}>
-        <img src={imgUrl} alt="herbs" />
+        <img src={product_img} alt="herbs" />
       </Link>
       <div className="details">
         <h3 className="details__name">{name}</h3>

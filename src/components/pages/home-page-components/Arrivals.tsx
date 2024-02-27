@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Slider from '../../Slider';
-import { homePageData, responsive } from './home-page-slider-data';
+import data from '../../../data';
 
 import './Arrivals.scss';
+
+const HOME_PAGE_DATA = data.slice(0, 4);
 
 const Arrivals: React.FC = () => {
   return (
@@ -14,11 +16,7 @@ const Arrivals: React.FC = () => {
         Our special teas for different life needs.
         <br /> Choose wisely.
       </p>
-      <Slider
-        removeArrowOnDeviceType={['desktop']}
-        responsive={responsive}
-        data={homePageData}
-      />
+      <Slider removeArrowOnDeviceType={['desktop']} data={HOME_PAGE_DATA} />
       <Link to="/teas" className="new-arrivals__button">
         Shop All
       </Link>

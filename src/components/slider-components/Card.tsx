@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { useAppDispatch } from '../../redux/hooks';
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../../redux/hooks';
+import { editPopUp } from '../../redux/popUp';
 
 import './Card.scss';
 
 import CardModel from './card.model';
-import { editPopUp } from '../../redux/popUp';
 
 const Card: React.FC<CardModel> = ({
-  defaultImg,
-  hoverImg,
+  product_img,
+  hover_img,
   name,
   price,
   code,
+  size,
 }) => {
   const [over, setOver] = useState(false);
 
@@ -29,7 +30,8 @@ const Card: React.FC<CardModel> = ({
       name,
       price,
       code,
-      imgUrl: defaultImg,
+      size,
+      product_img,
     };
     dispatch(editPopUp(payload));
 
@@ -59,7 +61,7 @@ const Card: React.FC<CardModel> = ({
       <Link to={`/teas/${productLink}`} onClick={closeCart}>
         <img
           className="card__img"
-          src={over ? hoverImg : defaultImg}
+          src={over ? hover_img : product_img}
           alt={over ? 'herbs' : 'teabag'}
         />
       </Link>

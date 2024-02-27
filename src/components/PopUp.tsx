@@ -8,7 +8,9 @@ import './PopUp.scss';
 const PopUp: React.FC = () => {
   const [popUpQuantity, setPopUpQuantity] = useState(1);
 
-  const { name, price, code, imgUrl } = useAppSelector((state) => state.popUp);
+  const { name, price, code, size, product_img } = useAppSelector(
+    (state) => state.popUp
+  );
 
   const dispatch = useAppDispatch();
 
@@ -27,7 +29,8 @@ const PopUp: React.FC = () => {
       name,
       price,
       code,
-      imgUrl,
+      size,
+      product_img,
       quantity: popUpQuantity,
     };
     dispatch(addToCart(payload));
@@ -57,7 +60,7 @@ const PopUp: React.FC = () => {
         <span className="pop-up__close" onClick={closePopUp}>
           x
         </span>
-        <img src={imgUrl} alt="tea bag" />
+        <img src={product_img} alt="tea bag" />
         <div className="details">
           <h3 className="details__name">{name}</h3>
           <p className="details__price">${price}</p>
@@ -65,7 +68,7 @@ const PopUp: React.FC = () => {
           <form>
             <label htmlFor="size">Size</label>
             <select name="size" id="size">
-              <option value="250Gr">250Gr</option>
+              <option value={size}>{size}</option>
             </select>
             <label htmlFor="quantity">Quantity</label>
             <input
