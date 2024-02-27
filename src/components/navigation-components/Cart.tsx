@@ -27,7 +27,7 @@ const Cart: React.FC = () => {
         cartSideBar.classList.remove('active');
       }
     };
-
+    cartSideBar = document.querySelector('.cart-sidebar') as HTMLDivElement;
     document.addEventListener('click', handleOutsideClick);
 
     return () => {
