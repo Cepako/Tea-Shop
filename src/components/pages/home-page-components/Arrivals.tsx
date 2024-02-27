@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Slider from '../../Slider';
+import Slider from '../../slider/Slider';
 import data from '../../../data';
 
 import './Arrivals.scss';

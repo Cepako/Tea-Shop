@@ -4,7 +4,7 @@ import Header from './tea-details-components/Header';
 import TeaProduct from './tea-details-components/TeaProduct';
 import TeaProductInfo from './tea-details-components/TeaProductInfo';
 import data from '../../data';
-import Slider from '../Slider';
+import Slider from '../slider/Slider';
 
 import './TeaDetails.scss';
 
