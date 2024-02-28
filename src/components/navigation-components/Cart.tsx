@@ -36,13 +36,13 @@ const Cart: React.FC = () => {
   }, []);
 
   return (
-    <div className="cart">
+    <div className='cart'>
       <img
-        src="/images/shopping-bag-icon.svg"
-        alt="shopping bag"
+        src='/images/shopping-bag-icon.svg'
+        alt='shopping bag'
         onClick={cartClickHandler}
       />
-      <span id="product-count" onClick={cartClickHandler}>
+      <span id='product-count' onClick={cartClickHandler}>
         {productsCount}
       </span>
     </div>

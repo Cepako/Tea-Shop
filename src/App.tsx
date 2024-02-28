@@ -10,6 +10,7 @@ import Blog from './components/pages/Blog';
 import Contact from './components/pages/Contact';
 import PopUp from './components/PopUp';
 import TeaDetails from './components/pages/TeaDetails';
+import CartPage from './components/pages/CartPage';
 import Info from './components/Info';
 import Footer from './components/Footer';
 import GoUpButton from './components/GoUpButton';
@@ -28,6 +29,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Page />} />
           <Route path="/teas" element={<Teas />} />
           <Route path="/teas/:productLink" element={<TeaDetails />} />;
+          <Route path="/cart" element={<CartPage />} />;
           <Route path="/extras" element={<Extras />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
