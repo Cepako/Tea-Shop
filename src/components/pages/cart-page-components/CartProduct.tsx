@@ -53,18 +53,18 @@ const CartProduct: React.FC<CPModel> = ({
 
   const productLink = name.replace('& ', '').replace(/\s+/g, '-').toLowerCase();
   return (
-    <div className='product'>
-      <div className='product__remove' onClick={removeHandler}>
+    <div className='product-cart'>
+      <div className='product-cart__remove' onClick={removeHandler}>
         x
       </div>
       <Link to={`/teas/${productLink}`} onClick={closeCart}>
         <img src={product_img} alt='herbs' />
       </Link>
-      <div className='product__details'>
-        <h4 className='product__details__name'>{name}</h4>
-        <p className='product__details__price'>${price}</p>
-        <p className='product__details__size'>Size: {size}</p>
-        <div className='product__details__input'>
+      <div className='product-cart__details'>
+        <h4 className='product-cart__details__name'>{name}</h4>
+        <p className='product-cart__details__price'>${price}</p>
+        <p className='product-cart__details__size'>Size: {size}</p>
+        <div className='product-cart__details__input'>
           <span
             onClick={decreaseHandler}
             style={
@@ -78,7 +78,7 @@ const CartProduct: React.FC<CPModel> = ({
           <input type='number' value={quantity} onChange={inputHandler} />
           <span onClick={increaseHandler}>+</span>
         </div>
-        <p className='product__details__total-price'>
+        <p className='product-cart__details__total-price'>
           ${(quantity! * Number(price)).toFixed(2)}
         </p>
       </div>
