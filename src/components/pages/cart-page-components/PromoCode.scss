@@ -1,0 +1,42 @@
+.promo-code {
+  margin-bottom: 5%;
+  padding-bottom: 8%;
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  p {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 1.1em;
+    margin-bottom: 3%;
+
+    cursor: pointer;
+    img {
+      width: 5%;
+
+      margin-right: 3%;
+    }
+  }
+  input {
+    width: 60%;
+    padding: 3%;
+    font-size: 1em;
+    border: 1px solid black;
+    outline: none;
+  }
+  button {
+    padding: 3.4%;
+    width: 35%;
+    background-color: transparent;
+    border: 1px solid black;
+    transition: 0.5s;
+    &:hover {
+      color: #777;
+      cursor: pointer;
+    }
+  }
+}
