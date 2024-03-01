@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAppSelector } from '../../../redux/hooks';
 import CartProduct from './CartProduct';
+import PromoCode from './PromoCode';
 
 import './ProductsList.scss';
 
@@ -19,9 +20,10 @@ const ProductsList: React.FC = () => {
   ));
 
   return (
-    <div className="products-list">
+    <div className='products-list'>
       <h3>My cart</h3>
-      <div className="products-list__products">{productsList}</div>
+      <div className='products-list__products'>{productsList}</div>
+      <PromoCode />
     </div>
   );
 };
