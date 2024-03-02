@@ -1,0 +1,60 @@
+.order-summary{
+    margin: 0 auto;
+        width: 90%;
+        h3 {
+            padding-block: 10% 5%;
+            margin-bottom: 10%;
+            font-size: 1.4em;
+            font-weight: 300;
+            font-style: italic;
+            border-bottom: 1px solid black;
+        }
+        div{
+            border-bottom: 1px solid black;
+            font-size: 1.3em;
+            .subtotal {
+                display: flex;
+                justify-content: space-between;
+                margin-block: 10%;
+                font-weight: 300;
+            }
+            .delivery{
+                margin-bottom: 3%;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+        .total{
+            margin-top: 10%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.5em;
+        }
+        .checkout{
+            margin-top: 10%;
+            width: 100%;
+            padding: 5% 3%;
+            font-size: 1.3em;
+            font-weight: 300;
+            color: white;
+            background-color:#242a35;
+            border: none;
+            cursor: pointer;
+            transition: 0.5s;
+            &:hover {
+                background-color: rgb(119, 119, 119);
+                border-color: rgb(119, 119, 119);
+            }
+        }
+        .secure{
+            width: 100%;
+            margin-block: 5% 15%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            img{
+                width: 10%;
+            }
+        }
+}
