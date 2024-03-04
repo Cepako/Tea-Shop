@@ -32,7 +32,10 @@ const Product: React.FC<ProductModel> = ({
   };
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const newQuantityValue = e.target.value === '' ? 1 : Number(e.target.value);
+    const newQuantityValue =
+      e.target.value === '' || Number(e.target.value) === 0
+        ? 1
+        : Number(e.target.value);
 
     const payload = {
       code,
@@ -56,7 +59,7 @@ const Product: React.FC<ProductModel> = ({
 
   return (
     <div
-      className="product"
+      className='product'
       onMouseOver={() => {
         setOver(true);
       }}
@@ -71,12 +74,12 @@ const Product: React.FC<ProductModel> = ({
         x
       </div>
       <Link to={`/teas/${productLink}`} onClick={closeCart}>
-        <img src={product_img} alt="herbs" />
+        <img src={product_img} alt='herbs' />
       </Link>
-      <div className="details">
-        <h3 className="details__name">{name}</h3>
-        <p className="details__price">${price}</p>
-        <div className="details__input-number">
+      <div className='details'>
+        <h3 className='details__name'>{name}</h3>
+        <p className='details__price'>${price}</p>
+        <div className='details__input-number'>
           <span
             onClick={decreaseHandler}
             style={
@@ -87,7 +90,7 @@ const Product: React.FC<ProductModel> = ({
           >
             -
           </span>
-          <input type="number" value={quantity} onChange={inputHandler} />
+          <input type='number' value={quantity} onChange={inputHandler} />
           <span onClick={increaseHandler}>+</span>
         </div>
       </div>

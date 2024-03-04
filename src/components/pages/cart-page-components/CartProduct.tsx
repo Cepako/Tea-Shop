@@ -31,7 +31,10 @@ const CartProduct: React.FC<CPModel> = ({
   };
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const newQuantityValue = e.target.value === '' ? 1 : Number(e.target.value);
+    const newQuantityValue =
+      e.target.value === '' || Number(e.target.value) === 0
+        ? 1
+        : Number(e.target.value);
 
     const payload = {
       code,
