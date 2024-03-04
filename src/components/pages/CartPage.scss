@@ -5,3 +5,56 @@
     flex-direction: column;
   }
 }
+@media screen and (min-width: 768px) {
+  .cart-page {
+    &__details {
+      margin: 0 auto;
+      width: 90%;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .cart-page {
+    &__details {
+      width: 85%;
+      min-height: 75vh;
+    }
+  }
+}
+@media screen and (min-width: 1150px) {
+  .cart-page {
+    &__details {
+      width: 80%;
+    }
+  }
+}
+@media screen and (min-width: 1300px) {
+  .cart-page {
+    &__details {
+      width: 70%;
+    }
+  }
+}
+@media screen and (min-width: 1400px) {
+  .cart-page {
+    &__details {
+      width: 65%;
+    }
+  }
+}
+@media screen and (min-width: 1400px) {
+  .cart-page {
+    &__details {
+      width: 60%;
+    }
+  }
+}
+@media screen and (min-width: 1600px) {
+  .cart-page {
+    &__details {
+      width: 55%;
+    }
+  }
+}

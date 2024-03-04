@@ -4,7 +4,7 @@ import { useAppSelector } from '../../../redux/hooks';
 import './OrderSummary.scss';
 
 const OrderSummary: React.FC = () => {
-  const viewHeader = window.innerWidth > 786;
+  const viewHeader = window.innerWidth >= 768;
 
   const cart = useAppSelector((state) => state.cart);
   let totalPrice = 0;

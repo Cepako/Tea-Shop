@@ -40,3 +40,46 @@
     }
   }
 }
+@media screen and (min-width: 550px) {
+  .promo-code {
+    padding-bottom: 6%;
+    width: 100%;
+    p {
+      font-size: 1.2em;
+    }
+    button {
+      width: 25%;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .promo-code {
+    border-bottom: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .promo-code {
+    margin-bottom: 1%;
+    padding-bottom: 1%;
+    p {
+      font-size: 1em;
+      margin-bottom: 3%;
+      transition: 0.3s;
+      &:hover {
+        color: #777;
+      }
+      img {
+        width: 4%;
+        margin-right: 2%;
+      }
+    }
+    input {
+      padding: 2%;
+      width: 50%;
+    }
+    button {
+      padding: 2.3%;
+      width: 20%;
+    }
+  }
+}
