@@ -9,11 +9,13 @@ const Note: React.FC = () => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const handleClick = () => {
-    setViewInput((prev) => !prev);
-    if (!viewInput)
-      setTimeout(() => {
-        inputRef.current!.focus();
-      }, 100);
+    if (!inputValue) {
+      setViewInput((prev) => !prev);
+      if (!viewInput)
+        setTimeout(() => {
+          inputRef.current!.focus();
+        }, 100);
+    }
   };
   const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value);
