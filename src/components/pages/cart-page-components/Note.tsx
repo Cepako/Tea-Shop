@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, ChangeEvent } from 'react';
 
 import './Note.scss';
 
 const Note: React.FC = () => {
   const [viewInput, setViewInput] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
@@ -14,11 +15,16 @@ const Note: React.FC = () => {
         inputRef.current!.focus();
       }, 100);
   };
+  const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setInputValue(e.target.value);
+  };
 
   const input = (
     <textarea
       placeholder='Instructions? Special requests? Add them here.'
       ref={inputRef}
+      onChange={handleInputChange}
+      value={inputValue}
     />
   );
 

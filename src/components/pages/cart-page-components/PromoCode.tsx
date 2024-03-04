@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { ChangeEvent, useRef, useState } from 'react';
 
 import './PromoCode.scss';
 
 const PromoCode: React.FC = () => {
   const [viewInput, setViewInput] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -15,9 +16,19 @@ const PromoCode: React.FC = () => {
       }, 100);
   };
 
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
   const input = (
     <>
-      <input type='text' placeholder='Enter a promo code' ref={inputRef} />
+      <input
+        type='text'
+        placeholder='Enter a promo code'
+        ref={inputRef}
+        onChange={handleInputChange}
+        value={inputValue}
+      />
       <button>Apply</button>
     </>
   );
