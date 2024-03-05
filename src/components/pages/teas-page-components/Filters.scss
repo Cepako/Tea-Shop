@@ -1,0 +1,14 @@
+.filters {
+  width: 100%;
+  margin-block: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__btn {
+    width: 90%;
+    padding: 3%;
+    font-style: italic;
+    background-color: transparent;
+    border: 1px solid black;
+  }
+}

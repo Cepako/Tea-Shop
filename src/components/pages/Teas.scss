@@ -1,0 +1,14 @@
+.teas-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  .header {
+    &__image {
+      height: 60vh;
+    }
+    h1 {
+      width: 90%;
+      top: 65%;
+    }
+  }
+}
