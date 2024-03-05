@@ -1,0 +1,36 @@
+.price {
+  max-height: 8%;
+  overflow: hidden;
+  transition: 0.5s ease-out;
+  &.active {
+    max-height: 18%;
+  }
+  .horizontal-slider {
+    margin-block: 10% 5%;
+    width: 100%;
+    height: 2px;
+    background-color: #777;
+    .example-thumb {
+      transform: translateY(-40%);
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background-color: #777;
+      outline: none;
+    }
+    .example-track-0,
+    .example-track-2 {
+      background-color: #ccc;
+      height: 2px;
+    }
+  }
+  .under-slider {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    span {
+      font-weight: 300;
+      font-style: italic;
+    }
+  }
+}

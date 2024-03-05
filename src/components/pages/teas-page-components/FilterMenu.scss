@@ -1,0 +1,68 @@
+.filter-menu {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+
+  &__remove {
+    position: absolute;
+    top: 3%;
+    right: 5%;
+    font-size: 1.4em;
+    font-weight: 300;
+  }
+
+  &__title {
+    width: 100%;
+    padding: 5%;
+    font-weight: 300;
+    font-style: italic;
+    border-bottom: 1px solid #bbb;
+  }
+  .collection,
+  .price,
+  .size {
+    width: 100%;
+    padding: 5%;
+    border-bottom: 1px solid #bbb;
+
+    &__title {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 300;
+      font-style: italic;
+      cursor: pointer;
+      span {
+        font-size: 1.2em;
+        font-style: normal;
+      }
+    }
+  }
+  &__buttons {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    button {
+      width: 40%;
+      padding: 2%;
+      font-weight: 300;
+      font-style: italic;
+    }
+    &__clear {
+      color: #444;
+      border: 1px solid #444;
+      background-color: #fff;
+    }
+    &__apply {
+      color: white;
+      background-color: #444;
+      border: none;
+    }
+  }
+}
