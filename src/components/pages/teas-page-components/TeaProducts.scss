@@ -1,0 +1,41 @@
+.tea-products {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .card {
+      a {
+        width: 100%;
+        text-align: center;
+      }
+      &__name {
+        font-weight: 500;
+      }
+      &__price {
+        font-weight: 300;
+      }
+    }
+
+    button {
+      width: 90%;
+      margin-block: 10%;
+
+      padding: 4%;
+      color: white;
+      background-color: #242a35;
+      border: none;
+      font-size: 1em;
+      font-weight: 300;
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+}
