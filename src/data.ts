@@ -1,5 +1,6 @@
 const data = [
   {
+    collection: 'herbal tea',
     link: 'hibicious-flower',
     name: 'Hibicious Flower',
     price: '7.00',
@@ -13,6 +14,7 @@ const data = [
       'Hibicious Flower is an extraordinary tea with a unique character. The main ingredient of this blend is hibiscus, known for its intense color and distinctive flavor. This tea is not only a delight to the palate but also a subtle journey through floral gardens, resulting in an exceptional beverage. ',
   },
   {
+    collection: 'herbal tea',
     link: 'chamomile-tea',
     name: 'Chamomile Tea',
     price: '8.00',
@@ -26,6 +28,7 @@ const data = [
       'Chamomile Tea is a tea with a unique character that will transport you to a world of calmness and relaxation. The delicate blend of chamomile flowers not only provides a distinctive flavor but also offers numerous health benefits, helping to alleviate stress and improve sleep quality. ',
   },
   {
+    collection: 'herbal tea',
     link: 'raspberry-leaves',
     name: 'Raspberry Leaves',
     price: '8.00',
@@ -39,6 +42,7 @@ const data = [
       'Raspberry Leaves is a tea with a remarkable character that will transport you to a raspberry garden, full of freshness and natural charm. The delicate raspberry leaves impart a distinctive flavor and aroma to the infusion, creating an unforgettable tea experience.',
   },
   {
+    collection: 'herbal tea',
     link: 'rosemary-specials',
     name: 'Rosemary Specials',
     price: '5.00',
@@ -52,6 +56,7 @@ const data = [
       'Rosemary Specials is an extraordinary tea where the senses dance in the aroma of rosemary. This unique blend allows for delightful flavor experiences, where the freshness of rosemary harmonizes with a subtle touch of tea. Each sip is a journey through an herbal garden.',
   },
   {
+    collection: 'classic',
     link: 'earl-grey',
     name: 'Earl Grey',
     price: '6.00',
@@ -65,6 +70,7 @@ const data = [
       'Earl Grey is a unique tea that combines delicate black tea with a distinctive hint of bergamot. Its rich flavor and fresh aroma make each sip a refined tea experience. Perfect for moments of relaxation, this tea captivates with a balanced blend of high-quality ingredients.',
   },
   {
+    collection: 'classic',
     link: 'lavender-blend',
     name: 'Lavender Blend',
     price: '7.00',
@@ -78,6 +84,7 @@ const data = [
       'Lavender Blend is a unique tea where the delicacy of black tea combines with the gentle aroma of lavender. Each sip of this tea is a subtle experience, transporting you to an aromatic world of relaxation and soothing. The carefully selected composition of ingredients guarantees a distinctive taste.',
   },
   {
+    collection: 'special edition',
     link: 'almond-spice',
     name: 'Almond Spice',
     price: '15.00',
@@ -91,6 +98,7 @@ const data = [
       'Almond Spice is a unique tea where almond flavor meets the aroma of spicy spices, creating an intense composition. Each sip of this tea is a balanced blend of black tea, almonds, and spices, offering exceptional taste experiences. Carefully selected ingredients guarantee an aromatic journey.',
   },
   {
+    collection: 'special edition',
     link: 'rose-flowers',
     name: 'Rose Flowers',
     price: '13.00',
@@ -104,6 +112,7 @@ const data = [
       'Rose Flowers is a unique tea characterized by a delicate blend of black tea and rose petals. In each sip, you can discern a subtle floral note, creating a refined tea experience. Carefully selected ingredients guarantee not only an aromatic beverage but also a moment of relaxation.',
   },
   {
+    collection: 'special edition',
     link: 'mint-melissa-mix',
     name: 'Mint & Melissa Mix',
     price: '15.00',
