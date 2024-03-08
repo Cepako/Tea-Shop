@@ -2,7 +2,15 @@ import React, { MouseEvent, useRef, useState } from 'react';
 
 import './Collection.scss';
 
-const Collection: React.FC = () => {
+interface CollectionProps {
+  setCollection: React.Dispatch<React.SetStateAction<string>>;
+  rerenderKey: number;
+}
+
+const Collection: React.FC<CollectionProps> = ({
+  setCollection,
+  rerenderKey,
+}) => {
   const [active, setActive] = useState(true);
 
   const allRef = useRef<HTMLLIElement>(null);
@@ -19,21 +27,28 @@ const Collection: React.FC = () => {
     switch (e.target) {
       case allRef.current:
         allRef.current?.classList.add('active');
+        setCollection('all');
         break;
       case classicRef.current:
         classicRef.current?.classList.add('active');
+        setCollection('classic');
         break;
       case herbalRef.current:
         herbalRef.current?.classList.add('active');
+        setCollection('herbal tea');
         break;
       case specialRef.current:
         specialRef.current?.classList.add('active');
+        setCollection('special edition');
         break;
     }
   };
 
   return (
-    <div className={active ? 'collection active' : 'collection'}>
+    <div
+      key={rerenderKey}
+      className={active ? 'collection active' : 'collection'}
+    >
       <h3
         className='collection__title'
         onClick={() => setActive((prev) => !prev)}

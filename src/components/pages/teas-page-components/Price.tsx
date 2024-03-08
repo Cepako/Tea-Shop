@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactSlider from 'react-slider';
 
 import './Price.scss';
 
-interface PriceInterface {
+interface PriceProps {
   minValue: number;
   maxValue: number;
+  setPrice: React.Dispatch<React.SetStateAction<[number, number]>>;
+  rerenderKey: number;
 }
 
-const Price: React.FC<PriceInterface> = ({ minValue, maxValue }) => {
+const Price: React.FC<PriceProps> = ({
+  minValue,
+  maxValue,
+  setPrice,
+  rerenderKey,
+}) => {
   const [active, setActive] = useState(false);
   const [lowerValue, setLowerValue] = useState(minValue);
   const [upperValue, setUpperValue] = useState(maxValue);
+
+  useEffect(() => {
+    setPrice([lowerValue, upperValue]);
+  }, [lowerValue, upperValue, setPrice]);
+
+  useEffect(() => {
+    setLowerValue(minValue);
+    setUpperValue(maxValue);
+  }, [rerenderKey]);
 
   const handleSliderChange = (values: number[]) => {
     setLowerValue(values[0]);
@@ -28,7 +44,7 @@ const Price: React.FC<PriceInterface> = ({ minValue, maxValue }) => {
         className='horizontal-slider'
         thumbClassName='example-thumb'
         trackClassName='example-track'
-        defaultValue={[lowerValue, upperValue]}
+        value={[lowerValue, upperValue]}
         onChange={handleSliderChange}
         minDistance={0.5}
         min={5}
