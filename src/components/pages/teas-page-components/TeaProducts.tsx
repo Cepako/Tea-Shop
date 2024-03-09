@@ -1,13 +1,44 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import data from '../../../data';
 import Card from '../../slider/Card';
-import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../../redux/hooks';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { addToCart } from '../../../redux/cart';
 
 import './TeaProducts.scss';
 
 const TeaProducts: React.FC = () => {
   const filters = useAppSelector((state) => state.filter);
+
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const addToCartHandler = (
+    e: MouseEvent,
+    product_img: string,
+    name: string,
+    price: string,
+    code: string,
+    size: string
+  ) => {
+    const payload = {
+      name,
+      price,
+      code,
+      size,
+      product_img,
+      quantity: 1,
+    };
+    dispatch(addToCart(payload));
+    if (window.innerWidth < 1024) navigate('/cart');
+    else {
+      const cartSideBar = document.querySelector(
+        '.cart-sidebar'
+      ) as HTMLDivElement;
+      if (cartSideBar) cartSideBar.classList.add('active');
+    }
+    e.stopPropagation();
+  };
 
   const productsList = data
     .filter((product) => {
@@ -39,8 +70,19 @@ const TeaProducts: React.FC = () => {
           code={product.code}
           size={product.size}
         />
-        <button>
-          <Link to={'/teas/' + product.link}>Add to Cart</Link>
+        <button
+          onClick={(e) =>
+            addToCartHandler(
+              e as MouseEvent<HTMLButtonElement>,
+              product.product_img,
+              product.name,
+              product.price,
+              product.code,
+              product.size
+            )
+          }
+        >
+          Add to Cart
         </button>
       </div>
     ));
