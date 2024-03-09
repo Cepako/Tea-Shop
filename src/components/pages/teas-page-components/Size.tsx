@@ -4,10 +4,9 @@ import './Size.scss';
 
 interface SizeProps {
   setSize: React.Dispatch<React.SetStateAction<string[]>>;
-  rerenderKey: number;
 }
 
-const Size: React.FC<SizeProps> = ({ setSize, rerenderKey }) => {
+const Size: React.FC<SizeProps> = ({ setSize }) => {
   const [active, setActive] = useState(false);
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
 
@@ -28,6 +27,21 @@ const Size: React.FC<SizeProps> = ({ setSize, rerenderKey }) => {
     setSize(selectedSizes);
   }, [selectedSizes, setSize]);
 
+  useEffect(() => {
+    const clearButton = document.querySelector(
+      '.filter-menu__buttons__clear'
+    ) as HTMLButtonElement;
+
+    const handleClearButtonClick = () => {
+      setSelectedSizes([]);
+    };
+
+    clearButton.addEventListener('click', handleClearButtonClick);
+
+    return () =>
+      clearButton.removeEventListener('click', handleClearButtonClick);
+  }, []);
+
   return (
     <div className={active ? 'size active' : 'size'}>
       <h3 className='size__title' onClick={() => setActive((prev) => !prev)}>
@@ -37,7 +51,6 @@ const Size: React.FC<SizeProps> = ({ setSize, rerenderKey }) => {
         <li className='size__list__el'>
           <label htmlFor='125Gr'>
             <input
-              key={rerenderKey}
               type='checkbox'
               name='125Gr'
               id='125Gr'
@@ -50,7 +63,6 @@ const Size: React.FC<SizeProps> = ({ setSize, rerenderKey }) => {
         <li className='size__list__el'>
           <label htmlFor='200Gr'>
             <input
-              key={rerenderKey}
               type='checkbox'
               name='200Gr'
               id='200Gr'
@@ -63,7 +75,6 @@ const Size: React.FC<SizeProps> = ({ setSize, rerenderKey }) => {
         <li className='size__list__el'>
           <label htmlFor='300Gr'>
             <input
-              key={rerenderKey}
               type='checkbox'
               name='300Gr'
               id='300Gr'

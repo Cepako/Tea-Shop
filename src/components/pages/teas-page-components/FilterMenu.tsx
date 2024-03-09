@@ -33,6 +33,19 @@ const FilterMenu: React.FC = () => {
     handleRemoveBtn();
   };
   const clearFiltersHandler = () => {
+    const sizeInputs = document.querySelectorAll(
+      '.size__list__el'
+    ) as NodeListOf<HTMLLabelElement>;
+
+    sizeInputs.forEach((input) => {
+      const checkbox = input.querySelector(
+        'input[type="checkbox"]'
+      ) as HTMLInputElement;
+      if (checkbox) {
+        checkbox.checked = false;
+      }
+    });
+
     setCollection('all');
     setPrice([5, 15]);
     setSize([]);
@@ -59,7 +72,7 @@ const FilterMenu: React.FC = () => {
         maxValue={15}
         setPrice={setPrice}
       />
-      <Size rerenderKey={rerenderKey} setSize={setSize} />
+      <Size setSize={setSize} />
       <div className='filter-menu__buttons'>
         <button
           className='filter-menu__buttons__clear'
