@@ -45,7 +45,17 @@ const TeaProducts: React.FC = () => {
       </div>
     ));
 
-  return <div className='tea-products'>{productsList}</div>;
+  const noResults = (
+    <h2 className='no-results'>
+      No items matched your search criteria. Try widening your search.
+    </h2>
+  );
+
+  return (
+    <div className='tea-products'>
+      {productsList.length > 0 ? productsList : noResults}
+    </div>
+  );
 };
 
 export default TeaProducts;

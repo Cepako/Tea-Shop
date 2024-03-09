@@ -4,6 +4,13 @@
   display: flex;
   flex-direction: column;
 
+  .no-results {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20%;
+    text-align: center;
+    font-weight: 300;
+  }
   div {
     display: flex;
     flex-direction: column;
