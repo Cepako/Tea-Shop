@@ -12,9 +12,41 @@
       padding-bottom: 2%;
       font-weight: 300;
       font-style: italic;
+      cursor: pointer;
+      &:hover {
+        color: #999;
+      }
       &.active {
         font-weight: normal;
+        &:hover {
+          color: black;
+        }
       }
+    }
+  }
+}
+@media screen and (min-width: 700px) {
+  .collection {
+    max-height: 9%;
+    &.active {
+      max-height: 28%;
+    }
+  }
+}
+@media screen and (min-width: 840px) {
+  .collection {
+    max-height: 10%;
+    &__list {
+      &__el {
+        font-size: 1.1em;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .collection {
+    &.active {
+      max-height: 33%;
     }
   }
 }

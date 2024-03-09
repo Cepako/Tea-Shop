@@ -70,3 +70,44 @@
     }
   }
 }
+@media screen and (min-width: 1024px) {
+  .filter-menu {
+    height: 50vh;
+    position: static;
+    &__remove {
+      display: none;
+    }
+
+    &__title {
+      padding: 4%;
+      font-size: 1.6em;
+    }
+    &__buttons {
+      margin-top: 5%;
+      position: static;
+      button {
+        cursor: pointer;
+      }
+      &__clear {
+        color: #444;
+        border: 1px solid #444;
+        background-color: #fff;
+        transition: 0.5s;
+        &:hover {
+          border-color: #aaa;
+          color: #aaa;
+        }
+      }
+      &__apply {
+        color: white;
+        background-color: #444;
+        border: none;
+        transition: 0.5s;
+        &:hover {
+          background-color: #777;
+          color: #ddd;
+        }
+      }
+    }
+  }
+}

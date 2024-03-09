@@ -12,3 +12,28 @@
     border: 1px solid black;
   }
 }
+@media screen and (min-width: 1024px) {
+  .filters {
+    width: 25%;
+    margin-block: 3%;
+    align-items: flex-start;
+    &__btn {
+      display: none;
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
+  .filters {
+    width: 20%;
+  }
+}
+@media screen and (min-width: 1450px) {
+  .filters {
+    width: 15%;
+  }
+}
+@media screen and (min-width: 1850px) {
+  .filters {
+    width: 12%;
+  }
+}

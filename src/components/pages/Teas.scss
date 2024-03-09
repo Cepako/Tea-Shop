@@ -12,3 +12,12 @@
     }
   }
 }
+@media screen and (min-width: 1024px) {
+  .teas-page {
+    &__filter-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+}

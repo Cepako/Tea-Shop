@@ -15,14 +15,12 @@ const Filters: React.FC = () => {
   };
 
   return (
-    <>
-      <div className='filters'>
-        <button className='filters__btn' onClick={handleBtnClick}>
-          Filter
-        </button>
-      </div>
+    <div className='filters'>
+      <button className='filters__btn' onClick={handleBtnClick}>
+        Filter
+      </button>
       <FilterMenu />
-    </>
+    </div>
   );
 };
 

@@ -25,8 +25,10 @@ const Teas: React.FC = () => {
   return (
     <div className='teas-page'>
       <Header />
-      <Filters />
-      <TeaProducts />
+      <div className='teas-page__filter-wrapper'>
+        <Filters />
+        <TeaProducts />
+      </div>
     </div>
   );
 };

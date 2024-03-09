@@ -9,13 +9,13 @@
     margin-block: 10% 5%;
     width: 100%;
     height: 2px;
-    background-color: #777;
+    background-color: #444;
     .example-thumb {
       transform: translateY(-40%);
       width: 13px;
       height: 13px;
       border-radius: 50%;
-      background-color: #777;
+      background-color: #444;
       outline: none;
     }
     .example-track-0,
@@ -31,6 +31,36 @@
     span {
       font-weight: 300;
       font-style: italic;
+    }
+  }
+}
+@media screen and (min-width: 700px) {
+  .price {
+    max-height: 9%;
+    .horizontal-slider {
+      margin-block: 6% 5%;
+    }
+  }
+}
+@media screen and (min-width: 840px) {
+  .price {
+    max-height: 10%;
+    &.active {
+      max-height: 20%;
+    }
+    .horizontal-slider {
+      margin-block: 5%;
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .price {
+    &.active {
+      max-height: 25%;
+    }
+    .horizontal-slider {
+      margin-block: 10%;
+      cursor: pointer;
     }
   }
 }
