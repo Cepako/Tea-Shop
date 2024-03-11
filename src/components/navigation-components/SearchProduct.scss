@@ -1,0 +1,18 @@
+.search-product {
+  width: 100%;
+  padding: 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  img {
+    width: 20%;
+  }
+  &__description {
+    width: 72.5%;
+    h3 {
+      font-size: 1.2em;
+      font-weight: 300;
+    }
+  }
+}

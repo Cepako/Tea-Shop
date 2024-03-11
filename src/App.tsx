@@ -23,17 +23,17 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      <div className="App">
+      <div className='App'>
         <Navigation />
         <Routes>
-          <Route path="/" element={<Page />} />
-          <Route path="/teas" element={<Teas />} />
-          <Route path="/teas/:productLink" element={<TeaDetails />} />;
-          <Route path="/cart" element={<CartPage />} />;
-          <Route path="/extras" element={<Extras />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path='/' element={<Page />} />
+          <Route path='/teas' element={<Teas />} />
+          <Route path='/teas/:productLink' element={<TeaDetails />} />;
+          <Route path='/cart' element={<CartPage />} />;
+          <Route path='/extras' element={<Extras />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/blog' element={<Blog />} />
+          <Route path='/contact' element={<Contact />} />
         </Routes>
         <Info />
         <Footer />
