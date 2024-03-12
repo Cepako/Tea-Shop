@@ -16,3 +16,40 @@
     }
   }
 }
+@media screen and (min-width: 768px) {
+  .search-product {
+    img {
+      width: 25%;
+    }
+    &__description {
+      width: 67.5%;
+      h3 {
+        font-size: 1em;
+        font-weight: 300;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .search-product {
+    &__description {
+      h3 {
+        font-size: 1em;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1400px) {
+  .search-product {
+    padding: 2%;
+    img {
+      width: 30%;
+    }
+    &__description {
+      width: 62.5%;
+      h3 {
+        font-size: 1.1em;
+      }
+    }
+  }
+}
