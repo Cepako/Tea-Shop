@@ -1,0 +1,235 @@
+.about-page {
+  .header-image {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('../../../public/images/about.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    h1 {
+      width: 70%;
+      height: 10%;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2em;
+      text-align: center;
+      color: white;
+      font-weight: 100;
+      font-style: italic;
+    }
+  }
+  h2 {
+    width: 60%;
+    margin: 10% auto 0;
+    font-size: 1.7em;
+    font-weight: 500;
+    font-style: italic;
+    text-align: center;
+  }
+  &__text {
+    margin-block: 5% 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      margin-block: 5%;
+      width: 85%;
+      line-height: 150%;
+      font-weight: 300;
+      text-align: center;
+    }
+  }
+}
+@media screen and (min-width: 500px) {
+  .about-page {
+    .header-image {
+      height: 52.5vh;
+      h1 {
+        top: 65%;
+      }
+    }
+    h2 {
+      width: 55%;
+    }
+    &__text {
+      p {
+        margin-block: 4%;
+        width: 80%;
+      }
+    }
+  }
+}
+@media screen and (min-width: 650px) {
+  .about-page {
+    &__text {
+      p {
+        margin-block: 3%;
+        width: 75%;
+      }
+    }
+  }
+}
+@media screen and (min-width: 850px) {
+  .about-page {
+    &__text {
+      p {
+        margin-block: 2%;
+        width: 60%;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .about-page {
+    .header-image {
+      background-attachment: fixed;
+      height: 55vh;
+      h1 {
+        top: 60%;
+        font-size: 2.4em;
+      }
+    }
+    h2 {
+      position: relative;
+      width: 65%;
+      font-size: 2em;
+      font-weight: 300;
+      span {
+        position: absolute;
+        top: 50%;
+        display: inline-block;
+        width: 20%;
+        height: 1px;
+        transform: translateY(-50%);
+        background-color: black;
+        &:nth-of-type(1) {
+          left: -2%;
+        }
+        &:nth-of-type(2) {
+          right: -2%;
+        }
+      }
+    }
+    &__text {
+      margin: 5% auto;
+      width: 65%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+
+      p {
+        width: 45%;
+        text-align: left;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1100px) {
+  .about-page {
+    h2 {
+      margin-top: 5%;
+      span {
+        &:nth-of-type(1) {
+          left: 0;
+        }
+        &:nth-of-type(2) {
+          right: 0;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1300px) {
+  .about-page {
+    .header-image {
+      height: 60vh;
+      h1 {
+        font-size: 2.6em;
+      }
+    }
+    h2 {
+      font-size: 2.2em;
+      font-weight: 300;
+      span {
+        width: 20%;
+        &:nth-of-type(1) {
+          left: 1%;
+        }
+        &:nth-of-type(2) {
+          right: 1%;
+        }
+      }
+    }
+    &__text {
+      width: 60%;
+    }
+  }
+}
+@media screen and (min-width: 1400px) {
+  .about-page {
+    h2 {
+      span {
+        &:nth-of-type(1) {
+          left: 3%;
+        }
+        &:nth-of-type(2) {
+          right: 3%;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1500px) {
+  .about-page {
+    h2 {
+      span {
+        &:nth-of-type(1) {
+          left: 5%;
+        }
+        &:nth-of-type(2) {
+          right: 5%;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1600px) {
+  .about-page {
+    .header-image {
+      height: 65vh;
+      h1 {
+        font-size: 2.8em;
+      }
+    }
+    h2 {
+      font-size: 2.4em;
+    }
+    &__text {
+      margin-block: 3%;
+      p {
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1800px) {
+  .about-page {
+    h2 {
+      span {
+        width: 22%;
+        &:nth-of-type(1) {
+          left: 6%;
+        }
+        &:nth-of-type(2) {
+          right: 6%;
+        }
+      }
+    }
+  }
+}
