@@ -7,16 +7,19 @@ interface SearchProductModel {
   link: string;
   product_img: string;
   name: string;
+  setSearchValue: (value: string) => void;
 }
 
 const SearchProduct: React.FC<SearchProductModel> = ({
   link,
   product_img,
   name,
+  setSearchValue,
 }) => {
   const navigate = useNavigate();
 
   const handleProductClick = () => {
+    setSearchValue('');
     navigate(`/teas/${link}`);
   };
 
