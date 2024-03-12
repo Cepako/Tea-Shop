@@ -32,6 +32,9 @@
 }
 @media screen and (min-width: 1024px) {
   .search-product {
+    &:hover {
+      background-color: lighten(#414141, 5%);
+    }
     &__description {
       h3 {
         font-size: 1em;
