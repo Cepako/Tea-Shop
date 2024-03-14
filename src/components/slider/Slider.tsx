@@ -14,7 +14,7 @@ const responsive = {
     items: 4,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 465 },
+    breakpoint: { max: 1023, min: 465 },
     items: 2,
   },
   mobile: {
@@ -37,9 +37,9 @@ const Slider: React.FC<SliderModel> = ({ removeArrowOnDeviceType, data }) => {
   ));
 
   return (
-    <div className="slider">
+    <div className='slider'>
       <Carousel
-        className="gd-carousel"
+        className='gd-carousel'
         draggable={false}
         responsive={responsive}
         infinite={true}

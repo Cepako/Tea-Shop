@@ -43,7 +43,7 @@
     &__slider {
       .card {
         &__view {
-          top: 72%;
+          top: 72.5%;
         }
       }
     }
@@ -65,7 +65,7 @@
       }
       .card {
         &__view {
-          top: 73%;
+          top: 74%;
         }
       }
     }
@@ -76,7 +76,7 @@
     &__slider {
       .card {
         &__view {
-          top: 74%;
+          top: 75%;
         }
       }
     }
@@ -87,7 +87,7 @@
     &__slider {
       .card {
         &__view {
-          top: 75%;
+          top: 76%;
         }
       }
     }
@@ -98,7 +98,7 @@
     &__slider {
       .card {
         &__view {
-          top: 76%;
+          top: 77%;
         }
       }
     }
@@ -115,12 +115,34 @@
     }
   }
 }
+@media screen and (min-width: 1620px) {
+  .tea-details {
+    &__slider {
+      .card {
+        &__view {
+          top: 78%;
+        }
+      }
+    }
+  }
+}
 @media screen and (min-width: 1700px) {
   .tea-details {
     &__slider {
       .card {
         &__view {
           top: 79%;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1850px) {
+  .tea-details {
+    &__slider {
+      .card {
+        &__view {
+          top: 79.5%;
         }
       }
     }
