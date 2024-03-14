@@ -48,6 +48,7 @@
           font-weight: 300;
           border: 1px solid black;
           outline: none;
+          resize: none;
           &:hover {
             border-width: 2px;
           }
@@ -72,7 +73,6 @@
     }
     .stores-info {
       p {
-        width: 90%;
         line-height: 150%;
         font-weight: 300;
       }
@@ -85,6 +85,189 @@
       }
       .opening-hours {
         margin-block: 1%;
+      }
+    }
+  }
+}
+@media screen and (min-width: 600px) {
+  .contact-info {
+    &__title {
+      margin-block: 10% 5%;
+      font-size: 1.8em;
+    }
+    &__wrapper {
+      margin: 10% auto 15%;
+      width: 80%;
+      h3 {
+        font-size: 1.3em;
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .contact-info {
+    &__wrapper {
+      width: 65%;
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .contact-info {
+    &__title {
+      position: relative;
+      margin-block: 5%;
+      font-size: 2em;
+      span {
+        position: absolute;
+        top: 50%;
+        display: inline-block;
+        width: 17%;
+        height: 1px;
+        transform: translateY(-50%);
+        background-color: black;
+        &:nth-of-type(1) {
+          left: 15%;
+        }
+        &:nth-of-type(2) {
+          right: 15%;
+        }
+      }
+    }
+    &__wrapper {
+      margin: 5% auto 10%;
+      width: 70%;
+      display: flex;
+      justify-content: space-between;
+      .question {
+        width: 60%;
+        h3 {
+          width: 100%;
+
+          margin-block: 2% 3%;
+        }
+        p:nth-of-type(1) {
+          width: 95%;
+          margin-bottom: 10%;
+        }
+        form {
+          input {
+            padding: 2% 3%;
+            width: 49%;
+          }
+          input:nth-of-type(2) {
+            margin-left: 2%;
+          }
+          textarea {
+            height: 160px;
+          }
+          button {
+            transition: 0.5s;
+            &:hover {
+              background-color: #777;
+            }
+          }
+        }
+      }
+      .stores-info {
+        width: 25%;
+        p {
+          line-height: 180%;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
+  .contact-info {
+    &__title {
+      span {
+        width: 19%;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1300px) {
+  .contact-info {
+    &__title {
+      font-size: 2.2em;
+      span {
+        width: 16%;
+        &:nth-of-type(1) {
+          left: 19%;
+        }
+        &:nth-of-type(2) {
+          right: 19%;
+        }
+      }
+    }
+    &__wrapper {
+      width: 60%;
+      h3 {
+        font-size: 1.4em;
+      }
+      .question {
+        button {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1400px) {
+  .contact-info {
+    &__title {
+      span {
+        width: 14%;
+        &:nth-of-type(1) {
+          left: 22%;
+        }
+        &:nth-of-type(2) {
+          right: 22%;
+        }
+      }
+    }
+    &__wrapper {
+      width: 55%;
+    }
+  }
+}
+@media screen and (min-width: 1500px) {
+  .contact-info {
+    &__title {
+      span {
+        width: 13%;
+        &:nth-of-type(1) {
+          left: 24%;
+        }
+        &:nth-of-type(2) {
+          right: 24%;
+        }
+      }
+    }
+    &__wrapper {
+      width: 50%;
+    }
+  }
+}
+@media screen and (min-width: 1650px) {
+  .contact-info {
+    &__wrapper {
+      .stores-info {
+        width: 22.5%;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1850px) {
+  .contact-info {
+    &__title {
+      span {
+        width: 15%;
+      }
+    }
+    &__wrapper {
+      .stores-info {
+        width: 20%;
       }
     }
   }

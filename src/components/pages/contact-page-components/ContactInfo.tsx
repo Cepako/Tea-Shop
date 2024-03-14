@@ -35,7 +35,9 @@ const ContactInfo: React.FC = () => {
 
   return (
     <div className='contact-info'>
-      <h2 className='contact-info__title'>You're Welcome to Visit</h2>
+      <h2 className='contact-info__title'>
+        <span></span>You're Welcome to Visit<span></span>
+      </h2>
       <div className='contact-info__wrapper'>
         <div className='question'>
           <h3>Have a Question? We're Here to Help</h3>
@@ -75,10 +77,12 @@ const ContactInfo: React.FC = () => {
         <div className='stores-info'>
           <h3>Our Stores</h3>
           <p className='store-location'>
-            500 Terry Francine Street San Francisco, CA 94158 Tel: 123-456-7890
+            500 Terry Francine Street San Francisco, CA 94158 <br />
+            Tel: 123-456-7890
           </p>
           <p className='store-location'>
-            500 Terry Francine Street San Francisco, CA 94158 Tel: 123-456-7890
+            500 Terry Francine Street San Francisco, CA 94158
+            <br /> Tel: 123-456-7890
           </p>
           <h3>Opening Hours</h3>
           <p className='opening-hours'>Mon - Fri: 8am - 8pm</p>
