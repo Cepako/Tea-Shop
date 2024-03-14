@@ -1,8 +1,38 @@
-import React from 'react';
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  MouseEvent,
+  FocusEventHandler,
+} from 'react';
 
 import './ContactInfo.scss';
 
 const ContactInfo: React.FC = () => {
+  const [showParagraph, setShowParagraph] = useState(false);
+
+  const nameInput = useRef<HTMLInputElement>(null);
+  const emailInput = useRef<HTMLInputElement>(null);
+  const textareaInput = useRef<HTMLTextAreaElement>(null);
+
+  const handleFromSubmit = (e: MouseEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setShowParagraph(true);
+    nameInput.current!.value = '';
+    emailInput.current!.value = '';
+    textareaInput.current!.value = '';
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowParagraph(false);
+    }, 3000);
+  }, [showParagraph]);
+
+  const handleInputBlur: FocusEventHandler<HTMLInputElement> = (e) => {
+    if (e.target.value === '') e.target.style.border = '2px solid red';
+  };
+
   return (
     <div className='contact-info'>
       <h2 className='contact-info__title'>You're Welcome to Visit</h2>
@@ -13,13 +43,34 @@ const ContactInfo: React.FC = () => {
             Email us at <span>info@my-domain.com</span> or send us a message via
             the contact form below and we'll get back to you
           </p>
-          <form>
-            <input type='text' placeholder='Name' />
-            <input type='email' placeholder='Email' />
-            <textarea placeholder='Type your message here...'></textarea>
-            <button>Submit</button>
+          <form onSubmit={handleFromSubmit}>
+            <input
+              ref={nameInput}
+              required
+              onBlur={handleInputBlur}
+              onChange={() =>
+                (nameInput.current!.style.border = '1px solid black')
+              }
+              type='text'
+              placeholder='Name'
+            />
+            <input
+              ref={emailInput}
+              required
+              onBlur={handleInputBlur}
+              onChange={() =>
+                (emailInput.current!.style.border = '1px solid black')
+              }
+              type='email'
+              placeholder='Email'
+            />
+            <textarea
+              ref={textareaInput}
+              placeholder='Type your message here...'
+            ></textarea>
+            <button type='submit'>Submit</button>
           </form>
-          <p>Thanks for submitting!</p>
+          {showParagraph && <p>Thanks for submitting!</p>}
         </div>
         <div className='stores-info'>
           <h3>Our Stores</h3>
