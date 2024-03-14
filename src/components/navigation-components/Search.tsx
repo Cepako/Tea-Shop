@@ -32,6 +32,7 @@ const Search: React.FC = () => {
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (inputRef.current && !inputRef.current.contains(e.target as Node)) {
+        inputRef.current.blur();
         setInputFocus(false);
       }
     };
@@ -52,6 +53,7 @@ const Search: React.FC = () => {
           type='text'
           ref={inputRef}
           onFocus={() => setInputFocus(true)}
+          onBlur={() => setInputFocus(false)}
           onChange={(e) => hangleInputChange(e)}
           value={searchValue}
           placeholder='Search...'
@@ -65,6 +67,7 @@ const Search: React.FC = () => {
         <img src='./images/loupe-icon.svg' alt='loupe' />
       </label>
       <div
+        onMouseDown={(e) => e.preventDefault()}
         className={
           inputFocus && productsList.length > 0
             ? 'search__products active'
