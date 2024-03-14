@@ -1,5 +1,5 @@
 import React, { ChangeEvent, MouseEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAppDispatch } from '../../../redux/hooks';
 import { addToCart } from '../../../redux/cart';
 
@@ -27,6 +27,8 @@ const TeaProduct: React.FC<TPInterface> = ({
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const location = useLocation();
 
   const addToCartHandler = (e: MouseEvent) => {
     const payload = {
@@ -59,30 +61,42 @@ const TeaProduct: React.FC<TPInterface> = ({
   for (let i = 0; i < product_description.length / 2 + 1; i++)
     description += product_description[i];
 
+  const breadCrumbs =
+    location.state.prevPath === '/' ? (
+      <p className='tea-product__breadcrumbs'>
+        <Link to='/'>Home</Link> / {name}
+      </p>
+    ) : (
+      <p className='tea-product__breadcrumbs'>
+        <Link to='/'>Home</Link> / <Link to='/teas'>Teas</Link> / {name}
+      </p>
+    );
+
   return (
-    <div className="tea-product">
-      <img className="tea-product__image" src={product_img} alt="tea bag" />
-      <div className="description">
-        <h2 className="description__name">{name}</h2>
-        <p className="description__price">${price}</p>
+    <div className='tea-product'>
+      {breadCrumbs}
+      <img className='tea-product__image' src={product_img} alt='tea bag' />
+      <div className='description'>
+        <h2 className='description__name'>{name}</h2>
+        <p className='description__price'>${price}</p>
         <form>
-          <label htmlFor="size">Size</label>
-          <select name="size" id="size">
+          <label htmlFor='size'>Size</label>
+          <select name='size' id='size'>
             <option value={size}>{size}</option>
           </select>
-          <label htmlFor="quantity">Quantity</label>
+          <label htmlFor='quantity'>Quantity</label>
           <input
-            type="number"
-            id="quantity"
+            type='number'
+            id='quantity'
             value={teaQuantity}
             onChange={inputHandler}
           />
         </form>
-        <button className="add-to-cart" onClick={addToCartHandler}>
+        <button className='add-to-cart' onClick={addToCartHandler}>
           Add to Cart
         </button>
-        <button className="buy-now">Buy Now</button>
-        <p className="short-description">
+        <button className='buy-now'>Buy Now</button>
+        <p className='short-description'>
           {descriptionVisible ? product_description : description}
         </p>
         <span onClick={() => setDescriptionVisible(!descriptionVisible)}>

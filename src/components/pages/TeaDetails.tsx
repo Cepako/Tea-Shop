@@ -10,8 +10,11 @@ import './TeaDetails.scss';
 
 const TeaDetails: React.FC = () => {
   const { productLink } = useParams<string>();
+
   const keyForTeaProduct = `tea-product-${productLink}`;
+
   const teaData = data.filter((tea) => tea.link === productLink);
+
   const {
     name,
     price,
@@ -28,7 +31,7 @@ const TeaDetails: React.FC = () => {
   }, []);
 
   return (
-    <div className="tea-details">
+    <div className='tea-details'>
       <Header />
       <TeaProduct
         key={keyForTeaProduct}
@@ -40,8 +43,8 @@ const TeaDetails: React.FC = () => {
         product_description={product_description}
       />
       <TeaProductInfo product_info={product_info} />
-      <h3 className="tea-details__related">Related Products</h3>
-      <div className="tea-details__slider">
+      <h3 className='tea-details__related'>Related Products</h3>
+      <div className='tea-details__slider'>
         <Slider
           key={keyForTeaProduct}
           removeArrowOnDeviceType={[]}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import './SearchProduct.scss';
 
@@ -17,10 +17,13 @@ const SearchProduct: React.FC<SearchProductModel> = ({
   setSearchValue,
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleProductClick = () => {
     setSearchValue('');
-    navigate(`/teas/${link}`);
+    navigate(`/teas/${link}`, {
+      state: { prevPath: location.pathname === '/' ? '/' : '/teas' },
+    });
   };
 
   return (

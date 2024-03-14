@@ -1,5 +1,5 @@
 import React, { ChangeEvent, MouseEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import ProductModel from './product.model';
 import { useAppDispatch } from '../../redux/hooks';
 import {
@@ -21,6 +21,8 @@ const Product: React.FC<ProductModel> = ({
   const [over, setOver] = useState(false);
 
   const dispatch = useAppDispatch();
+
+  const location = useLocation();
 
   const removeHandler = (event: MouseEvent) => {
     dispatch(deleteFromCart(code));
@@ -73,7 +75,11 @@ const Product: React.FC<ProductModel> = ({
       >
         x
       </div>
-      <Link to={`/teas/${productLink}`} onClick={closeCart}>
+      <Link
+        to={`/teas/${productLink}`}
+        state={{ prevPath: location.pathname === '/' ? '/' : '/teas' }}
+        onClick={closeCart}
+      >
         <img src={product_img} alt='herbs' />
       </Link>
       <div className='details'>

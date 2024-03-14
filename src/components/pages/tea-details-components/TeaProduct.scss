@@ -1,4 +1,5 @@
 .tea-product {
+  position: relative;
   width: 100%;
   padding: 10% 5%;
   display: flex;
@@ -9,6 +10,18 @@
   &__image {
     width: 85%;
   }
+
+  &__breadcrumbs {
+    position: absolute;
+    top: 1.5%;
+    left: 12%;
+    color: #888;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+
   .description {
     width: 85%;
     margin-top: 10%;
@@ -79,6 +92,10 @@
 }
 @media screen and (min-width: 550px) {
   .tea-product {
+    &__breadcrumbs {
+      top: 3%;
+      font-size: 1.1em;
+    }
     .description {
       &__name {
         font-size: 2.1em;
@@ -107,6 +124,9 @@
     &__image {
       width: 80%;
     }
+    &__breadcrumbs {
+      left: 14%;
+    }
     .description {
       width: 80%;
     }
@@ -119,6 +139,10 @@
     align-items: flex-start;
     &__image {
       width: 50%;
+    }
+    &__breadcrumbs {
+      top: 8%;
+      left: 8%;
     }
     .description {
       width: 40%;
@@ -159,6 +183,10 @@
     &__image {
       width: 55%;
     }
+    &__breadcrumbs {
+      top: 10%;
+      left: 9%;
+    }
     .description {
       width: 35%;
       &__price {
@@ -197,11 +225,14 @@
 @media screen and (min-width: 1300px) {
   .tea-product {
     width: 75%;
+    &__breadcrumbs {
+      top: 13%;
+      left: 9.5%;
+    }
   }
 }
 @media screen and (min-width: 1400px) {
   .tea-product {
-    width: 75%;
     &__image {
       width: 60%;
     }
@@ -213,10 +244,17 @@
 @media screen and (min-width: 1500px) {
   .tea-product {
     width: 70%;
+    &__breadcrumbs {
+      top: 15%;
+      left: 10%;
+    }
   }
 }
 @media screen and (min-width: 1600px) {
   .tea-product {
     width: 60%;
+    &__breadcrumbs {
+      left: 11.5%;
+    }
   }
 }

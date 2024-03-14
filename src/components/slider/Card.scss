@@ -7,17 +7,13 @@
   flex-wrap: wrap;
   cursor: pointer;
 
-  a {
-    text-decoration: none;
+  img {
+    display: block;
     width: 95%;
-    color: black;
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
+    height: 100%;
   }
-  a > &__name {
+
+  &__name {
     z-index: 1;
     position: relative;
     display: block;
@@ -27,7 +23,7 @@
     font-style: italic;
     background-color: #fff;
   }
-  a > &__price {
+  &__price {
     font-weight: 500;
   }
   &__view {

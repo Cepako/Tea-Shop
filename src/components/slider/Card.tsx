@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/hooks';
 import { editPopUp } from '../../redux/popUp';
 
@@ -18,6 +18,16 @@ const Card: React.FC<CardModel> = ({
   const [over, setOver] = useState(false);
 
   const dispatch = useAppDispatch();
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const redirectHandle = () => {
+    navigate(`/teas/${productLink}`, {
+      state: { prevPath: location.pathname === '/' ? '/' : '/teas' },
+    });
+    closeCart();
+  };
 
   const quickView = () => {
     const wrapperElement = document.querySelector('.wrapper') as HTMLDivElement;
@@ -50,7 +60,7 @@ const Card: React.FC<CardModel> = ({
 
   return (
     <div
-      className="card"
+      className='card'
       onMouseOver={() => {
         setOver(true);
       }}
@@ -58,20 +68,20 @@ const Card: React.FC<CardModel> = ({
         setOver(false);
       }}
     >
-      <Link to={`/teas/${productLink}`} onClick={closeCart}>
-        <img
-          className="card__img"
-          src={over ? hover_img : product_img}
-          alt={over ? 'herbs' : 'teabag'}
-        />
-      </Link>
-      <Link to={`/teas/${productLink}`} onClick={closeCart}>
-        <h3 className="card__name">{name}</h3>
-      </Link>
-      <Link to={`/teas/${productLink}`} onClick={closeCart}>
-        <p className="card__price">{`$${price}`}</p>
-      </Link>
-      <p className="card__view" onClick={quickView}>
+      <img
+        onClick={redirectHandle}
+        className='card__img'
+        src={over ? hover_img : product_img}
+        alt={over ? 'herbs' : 'teabag'}
+      />
+
+      <h3 className='card__name' onClick={redirectHandle}>
+        {name}
+      </h3>
+
+      <p className='card__price' onClick={redirectHandle}>{`$${price}`}</p>
+
+      <p className='card__view' onClick={quickView}>
         Quick View
       </p>
     </div>
