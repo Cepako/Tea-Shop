@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useAppSelector } from '../../../redux/hooks';
+import Modal, { ModalMethods } from '../../Modal';
 
 import './OrderSummary.scss';
 
 const OrderSummary: React.FC = () => {
+  const dialog = useRef<ModalMethods>(null);
+
   const viewHeader = window.innerWidth >= 768;
 
   const cart = useAppSelector((state) => state.cart);
@@ -16,6 +19,10 @@ const OrderSummary: React.FC = () => {
     <div className='order-summary'>
       {viewHeader && <h3>Order summary</h3>}
       <div>
+        <Modal ref={dialog}>
+          <h2>We can't accept online orders right now</h2>
+          <p>Please contact us to complete your purchase.</p>
+        </Modal>
         <p className='subtotal'>
           Subtotal{' '}
           <span className='subtotal__price'>${totalPrice.toFixed(2)}</span>
@@ -25,7 +32,9 @@ const OrderSummary: React.FC = () => {
       <p className='total'>
         Total <span className='total__price'>${totalPrice.toFixed(2)}</span>
       </p>
-      <button className='checkout'>Checkout</button>
+      <button className='checkout' onClick={() => dialog.current?.open()}>
+        Checkout
+      </button>
       <p className='secure'>
         <img src='./images/lock-icon.svg' alt='lock' />
         Secure Checkout

@@ -1,0 +1,35 @@
+.modal {
+  position: fixed;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  height: 35%;
+  padding: 10% 10%;
+  text-align: center;
+  background-color: #fff;
+  border: none;
+  &::backdrop {
+    background-color: #444;
+    opacity: 0.75;
+  }
+  h2 {
+    font-size: 1.3em;
+    font-style: italic;
+    text-transform: capitalize;
+  }
+  p {
+    margin-block: 5% 15%;
+  }
+  form {
+    button {
+      font-size: 1em;
+      width: 90%;
+      padding: 5%;
+      color: white;
+      background-color: #414141;
+      border: none;
+    }
+  }
+}

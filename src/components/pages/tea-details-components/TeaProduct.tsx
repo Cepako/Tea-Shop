@@ -1,7 +1,8 @@
-import React, { ChangeEvent, MouseEvent, useState } from 'react';
+import React, { ChangeEvent, MouseEvent, useRef, useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAppDispatch } from '../../../redux/hooks';
 import { addToCart } from '../../../redux/cart';
+import Modal, { ModalMethods } from '../../Modal';
 
 import './TeaProduct.scss';
 
@@ -24,6 +25,8 @@ const TeaProduct: React.FC<TPInterface> = ({
 }) => {
   const [teaQuantity, setTeaQuantity] = useState(1);
   const [descriptionVisible, setDescriptionVisible] = useState(false);
+
+  const dialog = useRef<ModalMethods>(null);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -75,6 +78,10 @@ const TeaProduct: React.FC<TPInterface> = ({
   return (
     <div className='tea-product'>
       {breadCrumbs}
+      <Modal ref={dialog}>
+        <h2>We can't accept online orders right now</h2>
+        <p>Please contact us to complete your purchase.</p>
+      </Modal>
       <img className='tea-product__image' src={product_img} alt='tea bag' />
       <div className='description'>
         <h2 className='description__name'>{name}</h2>
@@ -95,7 +102,9 @@ const TeaProduct: React.FC<TPInterface> = ({
         <button className='add-to-cart' onClick={addToCartHandler}>
           Add to Cart
         </button>
-        <button className='buy-now'>Buy Now</button>
+        <button className='buy-now' onClick={() => dialog.current?.open()}>
+          Buy Now
+        </button>
         <p className='short-description'>
           {descriptionVisible ? product_description : description}
         </p>
