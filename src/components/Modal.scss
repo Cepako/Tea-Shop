@@ -5,8 +5,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 85%;
-  height: 35%;
-  padding: 10% 10%;
+  height: 250px;
+  padding: 10%;
   text-align: center;
   background-color: #fff;
   border: none;
@@ -28,8 +28,88 @@
       width: 90%;
       padding: 5%;
       color: white;
-      background-color: #414141;
+      background-color: #333;
       border: none;
     }
+  }
+}
+@media screen and (min-width: 550px) {
+  .modal {
+    width: 75%;
+    padding: 5%;
+    p {
+      margin-block: 5% 10%;
+    }
+    form {
+      button {
+        padding: 3%;
+      }
+    }
+  }
+}
+@media screen and (min-width: 650px) {
+  .modal {
+    width: 60%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .modal {
+    width: 50%;
+    height: 300px;
+    h2 {
+      font-size: 1.6em;
+    }
+    p {
+      font-size: 1.1em;
+    }
+    form {
+      button {
+        font-size: 1.1em;
+        width: 40%;
+        transition: 0.5s;
+        cursor: pointer;
+        &:hover {
+          background-color: #555;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
+  .modal {
+    width: 45%;
+    height: 350px;
+    h2 {
+      font-size: 1.7em;
+    }
+    p {
+      font-size: 1.2em;
+    }
+  }
+}
+@media screen and (min-width: 1500px) {
+  .modal {
+    width: 40%;
+    padding: 4%;
+    h2 {
+      font-size: 1.8em;
+    }
+  }
+}
+@media screen and (min-width: 1600px) {
+  .modal {
+    width: 35%;
+    padding: 3.5%;
+  }
+}
+@media screen and (min-width: 1850px) {
+  .modal {
+    width: 30%;
+    padding: 3%;
   }
 }
