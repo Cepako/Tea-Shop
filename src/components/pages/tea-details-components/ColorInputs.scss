@@ -1,0 +1,49 @@
+.color-inputs {
+  margin-top: 10%;
+  display: flex;
+  flex-wrap: wrap;
+  p {
+    font-size: 1.1em;
+    width: 100%;
+  }
+  input[type='radio'] {
+    display: none;
+    &:checked + #radio-container::before {
+      box-shadow: 0 0 0 1px #000;
+    }
+  }
+  #radio-container {
+    display: inline-block;
+    position: relative;
+
+    margin-block: 5%;
+    cursor: pointer;
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      margin-right: 5px;
+    }
+  }
+  #Blue-Grey + #radio-container::before {
+    background-color: #3f4860;
+  }
+  #Violet + #radio-container::before {
+    background-color: #665573;
+  }
+  #Black + #radio-container::before {
+    background-color: #000;
+  }
+  #Brown + #radio-container::before {
+    background-color: #694e4f;
+  }
+  #Light-Green + #radio-container::before {
+    background-color: #9eaa7c;
+  }
+  #Grey + #radio-container::before {
+    background-color: #4b4d58;
+  }
+}

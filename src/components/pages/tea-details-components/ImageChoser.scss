@@ -1,0 +1,25 @@
+.image-choser {
+  width: 85%;
+  text-align: center;
+  img {
+    width: 100%;
+  }
+  span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background-color: #aaa;
+    cursor: pointer;
+    transition: 0.5s;
+    &:nth-of-type(1) {
+      margin-right: 5px;
+    }
+    &:hover {
+      background-color: black;
+    }
+    &.active {
+      background-color: black;
+    }
+  }
+}
