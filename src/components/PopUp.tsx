@@ -8,7 +8,7 @@ import './PopUp.scss';
 const PopUp: React.FC = () => {
   const [popUpQuantity, setPopUpQuantity] = useState(1);
 
-  const { name, price, code, size, product_img } = useAppSelector(
+  const { name, price, code, size, color, product_img } = useAppSelector(
     (state) => state.popUp
   );
 
@@ -31,6 +31,7 @@ const PopUp: React.FC = () => {
       price,
       code,
       size,
+      color,
       product_img,
       quantity: popUpQuantity,
     };
@@ -50,9 +51,15 @@ const PopUp: React.FC = () => {
 
   const linkClickHandler = () => {
     closePopUp();
-    navigate(`/teas/${productLink}`, {
-      state: { prevPath: location.pathname === '/' ? '/' : '/teas' },
-    });
+    if (size === undefined) {
+      navigate(`/extras/${productLink}`, {
+        state: { prevPath: location.pathname === '/' ? '/' : '/extras' },
+      });
+    } else {
+      navigate(`/teas/${productLink}`, {
+        state: { prevPath: location.pathname === '/' ? '/' : '/teas' },
+      });
+    }
   };
 
   const productLink = name.replace('& ', '').replace(/\s+/g, '-').toLowerCase();
