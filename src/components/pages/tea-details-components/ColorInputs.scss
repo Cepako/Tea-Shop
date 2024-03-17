@@ -1,8 +1,34 @@
 .color-inputs {
+  position: relative;
   margin-top: 10%;
   display: flex;
   flex-wrap: wrap;
-  p {
+  .warning {
+    display: none;
+    position: absolute;
+    top: 90%;
+    left: -6%;
+    padding: 2%;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    .warning-arrow-up {
+      position: absolute;
+      top: -25%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+
+      border-bottom: 10px solid red;
+    }
+    &.active {
+      display: block;
+    }
+  }
+  .color {
     font-size: 1.1em;
     width: 100%;
   }

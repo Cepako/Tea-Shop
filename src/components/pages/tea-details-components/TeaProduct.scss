@@ -40,6 +40,7 @@
       flex-direction: column;
 
       label {
+        display: block;
         margin-top: 10%;
         margin-bottom: 5%;
         font-weight: 300;
@@ -50,7 +51,7 @@
         border: 1px solid black;
         outline: none;
       }
-      input {
+      input[type='number'] {
         padding: 5% 3%;
         width: 25%;
         outline: none;

@@ -7,6 +7,7 @@ interface ColorInputsModel {
   firstColor: string;
   secondColor: string;
   handleRadioChange: (color: string) => void;
+  displayWarning: boolean;
 }
 
 const ColorInputs: React.FC<ColorInputsModel> = ({
@@ -14,9 +15,13 @@ const ColorInputs: React.FC<ColorInputsModel> = ({
   firstColor,
   secondColor,
   handleRadioChange,
+  displayWarning,
 }) => {
   return (
     <div className='color-inputs'>
+      <p className={displayWarning ? 'warning active' : 'warning'}>
+        <span className='warning-arrow-up'></span>Select Color
+      </p>
       <p className='color'>
         {selectedColor ? `Color: ${selectedColor}` : 'Color'}
       </p>
