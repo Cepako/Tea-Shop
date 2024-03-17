@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hooks';
 
-import Product from './Product';
+import CartSideBarProduct from './CartSideBarProduct';
 
 import './CartSideBar.scss';
 
@@ -16,7 +16,7 @@ const CartSideBar: React.FC = () => {
   const productsList = products.map((product) => {
     totalPrice += Number(product.price) * product.quantity!;
     return (
-      <Product
+      <CartSideBarProduct
         key={product.code + product.color}
         name={product.name}
         price={product.price}

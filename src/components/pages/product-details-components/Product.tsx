@@ -7,9 +7,9 @@ import ImageChoser from './ImageChoser';
 import ColorInputs from './ColorInputs';
 import Description from './Description';
 
-import './TeaProduct.scss';
+import './Product.scss';
 
-interface TPInterface {
+interface PInterface {
   name: string;
   price: string;
   code: string;
@@ -20,7 +20,7 @@ interface TPInterface {
   product_description: string;
 }
 
-const TeaProduct: React.FC<TPInterface> = ({
+const Product: React.FC<PInterface> = ({
   name,
   price,
   code,
@@ -177,4 +177,4 @@ const TeaProduct: React.FC<TPInterface> = ({
   );
 };
 
-export default TeaProduct;
+export default Product;

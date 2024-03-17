@@ -1,4 +1,4 @@
-export default interface ProductModel {
+export default interface CartSideBarProductModel {
   name: string;
   price: string;
   product_img: string;

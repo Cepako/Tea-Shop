@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './tea-details-components/Header';
+import Header from './product-details-components/Header';
 import ProductsList from './cart-page-components/ProductsList';
 import OrderSummary from './cart-page-components/OrderSummary';
 import EmptyCart from './cart-page-components/EmptyCart';

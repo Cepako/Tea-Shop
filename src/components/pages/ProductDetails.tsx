@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Header from './tea-details-components/Header';
-import TeaProduct from './tea-details-components/TeaProduct';
-import TeaProductInfo from './tea-details-components/TeaProductInfo';
+import Header from './product-details-components/Header';
+import Product from './product-details-components/Product';
+import ProductInfo from './product-details-components/ProductInfo';
 import data from '../../data';
 import Slider from '../slider/Slider';
 
-import './TeaDetails.scss';
+import './ProductDetails.scss';
 
-const TeaDetails: React.FC = () => {
+const ProductDetails: React.FC = () => {
   const { productLink } = useParams<string>();
 
   const keyForProduct = `product-${productLink}`;
@@ -40,7 +40,7 @@ const TeaDetails: React.FC = () => {
   return (
     <div className='tea-details'>
       <Header />
-      <TeaProduct
+      <Product
         key={keyForProduct}
         name={name}
         price={price}
@@ -51,7 +51,7 @@ const TeaDetails: React.FC = () => {
         hover_img={hover_img}
         product_description={product_description}
       />
-      <TeaProductInfo product_info={product_info} />
+      <ProductInfo product_info={product_info} />
       <h3 className='tea-details__related'>Related Products</h3>
       <div className='tea-details__slider'>
         <Slider
@@ -64,4 +64,4 @@ const TeaDetails: React.FC = () => {
   );
 };
 
-export default TeaDetails;
+export default ProductDetails;

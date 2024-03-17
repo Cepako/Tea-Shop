@@ -1,6 +1,6 @@
 import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import ProductModel from './product.model';
+import CartSideBarProductModel from './cart.side.bar.product.model';
 import { useAppDispatch } from '../../redux/hooks';
 import {
   decreaseQuantity,
@@ -9,9 +9,9 @@ import {
   increaseQuantity,
 } from '../../redux/cart';
 
-import './Product.scss';
+import './CartSideBarProduct.scss';
 
-const Product: React.FC<ProductModel> = ({
+const CartSideBarProduct: React.FC<CartSideBarProductModel> = ({
   name,
   price,
   product_img,
@@ -118,4 +118,4 @@ const Product: React.FC<ProductModel> = ({
   );
 };
 
-export default Product;
+export default CartSideBarProduct;

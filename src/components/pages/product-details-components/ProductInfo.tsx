@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import './TeaProductInfo.scss';
+import './ProductInfo.scss';
 
-interface TPIInterface {
+interface PIInterface {
   product_info: string;
 }
 
-const TeaProductInfo: React.FC<TPIInterface> = ({ product_info }) => {
+const ProductInfo: React.FC<PIInterface> = ({ product_info }) => {
   const [infoActive, setInfoActive] = useState(true);
   const [policyActive, setPolicyActive] = useState(false);
   const [shippingActive, setShippingActive] = useState(false);
@@ -33,9 +33,9 @@ const TeaProductInfo: React.FC<TPIInterface> = ({ product_info }) => {
   };
 
   return (
-    <div className="product-info-wrapper">
+    <div className='product-info-wrapper'>
       <div
-        id="infoDiv"
+        id='infoDiv'
         className={`product-info ${infoActive ? 'active' : ''}`}
       >
         <h3 onClick={() => handleToggle('info')}>
@@ -44,7 +44,7 @@ const TeaProductInfo: React.FC<TPIInterface> = ({ product_info }) => {
         <p>{product_info}</p>
       </div>
       <div
-        id="policyDiv"
+        id='policyDiv'
         className={`product-info ${policyActive ? 'active' : ''}`}
       >
         <h3 onClick={() => handleToggle('policy')}>
@@ -59,7 +59,7 @@ const TeaProductInfo: React.FC<TPIInterface> = ({ product_info }) => {
         </p>
       </div>
       <div
-        id="shippingDiv"
+        id='shippingDiv'
         className={`product-info ${shippingActive ? 'active' : ''}`}
       >
         <h3 onClick={() => handleToggle('shipping')}>
@@ -77,4 +77,4 @@ const TeaProductInfo: React.FC<TPIInterface> = ({ product_info }) => {
   );
 };
 
-export default TeaProductInfo;
+export default ProductInfo;
