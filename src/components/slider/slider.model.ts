@@ -6,6 +6,6 @@ export default interface SliderModel {
     name: string;
     price: string;
     code: string;
-    size: string;
+    size?: string;
   }[];
 }

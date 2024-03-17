@@ -8,17 +8,21 @@ import './ProductsList.scss';
 
 const ProductsList: React.FC = () => {
   const products = useAppSelector((state) => state.cart);
-  const productsList = products.map((product) => (
-    <CartProduct
-      key={product.code}
-      name={product.name}
-      price={product.price}
-      code={product.code}
-      size={product.size}
-      quantity={product.quantity}
-      product_img={product.product_img}
-    />
-  ));
+  const productsList = products.map((product) => {
+    const key = product.code + product.color;
+    return (
+      <CartProduct
+        key={key}
+        name={product.name}
+        price={product.price}
+        code={product.code}
+        size={product.size}
+        color={product.color}
+        quantity={product.quantity}
+        product_img={product.product_img}
+      />
+    );
+  });
 
   return (
     <div className='products-list'>

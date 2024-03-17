@@ -32,6 +32,7 @@ const TeaProduct: React.FC<TPInterface> = ({
 }) => {
   const [productQuantity, setProductQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState('');
+  const [displayWarning, setDisplayWarning] = useState(false);
 
   const dialog = useRef<ModalMethods>(null);
 
@@ -43,24 +44,44 @@ const TeaProduct: React.FC<TPInterface> = ({
   const type = size === undefined ? 'extras' : 'teas';
 
   const addToCartHandler = (e: MouseEvent) => {
-    const payload = {
-      name,
-      price,
-      code,
-      size,
-      color,
-      product_img,
-      quantity: productQuantity,
+    const afterAdd = () => {
+      if (window.innerWidth < 1024) navigate('/cart');
+      else {
+        const cartSideBar = document.querySelector(
+          '.cart-sidebar'
+        ) as HTMLDivElement;
+        if (cartSideBar) cartSideBar.classList.add('active');
+      }
+      e.stopPropagation();
     };
-    dispatch(addToCart(payload));
-    if (window.innerWidth < 1024) navigate('/cart');
-    else {
-      const cartSideBar = document.querySelector(
-        '.cart-sidebar'
-      ) as HTMLDivElement;
-      if (cartSideBar) cartSideBar.classList.add('active');
+
+    if (type === 'teas' || color![0] === undefined) {
+      const payload = {
+        name,
+        price,
+        code,
+        size,
+        product_img,
+        quantity: productQuantity,
+      };
+      dispatch(addToCart(payload));
+      afterAdd();
+    } else {
+      if (selectedColor === '') {
+        setDisplayWarning(true);
+      } else {
+        const payload = {
+          name,
+          price,
+          code,
+          color: selectedColor,
+          product_img: selectedColor === color![0] ? product_img : hover_img,
+          quantity: productQuantity,
+        };
+        dispatch(addToCart(payload));
+        afterAdd();
+      }
     }
-    e.stopPropagation();
   };
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -91,6 +112,7 @@ const TeaProduct: React.FC<TPInterface> = ({
       setSelectedColor('');
     } else {
       setSelectedColor(color);
+      setDisplayWarning(false);
     }
   };
 
@@ -124,6 +146,7 @@ const TeaProduct: React.FC<TPInterface> = ({
                 secondColor={color![1]}
                 selectedColor={selectedColor}
                 handleRadioChange={handleRadioChange}
+                displayWarning={displayWarning}
               />
             )
           ) : (

@@ -17,10 +17,11 @@ const CartSideBar: React.FC = () => {
     totalPrice += Number(product.price) * product.quantity!;
     return (
       <Product
-        key={product.code}
+        key={product.code + product.color}
         name={product.name}
         price={product.price}
         code={product.code}
+        color={product.color}
         product_img={product.product_img}
         quantity={product.quantity}
       />
@@ -32,13 +33,13 @@ const CartSideBar: React.FC = () => {
 
   const cartNotEmpty = (
     <>
-      <div className="cart-sidebar__products-list">{productsList}</div>
-      <p className="cart-sidebar__total-price">
+      <div className='cart-sidebar__products-list'>{productsList}</div>
+      <p className='cart-sidebar__total-price'>
         Subtotal
         <br />
-        <span className="total-price">${totalPrice.toFixed(2)}</span>
+        <span className='total-price'>${totalPrice.toFixed(2)}</span>
       </p>
-      <Link to="/cart" className="cart-sidebar__button" onClick={closeCart}>
+      <Link to='/cart' className='cart-sidebar__button' onClick={closeCart}>
         View Cart
       </Link>
     </>
@@ -47,9 +48,9 @@ const CartSideBar: React.FC = () => {
   const cartEmpty = <h3>Cart is empty</h3>;
 
   return (
-    <div className="cart-sidebar" ref={sideBarRef}>
-      <h2 className="cart-sidebar__title">
-        <i className="fa-solid fa-chevron-left" onClick={closeCart}></i>
+    <div className='cart-sidebar' ref={sideBarRef}>
+      <h2 className='cart-sidebar__title'>
+        <i className='fa-solid fa-chevron-left' onClick={closeCart}></i>
         Cart
       </h2>
       {products.length > 0 ? cartNotEmpty : cartEmpty}

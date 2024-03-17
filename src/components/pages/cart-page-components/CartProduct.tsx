@@ -16,6 +16,7 @@ const CartProduct: React.FC<CPModel> = ({
   price,
   code,
   size,
+  color,
   quantity,
   product_img,
 }) => {
@@ -24,12 +25,20 @@ const CartProduct: React.FC<CPModel> = ({
   const location = useLocation();
 
   const removeHandler = (event: MouseEvent) => {
-    dispatch(deleteFromCart(code));
+    const payload = {
+      code,
+      color,
+    };
+    dispatch(deleteFromCart(payload));
     event.stopPropagation();
   };
 
   const increaseHandler = () => {
-    dispatch(increaseQuantity(code));
+    const payload = {
+      code,
+      color,
+    };
+    dispatch(increaseQuantity(payload));
   };
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -40,6 +49,7 @@ const CartProduct: React.FC<CPModel> = ({
 
     const payload = {
       code,
+      color,
       quantity: newQuantityValue > 999 ? 999 : newQuantityValue,
     };
 
@@ -47,7 +57,11 @@ const CartProduct: React.FC<CPModel> = ({
   };
 
   const decreaseHandler = () => {
-    dispatch(decreaseQuantity(code));
+    const payload = {
+      code,
+      color,
+    };
+    dispatch(decreaseQuantity(payload));
   };
   const closeCart = () => {
     const cartSideBar = document.querySelector(
@@ -63,8 +77,14 @@ const CartProduct: React.FC<CPModel> = ({
         x
       </div>
       <Link
-        to={`/teas/${productLink}`}
-        state={{ prevPath: location.pathname === '/' ? '/' : '/teas' }}
+        to={
+          size === undefined ? `/extras/${productLink}` : `/teas/${productLink}`
+        }
+        state={
+          size === undefined
+            ? { prevPath: location.pathname === '/' ? '/' : '/extras' }
+            : { prevPath: location.pathname === '/' ? '/' : '/teas' }
+        }
         onClick={closeCart}
       >
         <img src={product_img} alt='herbs' />
@@ -72,7 +92,14 @@ const CartProduct: React.FC<CPModel> = ({
       <div className='product-cart__details'>
         <h4 className='product-cart__details__name'>{name}</h4>
         <p className='product-cart__details__price'>${price}</p>
-        <p className='product-cart__details__size'>Size: {size}</p>
+        {size === undefined ? (
+          <p className='product-cart__details__size'>
+            Color: {color === undefined ? 'Silver' : color}
+          </p>
+        ) : (
+          <p className='product-cart__details__size'>Size: {size}</p>
+        )}
+
         <div className='product-cart__details__input'>
           <span
             onClick={decreaseHandler}

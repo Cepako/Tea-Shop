@@ -4,7 +4,13 @@ import { ProductState, payloadType } from './popUp';
 
 type editPayloadType = {
   code: string;
+  color?: string;
   quantity: number;
+};
+
+type editProductQuantityType = {
+  code: string;
+  color?: string;
 };
 
 const initialState: ProductState[] = [];
@@ -15,7 +21,9 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<payloadType>) => {
       const equalIndex = state.findIndex(
-        (product) => product.code === action.payload.code
+        (product) =>
+          product.code === action.payload.code &&
+          product.color === action.payload.color
       );
       if (equalIndex !== -1) {
         return state.map((product, index) => {
@@ -33,32 +41,55 @@ export const cartSlice = createSlice({
     },
     editCart: (state, action: PayloadAction<editPayloadType>) => {
       state.map((product) => {
-        if (product.code === action.payload.code) {
+        if (
+          product.code === action.payload.code &&
+          product.color === action.payload.color
+        ) {
           product.quantity = action.payload.quantity;
         }
         return product;
       });
     },
-    increaseQuantity: (state, action: PayloadAction<string>) => {
+    increaseQuantity: (
+      state,
+      action: PayloadAction<editProductQuantityType>
+    ) => {
       state.map((product) => {
-        if (product.code === action.payload && product.quantity! < 999) {
+        if (
+          product.code === action.payload.code &&
+          product.color === action.payload.color &&
+          product.quantity! < 999
+        ) {
           product.quantity!++;
         }
         return product;
       });
     },
-    decreaseQuantity: (state, action: PayloadAction<string>) => {
+    decreaseQuantity: (
+      state,
+      action: PayloadAction<editProductQuantityType>
+    ) => {
       state.map((product) => {
-        if (product.code === action.payload && product.quantity! > 1) {
+        if (
+          product.code === action.payload.code &&
+          product.color === action.payload.color &&
+          product.quantity! > 1
+        ) {
           product.quantity!--;
         }
         return product;
       });
     },
-    deleteFromCart: (state, action: PayloadAction<string>) => {
-      return (state = state.filter(
-        (product) => product.code !== action.payload
-      ));
+    deleteFromCart: (state, action: PayloadAction<editProductQuantityType>) => {
+      return (state = state.filter((product) => {
+        if (action.payload.color === undefined)
+          return product.code !== action.payload.code;
+        else
+          return (
+            product.color !== action.payload.color ||
+            product.code !== action.payload.code
+          );
+      }));
     },
   },
 });

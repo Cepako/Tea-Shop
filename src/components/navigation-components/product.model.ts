@@ -3,5 +3,6 @@ export default interface ProductModel {
   price: string;
   product_img: string;
   code: string;
+  color?: string;
   quantity?: number;
 }

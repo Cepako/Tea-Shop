@@ -16,6 +16,7 @@ const Product: React.FC<ProductModel> = ({
   price,
   product_img,
   code,
+  color,
   quantity,
 }) => {
   const [over, setOver] = useState(false);
@@ -25,12 +26,20 @@ const Product: React.FC<ProductModel> = ({
   const location = useLocation();
 
   const removeHandler = (event: MouseEvent) => {
-    dispatch(deleteFromCart(code));
+    const payload = {
+      code,
+      color,
+    };
+    dispatch(deleteFromCart(payload));
     event.stopPropagation();
   };
 
   const increaseHandler = () => {
-    dispatch(increaseQuantity(code));
+    const payload = {
+      code,
+      color,
+    };
+    dispatch(increaseQuantity(payload));
   };
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -41,6 +50,7 @@ const Product: React.FC<ProductModel> = ({
 
     const payload = {
       code,
+      color,
       quantity: newQuantityValue > 999 ? 999 : newQuantityValue,
     };
 
@@ -48,7 +58,11 @@ const Product: React.FC<ProductModel> = ({
   };
 
   const decreaseHandler = () => {
-    dispatch(decreaseQuantity(code));
+    const payload = {
+      code,
+      color,
+    };
+    dispatch(decreaseQuantity(payload));
   };
   const closeCart = () => {
     const cartSideBar = document.querySelector(
