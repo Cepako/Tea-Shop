@@ -3,6 +3,9 @@ import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAppDispatch } from '../../../redux/hooks';
 import { addToCart } from '../../../redux/cart';
 import Modal, { ModalMethods } from '../../Modal';
+import ImageChoser from './ImageChoser';
+import ColorInputs from './ColorInputs';
+import Description from './Description';
 
 import './TeaProduct.scss';
 
@@ -10,8 +13,10 @@ interface TPInterface {
   name: string;
   price: string;
   code: string;
-  size: string;
+  size?: string;
+  color?: string[];
   product_img: string;
+  hover_img: string;
   product_description: string;
 }
 
@@ -20,11 +25,13 @@ const TeaProduct: React.FC<TPInterface> = ({
   price,
   code,
   size,
+  color,
   product_img,
+  hover_img,
   product_description,
 }) => {
-  const [teaQuantity, setTeaQuantity] = useState(1);
-  const [descriptionVisible, setDescriptionVisible] = useState(false);
+  const [productQuantity, setProductQuantity] = useState(1);
+  const [selectedColor, setSelectedColor] = useState('');
 
   const dialog = useRef<ModalMethods>(null);
 
@@ -33,14 +40,17 @@ const TeaProduct: React.FC<TPInterface> = ({
 
   const location = useLocation();
 
+  const type = size === undefined ? 'extras' : 'teas';
+
   const addToCartHandler = (e: MouseEvent) => {
     const payload = {
       name,
       price,
       code,
       size,
+      color,
       product_img,
-      quantity: teaQuantity,
+      quantity: productQuantity,
     };
     dispatch(addToCart(payload));
     if (window.innerWidth < 1024) navigate('/cart');
@@ -54,15 +64,10 @@ const TeaProduct: React.FC<TPInterface> = ({
   };
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    if (Number(e.target.value) < 1) setTeaQuantity(1);
-    else if (Number(e.target.value) > 999) setTeaQuantity(999);
-    else setTeaQuantity(Number(e.target.value));
+    if (Number(e.target.value) < 1) setProductQuantity(1);
+    else if (Number(e.target.value) > 999) setProductQuantity(999);
+    else setProductQuantity(Number(e.target.value));
   };
-
-  let description = '';
-
-  for (let i = 0; i < product_description.length / 2 + 1; i++)
-    description += product_description[i];
 
   const breadCrumbs =
     location.state.prevPath === '/' ? (
@@ -71,9 +76,23 @@ const TeaProduct: React.FC<TPInterface> = ({
       </p>
     ) : (
       <p className='tea-product__breadcrumbs'>
-        <Link to='/'>Home</Link> / <Link to='/teas'>Teas</Link> / {name}
+        <Link to='/'>Home</Link> /
+        {type === 'extras' ? (
+          <Link to='/extras'> Extras </Link>
+        ) : (
+          <Link to='/teas'> Teas </Link>
+        )}
+        / {name}
       </p>
     );
+
+  const handleRadioChange = (color: string) => {
+    if (selectedColor === color) {
+      setSelectedColor('');
+    } else {
+      setSelectedColor(color);
+    }
+  };
 
   return (
     <div className='tea-product'>
@@ -82,20 +101,44 @@ const TeaProduct: React.FC<TPInterface> = ({
         <h2>We can't accept online orders right now</h2>
         <p>Please contact us to complete your purchase.</p>
       </Modal>
-      <img className='tea-product__image' src={product_img} alt='tea bag' />
+      {type === 'extras' && color![0] ? (
+        <ImageChoser
+          product_img={product_img}
+          hover_img={hover_img}
+          name={name}
+          selectedColor={selectedColor}
+          firstColor={color![0]}
+        />
+      ) : (
+        <img className='tea-product__image' src={product_img} alt='tea bag' />
+      )}
+
       <div className='description'>
         <h2 className='description__name'>{name}</h2>
         <p className='description__price'>${price}</p>
         <form>
-          <label htmlFor='size'>Size</label>
-          <select name='size' id='size'>
-            <option value={size}>{size}</option>
-          </select>
+          {type === 'extras' ? (
+            color![0] && (
+              <ColorInputs
+                firstColor={color![0]}
+                secondColor={color![1]}
+                selectedColor={selectedColor}
+                handleRadioChange={handleRadioChange}
+              />
+            )
+          ) : (
+            <>
+              <label htmlFor='size'>Size</label>
+              <select name='size' id='size'>
+                <option value={size}>{size}</option>
+              </select>
+            </>
+          )}
           <label htmlFor='quantity'>Quantity</label>
           <input
             type='number'
             id='quantity'
-            value={teaQuantity}
+            value={productQuantity}
             onChange={inputHandler}
           />
         </form>
@@ -105,12 +148,7 @@ const TeaProduct: React.FC<TPInterface> = ({
         <button className='buy-now' onClick={() => dialog.current?.open()}>
           Buy Now
         </button>
-        <p className='short-description'>
-          {descriptionVisible ? product_description : description}
-        </p>
-        <span onClick={() => setDescriptionVisible(!descriptionVisible)}>
-          {descriptionVisible ? 'Less' : 'Read more'}
-        </span>
+        <Description product_description={product_description} />
       </div>
     </div>
   );
