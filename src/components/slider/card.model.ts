@@ -4,5 +4,5 @@ export default interface CardModel {
   name: string;
   price: string;
   code: string;
-  size: string;
+  size?: string;
 }

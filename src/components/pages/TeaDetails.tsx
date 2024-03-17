@@ -11,19 +11,26 @@ import './TeaDetails.scss';
 const TeaDetails: React.FC = () => {
   const { productLink } = useParams<string>();
 
-  const keyForTeaProduct = `tea-product-${productLink}`;
+  const keyForProduct = `product-${productLink}`;
 
-  const teaData = data.filter((tea) => tea.link === productLink);
+  const productData = data.filter((product) => product.link === productLink);
+
+  const sliderData =
+    productData[0].collection === 'extras'
+      ? data.filter((product) => product.collection === 'extras')
+      : data.filter((product) => product.collection !== 'extras');
 
   const {
     name,
     price,
     code,
     size,
+    color,
     product_img,
+    hover_img,
     product_description,
     product_info,
-  } = teaData[0];
+  } = productData[0];
 
   useEffect(() => {
     const teasButton = document.querySelector('.list__item a');
@@ -34,21 +41,23 @@ const TeaDetails: React.FC = () => {
     <div className='tea-details'>
       <Header />
       <TeaProduct
-        key={keyForTeaProduct}
+        key={keyForProduct}
         name={name}
         price={price}
         code={code}
         size={size}
+        color={color}
         product_img={product_img}
+        hover_img={hover_img}
         product_description={product_description}
       />
       <TeaProductInfo product_info={product_info} />
       <h3 className='tea-details__related'>Related Products</h3>
       <div className='tea-details__slider'>
         <Slider
-          key={keyForTeaProduct}
+          key={keyForProduct}
           removeArrowOnDeviceType={[]}
-          data={data}
+          data={sliderData}
         />
       </div>
     </div>

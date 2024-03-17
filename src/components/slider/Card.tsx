@@ -23,9 +23,16 @@ const Card: React.FC<CardModel> = ({
   const navigate = useNavigate();
 
   const redirectHandle = () => {
-    navigate(`/teas/${productLink}`, {
-      state: { prevPath: location.pathname === '/' ? '/' : '/teas' },
-    });
+    if (size === undefined) {
+      navigate(`/extras/${productLink}`, {
+        state: { prevPath: location.pathname === '/' ? '/' : '/extras' },
+      });
+    } else {
+      navigate(`/teas/${productLink}`, {
+        state: { prevPath: location.pathname === '/' ? '/' : '/teas' },
+      });
+    }
+
     closeCart();
   };
 
