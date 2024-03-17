@@ -41,6 +41,7 @@ const TeaProducts: React.FC = () => {
   };
 
   const productsList = data
+    .filter((product) => product.collection !== 'extras')
     .filter((product) => {
       if (
         filters.collection !== 'all' &&
@@ -55,7 +56,7 @@ const TeaProducts: React.FC = () => {
         return false;
       }
 
-      if (filters.size.length > 0 && !filters.size.includes(product.size)) {
+      if (filters.size.length > 0 && !filters.size.includes(product.size!)) {
         return false;
       }
       return true;
@@ -78,7 +79,7 @@ const TeaProducts: React.FC = () => {
               product.name,
               product.price,
               product.code,
-              product.size
+              product.size!
             )
           }
         >

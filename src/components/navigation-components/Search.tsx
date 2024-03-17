@@ -11,6 +11,7 @@ const Search: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   let productsList = data
+    .filter((product) => product.collection !== 'extras')
     .filter((product) => {
       return searchValue.toLowerCase() === ''
         ? product
