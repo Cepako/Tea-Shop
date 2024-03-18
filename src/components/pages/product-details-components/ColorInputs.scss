@@ -73,3 +73,56 @@
     background-color: #4b4d58;
   }
 }
+@media screen and (min-width: 600px) {
+  .color-inputs {
+    margin-top: 5%;
+    .warning {
+      top: 80%;
+      left: -5.5%;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .color-inputs {
+    .warning {
+      top: 85%;
+      left: -7%;
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .color-inputs {
+    .warning {
+      left: -8%;
+    }
+  }
+}
+@media screen and (min-width: 1400px) {
+  .color-inputs {
+    .warning {
+      top: 80%;
+    }
+  }
+}
+@media screen and (min-width: 1600px) {
+  .color-inputs {
+    .warning {
+      top: 82%;
+      left: -9%;
+    }
+  }
+}
+@media screen and (min-width: 1700px) {
+  .color-inputs {
+    .warning {
+      left: -8%;
+    }
+  }
+}
+@media screen and (min-width: 1900px) {
+  .color-inputs {
+    .warning {
+      left: -7%;
+    }
+  }
+}

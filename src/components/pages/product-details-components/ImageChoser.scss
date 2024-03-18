@@ -23,3 +23,23 @@
     }
   }
 }
+@media screen and (min-width: 650px) {
+  .image-choser {
+    width: 80%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .image-choser {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .image-choser {
+    width: 55%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .image-choser {
+    width: 60%;
+  }
+}
