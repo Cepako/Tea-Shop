@@ -147,6 +147,8 @@ const Product: React.FC<PInterface> = ({
                 selectedColor={selectedColor}
                 handleRadioChange={handleRadioChange}
                 displayWarning={displayWarning}
+                firstLabel='product-first-color'
+                secondLabel='product-second-color'
               />
             )
           ) : (

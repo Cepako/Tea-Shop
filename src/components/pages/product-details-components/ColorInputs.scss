@@ -54,22 +54,22 @@
       margin-right: 5px;
     }
   }
-  #Blue-Grey + #radio-container::before {
+  .Blue-Grey + #radio-container::before {
     background-color: #3f4860;
   }
-  #Violet + #radio-container::before {
+  .Violet + #radio-container::before {
     background-color: #665573;
   }
-  #Black + #radio-container::before {
+  .Black + #radio-container::before {
     background-color: #000;
   }
-  #Brown + #radio-container::before {
+  .Brown + #radio-container::before {
     background-color: #694e4f;
   }
-  #Light-Green + #radio-container::before {
+  .Light-Green + #radio-container::before {
     background-color: #9eaa7c;
   }
-  #Grey + #radio-container::before {
+  .Grey + #radio-container::before {
     background-color: #4b4d58;
   }
 }

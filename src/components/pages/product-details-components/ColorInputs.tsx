@@ -8,6 +8,8 @@ interface ColorInputsModel {
   secondColor: string;
   handleRadioChange: (color: string) => void;
   displayWarning: boolean;
+  firstLabel: string;
+  secondLabel: string;
 }
 
 const ColorInputs: React.FC<ColorInputsModel> = ({
@@ -16,6 +18,8 @@ const ColorInputs: React.FC<ColorInputsModel> = ({
   secondColor,
   handleRadioChange,
   displayWarning,
+  firstLabel,
+  secondLabel,
 }) => {
   return (
     <div className='color-inputs'>
@@ -28,22 +32,24 @@ const ColorInputs: React.FC<ColorInputsModel> = ({
       <input
         type='radio'
         name='color'
+        className={firstColor}
         readOnly
         checked={selectedColor === firstColor}
-        id={firstColor}
+        id={firstLabel}
         onClick={() => handleRadioChange(firstColor)}
       />
-      <label id='radio-container' htmlFor={firstColor}></label>
+      <label id='radio-container' htmlFor={firstLabel}></label>
 
       <input
         type='radio'
         name='color'
+        className={secondColor}
         readOnly
         checked={selectedColor === secondColor}
-        id={secondColor}
+        id={secondLabel}
         onClick={() => handleRadioChange(secondColor)}
       />
-      <label id='radio-container' htmlFor={secondColor}></label>
+      <label id='radio-container' htmlFor={secondLabel}></label>
     </div>
   );
 };
