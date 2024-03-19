@@ -15,7 +15,7 @@
     width: 75%;
     height: 50%;
     padding: 2%;
-    padding-bottom: 4%;
+    padding-bottom: 5%;
     background-color: #fff;
     display: flex;
     justify-content: space-between;
@@ -29,6 +29,18 @@
     }
     img {
       width: 50%;
+    }
+    .image-choser {
+      width: 50%;
+      img {
+        width: 100%;
+      }
+    }
+    .color-inputs {
+      margin-bottom: 5%;
+      .warning {
+        left: -7%;
+      }
     }
     .details {
       width: 45%;
@@ -114,6 +126,11 @@
       img {
         width: 52%;
       }
+      .color-inputs {
+        .warning {
+          left: -6%;
+        }
+      }
       .details {
         &__name {
           font-size: 1.6em;
@@ -142,7 +159,6 @@
   .wrapper {
     .pop-up {
       width: 60%;
-      height: 60%;
     }
   }
 }
@@ -150,7 +166,20 @@
   .wrapper {
     .pop-up {
       width: 55%;
+      height: 60%;
+    }
+  }
+}
+@media screen and (min-width: 1900px) {
+  .wrapper {
+    .pop-up {
+      width: 55%;
       height: 65%;
+      .color-inputs {
+        .warning {
+          left: -5%;
+        }
+      }
     }
   }
 }
