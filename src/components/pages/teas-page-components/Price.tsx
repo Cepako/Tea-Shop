@@ -47,8 +47,8 @@ const Price: React.FC<PriceProps> = ({
         value={[lowerValue, upperValue]}
         onChange={handleSliderChange}
         minDistance={0.5}
-        min={5}
-        max={15}
+        min={minValue}
+        max={maxValue}
         step={0.5}
       />
       <div className='under-slider'>

@@ -1,7 +1,7 @@
 import React, { MouseEvent } from 'react';
 import data from '../../../data';
 import Card from '../../slider/Card';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { addToCart } from '../../../redux/cart';
 
@@ -10,6 +10,7 @@ import './TeaProducts.scss';
 const TeaProducts: React.FC = () => {
   const filters = useAppSelector((state) => state.filter);
 
+  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -40,53 +41,81 @@ const TeaProducts: React.FC = () => {
     e.stopPropagation();
   };
 
-  const productsList = data
-    .filter((product) => product.collection !== 'extras')
-    .filter((product) => {
-      if (
-        filters.collection !== 'all' &&
-        product.collection !== filters.collection
-      ) {
-        return false;
-      }
-      if (
-        Number(product.price) < filters.price[0] ||
-        Number(product.price) > filters.price[1]
-      ) {
-        return false;
-      }
+  const productsList =
+    location.pathname === '/extras'
+      ? data
+          .filter((product) => product.collection === 'extras')
+          .map((product) => (
+            <div key={product.name}>
+              <Card
+                product_img={product.product_img}
+                hover_img={product.hover_img}
+                name={product.name}
+                price={product.price}
+                code={product.code}
+                color={product.color}
+              />
+              <button
+                onClick={() => {
+                  navigate(`/extras/${product.link}`, {
+                    state: { prevPath: '/extras' },
+                  });
+                }}
+              >
+                Add to Cart
+              </button>
+            </div>
+          ))
+      : data
+          .filter((product) => product.collection !== 'extras')
+          .filter((product) => {
+            if (
+              filters.teas!.collection !== 'all' &&
+              product.collection !== filters.teas!.collection
+            ) {
+              return false;
+            }
+            if (
+              Number(product.price) < filters.teas!.price[0] ||
+              Number(product.price) > filters.teas!.price[1]
+            ) {
+              return false;
+            }
 
-      if (filters.size.length > 0 && !filters.size.includes(product.size!)) {
-        return false;
-      }
-      return true;
-    })
-    .map((product) => (
-      <div key={product.name}>
-        <Card
-          product_img={product.product_img}
-          hover_img={product.hover_img}
-          name={product.name}
-          price={product.price}
-          code={product.code}
-          size={product.size}
-        />
-        <button
-          onClick={(e) =>
-            addToCartHandler(
-              e as MouseEvent<HTMLButtonElement>,
-              product.product_img,
-              product.name,
-              product.price,
-              product.code,
-              product.size!
-            )
-          }
-        >
-          Add to Cart
-        </button>
-      </div>
-    ));
+            if (
+              filters.teas!.size.length > 0 &&
+              !filters.teas!.size.includes(product.size!)
+            ) {
+              return false;
+            }
+            return true;
+          })
+          .map((product) => (
+            <div key={product.name}>
+              <Card
+                product_img={product.product_img}
+                hover_img={product.hover_img}
+                name={product.name}
+                price={product.price}
+                code={product.code}
+                size={product.size}
+              />
+              <button
+                onClick={(e) =>
+                  addToCartHandler(
+                    e as MouseEvent<HTMLButtonElement>,
+                    product.product_img,
+                    product.name,
+                    product.price,
+                    product.code,
+                    product.size!
+                  )
+                }
+              >
+                Add to Cart
+              </button>
+            </div>
+          ));
 
   const noResults = (
     <h2 className='no-results'>
