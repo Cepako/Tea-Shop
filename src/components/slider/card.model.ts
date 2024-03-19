@@ -5,4 +5,5 @@ export default interface CardModel {
   price: string;
   code: string;
   size?: string;
+  color?: string[];
 }

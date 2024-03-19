@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { ProductState, payloadType } from './popUp';
 
 type editPayloadType = {
   code: string;
@@ -12,6 +11,24 @@ type editProductQuantityType = {
   code: string;
   color?: string;
 };
+type payloadType = {
+  name: string;
+  price: string;
+  code: string;
+  size?: string;
+  color?: string;
+  product_img: string;
+  quantity?: number;
+};
+interface ProductState {
+  name: string;
+  price: string;
+  code: string;
+  size?: string;
+  color?: string;
+  product_img: string;
+  quantity?: number;
+}
 
 const initialState: ProductState[] = [];
 

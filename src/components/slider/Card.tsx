@@ -14,6 +14,7 @@ const Card: React.FC<CardModel> = ({
   price,
   code,
   size,
+  color,
 }) => {
   const [over, setOver] = useState(false);
 
@@ -42,13 +43,14 @@ const Card: React.FC<CardModel> = ({
       '.cart-sidebar'
     ) as HTMLDivElement;
     if (cartSideBar) cartSideBar.className = 'cart-sidebar';
-
     const payload = {
       name,
       price,
       code,
       size,
+      color,
       product_img,
+      hover_img,
     };
     dispatch(editPopUp(payload));
 

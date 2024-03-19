@@ -33,6 +33,7 @@ const Slider: React.FC<SliderModel> = ({ removeArrowOnDeviceType, data }) => {
       price={card.price}
       code={card.code}
       size={card.size}
+      color={card.color}
     />
   ));
 

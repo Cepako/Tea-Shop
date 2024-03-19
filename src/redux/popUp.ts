@@ -1,23 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-export type payloadType = {
+type payloadType = {
   name: string;
   price: string;
   code: string;
   size?: string;
-  color?: string;
+  color?: string[];
   product_img: string;
+  hover_img: string;
   quantity?: number;
 };
 
-export interface ProductState {
+interface ProductState {
   name: string;
   price: string;
   code: string;
   size?: string;
-  color?: string;
+  color?: string[];
   product_img: string;
+  hover_img: string;
   quantity?: number;
 }
 
@@ -26,6 +28,7 @@ const initialState: ProductState = {
   price: '',
   code: '',
   product_img: '',
+  hover_img: '',
   quantity: 1,
 };
 
@@ -39,6 +42,7 @@ export const popUpSlice = createSlice({
       state.code = action.payload.code;
       state.size = action.payload.size;
       state.color = action.payload.color;
+      state.hover_img = action.payload.hover_img;
       state.product_img = action.payload.product_img;
     },
   },
