@@ -90,8 +90,17 @@ const CartSideBarProduct: React.FC<CartSideBarProductModel> = ({
         x
       </div>
       <Link
-        to={`/teas/${productLink}`}
-        state={{ prevPath: location.pathname === '/' ? '/' : '/teas' }}
+        to={
+          color === undefined
+            ? `/teas/${productLink}`
+            : `/extras/${productLink}`
+        }
+        state={{
+          prevPath:
+            location.pathname === '/'
+              ? '/'
+              : `${color === undefined ? '/teas' : '/extras'}`,
+        }}
         onClick={closeCart}
       >
         <img src={product_img} alt='herbs' />
