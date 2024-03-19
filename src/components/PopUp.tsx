@@ -27,6 +27,7 @@ const PopUp: React.FC = () => {
       wrapperElement.style.display = 'none';
       setPopUpQuantity(1);
       setSelectedColor('');
+      setDisplayWarning(false);
     }
   };
 
@@ -39,7 +40,7 @@ const PopUp: React.FC = () => {
       closePopUp();
       e.stopPropagation();
     };
-    if (size !== undefined) {
+    if (size !== undefined || color![0] === undefined) {
       const payload = {
         name,
         price,
