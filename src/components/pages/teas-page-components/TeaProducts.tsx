@@ -45,6 +45,25 @@ const TeaProducts: React.FC = () => {
     location.pathname === '/extras'
       ? data
           .filter((product) => product.collection === 'extras')
+          .filter((product) => {
+            if (
+              Number(product.price) < filters.extras.price[0] ||
+              Number(product.price) > filters.extras.price[1]
+            ) {
+              return false;
+            }
+
+            if (
+              filters.extras.color.length > 0 &&
+              !(
+                filters.extras.color.includes(product.color![0]) ||
+                filters.extras.color.includes(product.color![1])
+              )
+            ) {
+              return false;
+            }
+            return true;
+          })
           .map((product) => (
             <div key={product.name}>
               <Card
@@ -70,21 +89,21 @@ const TeaProducts: React.FC = () => {
           .filter((product) => product.collection !== 'extras')
           .filter((product) => {
             if (
-              filters.teas!.collection !== 'all' &&
-              product.collection !== filters.teas!.collection
+              filters.teas.collection !== 'all' &&
+              product.collection !== filters.teas.collection
             ) {
               return false;
             }
             if (
-              Number(product.price) < filters.teas!.price[0] ||
-              Number(product.price) > filters.teas!.price[1]
+              Number(product.price) < filters.teas.price[0] ||
+              Number(product.price) > filters.teas.price[1]
             ) {
               return false;
             }
 
             if (
-              filters.teas!.size.length > 0 &&
-              !filters.teas!.size.includes(product.size!)
+              filters.teas.size.length > 0 &&
+              !filters.teas.size.includes(product.size!)
             ) {
               return false;
             }
