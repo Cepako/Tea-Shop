@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Header from './product-details-components/Header';
-import Filters from './teas-page-components/Filters';
-import TeaProducts from './teas-page-components/TeaProducts';
+import Filters from './products-page-components/Filters';
+import Products from './products-page-components/Products';
 import { useAppDispatch } from '../../redux/hooks';
 import { editTeasFilters } from '../../redux/filters';
 
@@ -27,7 +27,7 @@ const Teas: React.FC = () => {
       <Header />
       <div className='teas-page__filter-wrapper'>
         <Filters />
-        <TeaProducts />
+        <Products />
       </div>
     </div>
   );

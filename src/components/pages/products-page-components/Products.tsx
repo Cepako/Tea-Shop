@@ -5,9 +5,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { addToCart } from '../../../redux/cart';
 
-import './TeaProducts.scss';
+import './Products.scss';
 
-const TeaProducts: React.FC = () => {
+const Products: React.FC = () => {
   const filters = useAppSelector((state) => state.filter);
 
   const location = useLocation();
@@ -149,4 +149,4 @@ const TeaProducts: React.FC = () => {
   );
 };
 
-export default TeaProducts;
+export default Products;
