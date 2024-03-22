@@ -2,11 +2,12 @@ import React, { useRef, useState } from 'react';
 import Collection from './Collection';
 import Price from './Price';
 import Size from './Size';
+import Colors from './Colors';
 import { useAppDispatch } from '../../../redux/hooks';
 import { editExtrasFilters, editTeasFilters } from '../../../redux/filters';
+import { useLocation } from 'react-router-dom';
 
 import './FilterMenu.scss';
-import { useLocation } from 'react-router-dom';
 
 const FilterMenu: React.FC = () => {
   const menuRef = useRef<HTMLDivElement>(null);
@@ -108,6 +109,7 @@ const FilterMenu: React.FC = () => {
             maxValue={20}
             setPrice={setPrice}
           />
+          <Colors colorsState={color} setColor={setColor} />
         </>
       )}
 
