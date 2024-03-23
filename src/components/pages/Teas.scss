@@ -14,6 +14,9 @@
 }
 @media screen and (min-width: 1024px) {
   .teas-page {
+    .header__image {
+      background-attachment: fixed;
+    }
     &__filter-wrapper {
       width: 100%;
       display: flex;

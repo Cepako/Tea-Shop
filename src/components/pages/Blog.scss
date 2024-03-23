@@ -1,11 +1,11 @@
-.extras-page {
+.blog-page {
   .header {
     &__image {
       position: relative;
       width: 100%;
       height: 60vh;
       background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('../../../public/images/extras/extras-background.jpg');
+        url('../../../public/images/blog.jpg');
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -26,7 +26,7 @@
   }
 }
 @media screen and (min-width: 500px) {
-  .extras-page {
+  .blog-page {
     .header {
       &__image {
         h1 {
@@ -37,7 +37,7 @@
   }
 }
 @media screen and (min-width: 1024px) {
-  .extras-page {
+  .blog-page {
     .header {
       &__image {
         background-attachment: fixed;
@@ -59,7 +59,7 @@
   }
 }
 @media screen and (min-width: 1300px) {
-  .extras-page {
+  .blog-page {
     .header {
       &__image {
         h1 {
@@ -70,7 +70,7 @@
   }
 }
 @media screen and (min-width: 1600px) {
-  .extras-page {
+  .blog-page {
     .header {
       &__image {
         h1 {
