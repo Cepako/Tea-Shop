@@ -1,18 +1,22 @@
 .post {
+  position: relative;
   margin: 5% auto;
   width: 100%;
   border: 1px solid black;
   &__img {
     width: 100%;
     height: 250px;
+    cursor: pointer;
   }
   .blog-info {
-    position: relative;
     margin: 5% auto 15%;
     width: 90%;
+    padding-bottom: 15%;
+    border-bottom: 1px solid black;
     &__author {
       margin-bottom: 5%;
       display: flex;
+      align-items: center;
       img {
         margin-right: 5%;
         width: 10%;
@@ -33,7 +37,7 @@
     }
     span {
       position: absolute;
-      bottom: -25%;
+      bottom: 3%;
       font-size: 0.8em;
       display: flex;
       align-items: center;
@@ -43,7 +47,64 @@
       }
     }
     &__comments {
-      left: 15%;
+      left: 20%;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .post {
+    margin: 2.5% auto;
+    width: 45%;
+    .blog-info {
+      &__author {
+        img {
+          margin-right: 3%;
+        }
+      }
+      &__title {
+        font-size: 1.3em;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .post {
+    margin: 2% auto;
+    width: 40%;
+    .blog-info {
+      &__title {
+        font-size: 1.4em;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
+  .post {
+    width: 32%;
+  }
+}
+@media screen and (min-width: 1500px) {
+  .post {
+    margin: 1% auto;
+    width: 24%;
+  }
+}
+@media screen and (min-width: 1800px) {
+  .post {
+    width: 24%;
+    &__img {
+      width: 100%;
+      height: 300px;
+      cursor: pointer;
+    }
+    .blog-info {
+      &__title {
+        font-size: 1.5em;
+      }
+      &__content {
+        font-size: 1em;
+        cursor: pointer;
+      }
     }
   }
 }

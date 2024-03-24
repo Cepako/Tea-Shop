@@ -1,4 +1,33 @@
 .posts {
-  width: 95%;
   margin: 5% auto;
+  width: 95%;
+}
+@media screen and (min-width: 500px) {
+  .posts {
+    width: 80%;
+  }
+}
+@media screen and (min-width: 600px) {
+  .posts {
+    width: 70%;
+  }
+}
+@media screen and (min-width: 680px) {
+  .posts {
+    width: 65%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .posts {
+    margin: 3% auto;
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .posts {
+    margin: 0 auto;
+    width: 99%;
+  }
 }

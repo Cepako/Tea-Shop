@@ -10,8 +10,9 @@ const Blog: React.FC = () => {
         <div className='header__image'>
           <h1>Bloom's Blog</h1>
         </div>
-        <Posts />
       </div>
+      <h2>All Posts</h2>
+      <Posts />
     </div>
   );
 };

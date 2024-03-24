@@ -29,7 +29,7 @@ const Post: React.FC<PostProps> = ({
             {author} <br /> {date}
           </p>
         </div>
-        <h2 className='blog-info__title'>{title}</h2>
+        <h3 className='blog-info__title'>{title}</h3>
         <p className='blog-info__content'>{content}</p>
         <span className='blog-info__views'>
           <img src='/images/view-icon.svg' alt='view icon' />0

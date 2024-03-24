@@ -16,12 +16,7 @@ const Posts: React.FC = () => {
       content={post.content}
     />
   ));
-  return (
-    <div className='posts'>
-      <h2>All Posts</h2>
-      {posts}
-    </div>
-  );
+  return <div className='posts'>{posts}</div>;
 };
 
 export default Posts;
