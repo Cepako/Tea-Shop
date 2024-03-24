@@ -1,5 +1,5 @@
 import React, { MouseEvent } from 'react';
-import data from '../../../data';
+import data from '../../../productsData';
 import Card from '../../slider/Card';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';

@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, useRef, useEffect } from 'react';
 import SearchProduct from './SearchProduct';
-import data from '../../data';
+import data from '../../productsData';
 
 import './Search.scss';
 

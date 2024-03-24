@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Header from './product-details-components/Header';
 import Product from './product-details-components/Product';
 import ProductInfo from './product-details-components/ProductInfo';
-import data from '../../data';
+import data from '../../productsData';
 import Slider from '../slider/Slider';
 
 import './ProductDetails.scss';
