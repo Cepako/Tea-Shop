@@ -1,4 +1,5 @@
 import React from 'react';
+import Posts from './blog-page-components/Posts';
 
 import './Blog.scss';
 
@@ -7,8 +8,9 @@ const Blog: React.FC = () => {
     <div className='blog-page'>
       <div className='header'>
         <div className='header__image'>
-          <h1>Shop Extras</h1>
+          <h1>Bloom's Blog</h1>
         </div>
+        <Posts />
       </div>
     </div>
   );
