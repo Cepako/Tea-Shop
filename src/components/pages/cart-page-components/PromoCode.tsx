@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useRef, useState } from 'react';
+import prirceIcon from '../../../assets/price-tag-icon.svg';
 
 import './PromoCode.scss';
 
@@ -36,7 +37,7 @@ const PromoCode: React.FC = () => {
   return (
     <div className='promo-code'>
       <p onClick={handleClick}>
-        <img src='./images/price-tag-icon.svg' alt='price tag' />
+        <img src={prirceIcon} alt='price tag' />
         Enter a promo code
       </p>
       {viewInput && input}

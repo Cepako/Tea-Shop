@@ -1,4 +1,7 @@
 import React from 'react';
+import userIcon from '../../../assets/blog-user-icon.svg';
+import viewsIcon from '../../../assets/view-icon.svg';
+import commentIcon from '../../../assets/comment-icon.svg';
 
 import './Post.scss';
 
@@ -24,7 +27,7 @@ const Post: React.FC<PostProps> = ({
       <img className='post__img' src={img} alt={img_alt} />
       <div className='blog-info'>
         <div className='blog-info__author'>
-          <img src='/images/blog-user-icon.svg' alt='user icon' />
+          <img src={userIcon} alt='user icon' />
           <p>
             {author} <br /> {date}
           </p>
@@ -32,10 +35,10 @@ const Post: React.FC<PostProps> = ({
         <h3 className='blog-info__title'>{title}</h3>
         <p className='blog-info__content'>{content}</p>
         <span className='blog-info__views'>
-          <img src='/images/view-icon.svg' alt='view icon' />0
+          <img src={viewsIcon} alt='view icon' />0
         </span>
         <span className='blog-info__comments'>
-          <img src='/images/comment-icon.svg' alt='comment icon' />0
+          <img src={commentIcon} alt='comment icon' />0
         </span>
       </div>
     </div>

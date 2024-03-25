@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent, useRef, useEffect } from 'react';
 import SearchProduct from './SearchProduct';
 import data from '../../productsData';
+import loupe from '../../assets/loupe-icon.svg';
 
 import './Search.scss';
 
@@ -65,7 +66,7 @@ const Search: React.FC = () => {
         >
           X
         </div>
-        <img src='./images/loupe-icon.svg' alt='loupe' />
+        <img src={loupe} alt='loupe' />
       </label>
       <div
         onMouseDown={(e) => e.preventDefault()}

@@ -1,4 +1,5 @@
 import React, { useState, useRef, ChangeEvent } from 'react';
+import notesIcon from '../../../assets/notes-icon.svg';
 
 import './Note.scss';
 
@@ -33,7 +34,7 @@ const Note: React.FC = () => {
   return (
     <div className='note'>
       <p onClick={handleClick}>
-        <img src='./images/notes-icon.svg' alt='notes' />
+        <img src={notesIcon} alt='notes' />
         Add a note
       </p>
       {viewInput && input}

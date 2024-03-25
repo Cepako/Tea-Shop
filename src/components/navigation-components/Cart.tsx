@@ -1,6 +1,7 @@
 import React, { useEffect, MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hooks';
+import cartIcon from '../../assets/shopping-bag-icon.svg';
 
 import './Cart.scss';
 
@@ -37,11 +38,7 @@ const Cart: React.FC = () => {
 
   return (
     <div className='cart'>
-      <img
-        src='/images/shopping-bag-icon.svg'
-        alt='shopping bag'
-        onClick={cartClickHandler}
-      />
+      <img src={cartIcon} alt='shopping bag' onClick={cartClickHandler} />
       <span id='product-count' onClick={cartClickHandler}>
         {productsCount}
       </span>

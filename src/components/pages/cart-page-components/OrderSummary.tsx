@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useAppSelector } from '../../../redux/hooks';
 import Modal, { ModalMethods } from '../../Modal';
+import lockIcon from '../../../assets/lock-icon.svg';
 
 import './OrderSummary.scss';
 
@@ -36,7 +37,7 @@ const OrderSummary: React.FC = () => {
         Checkout
       </button>
       <p className='secure'>
-        <img src='./images/lock-icon.svg' alt='lock' />
+        <img src={lockIcon} alt='lock' />
         Secure Checkout
       </p>
     </div>

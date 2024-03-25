@@ -1,4 +1,5 @@
 import React from 'react';
+import arrowUp from '../assets/arrow-up-black.svg';
 
 import './Footer.scss';
 
@@ -11,10 +12,10 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <div className="footer">
+    <div className='footer'>
       &copy;2024 Sebastian Dragan
       <span onClick={scrollUpHandler}>
-        <img src="/images/arrow-up-black.svg" alt="arrow up" /> Back to top
+        <img src={arrowUp} alt='arrow up' /> Back to top
       </span>
     </div>
   );

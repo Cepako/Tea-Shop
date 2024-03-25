@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import Modal, { ModalMethods } from '../Modal';
+import userIcon from '../../assets/user-icon.svg';
 
 import './Menu.scss';
-import Modal, { ModalMethods } from '../Modal';
 
 const Menu: React.FC = () => {
   const [isMenuClicked, setIsMenuClicked] = useState(false);
@@ -46,7 +47,7 @@ const Menu: React.FC = () => {
       </div>
       <div className={menuStatus}>
         <p className='log-in' onClick={() => dialog.current?.open()}>
-          <img src='/images/user-icon.svg' alt='user icon' />
+          <img src={userIcon} alt='user icon' />
           Log In
         </p>
         <ul className='list'>
