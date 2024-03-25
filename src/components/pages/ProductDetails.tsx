@@ -33,8 +33,12 @@ const ProductDetails: React.FC = () => {
   } = productData[0];
 
   useEffect(() => {
-    const teasButton = document.querySelector('.list__item a');
-    if (teasButton) teasButton.className = '';
+    const productButton = document.querySelector('.list__item a.active');
+    if (productButton) productButton.className = '';
+
+    return () => {
+      productButton!.className = 'active';
+    };
   }, []);
 
   return (
