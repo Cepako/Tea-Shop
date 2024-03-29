@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Header from './product-details-components/Header';
-import Filters from './products-page-components/Filters';
+import Filters from './filter-components/Filters';
 import Products from './products-page-components/Products';
 import { useAppDispatch } from '../../redux/hooks';
 import { editTeasFilters } from '../../redux/filters';

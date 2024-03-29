@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Filters from './products-page-components/Filters';
+import Filters from './filter-components/Filters';
 import Products from './products-page-components/Products';
 import { useAppDispatch } from '../../redux/hooks';
 import { editExtrasFilters } from '../../redux/filters';
