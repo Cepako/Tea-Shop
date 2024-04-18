@@ -20,6 +20,14 @@ app.use((req, res, next) => {
 
 app.use('/admin', adminRoutes);
 
+app.use((error, req, res, next) => {
+  console.log(error);
+  const status = error.statusCode || 500;
+  const message = error.message;
+  const data = error.data;
+  res.status(status).json({ message: message, data: data });
+});
+
 mongoose
   .connect(
     'mongodb+srv://Sebastian:<PASSWORD>@tea-shop.le4eiik.mongodb.net/tea-shop?retryWrites=true&w=majority&appName=Tea-Shop'

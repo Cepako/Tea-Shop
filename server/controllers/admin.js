@@ -8,7 +8,10 @@ exports.getProducts = (req, res, next) => {
         products: products,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      if (!err.statusCode) err.statusCode = 500;
+      next(err);
+    });
 };
 
 exports.postProduct = (req, res, next) => {
@@ -32,6 +35,7 @@ exports.postProduct = (req, res, next) => {
       res.status(201).json({ message: 'Product created!', product: product });
     })
     .catch((err) => {
-      console.log(err);
+      if (!err.statusCode) err.statusCode = 500;
+      next(err);
     });
 };
