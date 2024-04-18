@@ -39,3 +39,32 @@ exports.postProduct = (req, res, next) => {
       next(err);
     });
 };
+
+exports.getProduct = (req, res, next) => {
+  const prodId = req.params.prodId;
+  Product.findById(prodId)
+    .then((prod) => {
+      if (!prod) {
+        const error = new Error('Could not find product.');
+        error.statusCode = 404;
+        throw error;
+      }
+      res.status(200).json({ message: 'Product fetched.', product: prod });
+    })
+    .catch((err) => {
+      if (!err.statusCode) err.statusCode = 500;
+      next(err);
+    });
+};
+
+exports.deleteProduct = (req, res, next) => {
+  const prodId = req.params.prodId;
+  Product.findByIdAndDelete(prodId)
+    .then((result) => {
+      res.status(200).json({ message: 'Deleted product.' });
+    })
+    .catch((err) => {
+      if (!err.statusCode) err.statusCode = 500;
+      next(err);
+    });
+};
