@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
+const authRoutes = require('./routes/auth');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use((req, res, next) => {
 
 app.use('/admin', adminRoutes);
 app.use('/shop', shopRoutes);
+app.use('/auth', authRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);
