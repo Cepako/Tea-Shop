@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import Header from './product-details-components/Header';
 import Product from './product-details-components/Product';
@@ -31,15 +31,6 @@ const ProductDetails: React.FC = () => {
     product_description,
     product_info,
   } = productData[0];
-
-  useEffect(() => {
-    const productButton = document.querySelector('.list__item a.active');
-    if (productButton) productButton.className = '';
-
-    return () => {
-      productButton!.className = 'active';
-    };
-  }, []);
 
   return (
     <div className='tea-details'>

@@ -18,7 +18,7 @@ const Extras: React.FC = () => {
       color: [],
     };
     dispatch(editExtrasFilters(initialPayload));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className='extras-page'>

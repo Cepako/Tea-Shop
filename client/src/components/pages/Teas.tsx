@@ -21,7 +21,7 @@ const Teas: React.FC = () => {
       size: [],
     };
     dispatch(editTeasFilters(initialPayload));
-  }, []);
+  }, [dispatch]);
   return (
     <div className='teas-page'>
       <Header />
