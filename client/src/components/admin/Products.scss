@@ -1,0 +1,23 @@
+div.products{
+    h2{
+        margin-bottom: 3%;
+    }
+    table{
+        width: 100%;
+        border: 1px solid black;
+        border-collapse: collapse;
+        th{
+            text-align: center;
+            padding-block: 1%;
+        }
+        tbody{
+            tr{
+                border: 1px solid black;
+               td{
+                padding-block: 5px;
+               } 
+            }
+        }
+    
+    }
+}

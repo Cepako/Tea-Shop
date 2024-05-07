@@ -14,7 +14,9 @@ import RootLayout from './components/pages/RootLayout';
 import ErrorPage from './components/pages/Error';
 import AdminPanel from './components/admin/AdminPanel';
 import AdminLayout from './components/admin/AdminLayout';
-import Products from './components/admin/Products';
+import Products, {
+  loader as productsLoader,
+} from './components/admin/Products';
 import AddProduct from './components/admin/AddProduct';
 import Users from './components/admin/Users';
 import Orders from './components/admin/Orders';
@@ -41,7 +43,7 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       { index: true, element: <AdminPanel /> },
-      { path: 'products', element: <Products /> },
+      { path: 'products', element: <Products />, loader: productsLoader },
       { path: 'product', element: <AddProduct /> },
       { path: 'users', element: <Users /> },
       { path: 'orders', element: <Orders /> },
