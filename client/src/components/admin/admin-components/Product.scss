@@ -1,4 +1,5 @@
-button {
+.admin-product {
+  button {
     padding: 5px 15px;
     color: white;
     background-color: #242a35;
@@ -6,10 +7,11 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: 0.5s;
-    &:hover{
-        background-color: #716767;
+    &:hover {
+      background-color: #716767;
     }
-}
-tr{
+  }
+  tr {
     text-align: center;
+  }
 }

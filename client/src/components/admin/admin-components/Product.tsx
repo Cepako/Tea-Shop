@@ -36,7 +36,7 @@ const Product: React.FC<ProductProps> = ({ details }) => {
   };
 
   return (
-    <tr>
+    <tr className='admin-product'>
       <td>{images.main}</td>
       <td>{name}</td>
       <td>{`$${price.toFixed(2)}`}</td>

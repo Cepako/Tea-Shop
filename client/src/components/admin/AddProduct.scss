@@ -1,0 +1,52 @@
+.add-product {
+  margin-left: 1%;
+  h2 {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+  form {
+    position: relative;
+    margin-bottom: 5%;
+    width: 30%;
+    font-size: 1.2em;
+    label {
+      width: 100%;
+    }
+    input {
+      width: 100%;
+      margin-block: 15px;
+      padding: 5px;
+      font-size: 1.1em;
+    }
+    select {
+      width: 100%;
+      margin-block: 15px;
+      font-size: 1.1em;
+    }
+    textarea {
+      width: 100%;
+      margin-block: 15px;
+      padding: 5px;
+      height: 150px;
+      resize: none;
+    }
+    button {
+      position: absolute;
+      left: 50%;
+      bottom: -5%;
+      transform: translateX(-50%);
+      width: 50%;
+      padding: 10px 15px;
+      color: white;
+      background-color: #242a35;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: 0.5s;
+      &:hover {
+        background-color: #716767;
+      }
+    }
+  }
+}
