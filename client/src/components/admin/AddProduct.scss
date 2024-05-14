@@ -24,18 +24,16 @@
       outline: none;
       text-transform: capitalize;
     }
-    p.invalid {
-      margin-bottom: 3px;
-      font-size: 0.8em;
-      color: red;
-      font-weight: bold;
-    }
     input[type='text'],
-    input[type='number'] {
+    input[type='number'],
+    textarea {
       border: 1px solid gray;
       &:focus {
         border: 1px solid orange;
       }
+    }
+    input[type='file'] {
+      border: none;
     }
     select {
       width: 100%;
@@ -55,11 +53,7 @@
       height: 100px;
       resize: none;
       outline: none;
-      border: 1px solid gray;
       border-radius: 5px;
-      &:focus {
-        border: 1px solid orange;
-      }
     }
     button {
       position: absolute;
@@ -78,10 +72,16 @@
       &:hover {
         background-color: #716767;
       }
-      &:disabled {
-        background-color: rgba(128, 128, 128, 0.5);
-        cursor: default;
-      }
+    }
+    .invalid {
+      border: 1px solid red;
+    }
+    p.invalid {
+      margin-bottom: 3px;
+      font-size: 0.8em;
+      color: red;
+      font-weight: bold;
+      border: none;
     }
   }
 }

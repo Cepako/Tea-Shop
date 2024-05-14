@@ -197,9 +197,7 @@ const AddProduct: React.FC = () => {
               id='group'
               defaultValue='default'
               onChange={handleInputChange}
-              style={
-                errors.group ? { borderColor: 'red' } : { borderColor: 'gray' }
-              }
+              className={errors.group ? 'invalid' : ''}
             >
               <option value='default' disabled>
                 Select group
@@ -215,9 +213,7 @@ const AddProduct: React.FC = () => {
               id='size'
               defaultValue='default'
               onChange={handleInputChange}
-              style={
-                errors.size ? { borderColor: 'red' } : { borderColor: 'gray' }
-              }
+              className={errors.size ? 'invalid' : ''}
             >
               <option value='default' disabled>
                 Select size
@@ -316,7 +312,7 @@ const AddProduct: React.FC = () => {
           onChange={handleInputChange}
           onBlur={handleInputChange}
           value={formData.name}
-          style={errors.name ? { borderColor: 'red' } : { borderColor: 'gray' }}
+          className={errors.name ? 'invalid' : ''}
         />
         <label htmlFor='price'>Price ($)</label>
         <input
@@ -335,7 +331,7 @@ const AddProduct: React.FC = () => {
           id='type'
           defaultValue='default'
           onChange={handleInputChange}
-          style={errors.type ? { borderColor: 'red' } : { borderColor: 'gray' }}
+          className={errors.type ? 'invalid' : ''}
         >
           <option value='default' disabled>
             Select type
@@ -351,9 +347,7 @@ const AddProduct: React.FC = () => {
           id='main'
           name='main'
           onChange={(e) => handleImageChange(e, 'main')}
-          style={
-            errors.image ? { border: '1px solid red' } : { border: 'none' }
-          }
+          className={errors.image ? 'invalid' : ''}
         />
         <label htmlFor='hover'>Add hover-image(Optional):</label>
         <input
@@ -370,11 +364,7 @@ const AddProduct: React.FC = () => {
           placeholder='Enter product description...'
           onChange={handleInputChange}
           onBlur={handleInputChange}
-          style={
-            errors.description
-              ? { borderColor: 'red' }
-              : { borderColor: 'gray' }
-          }
+          className={errors.description ? 'invalid' : ''}
         ></textarea>
         <label htmlFor='info'>Product information:</label>
         {errors.info && <p className='invalid'>{errors.info}</p>}
@@ -384,7 +374,7 @@ const AddProduct: React.FC = () => {
           placeholder='Enter product information...'
           onChange={handleInputChange}
           onBlur={handleInputChange}
-          style={errors.info ? { borderColor: 'red' } : { borderColor: 'gray' }}
+          className={errors.info ? 'invalid' : ''}
         ></textarea>
         <button type='submit'>Add</button>
       </form>
