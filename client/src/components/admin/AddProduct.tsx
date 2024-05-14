@@ -1,4 +1,10 @@
-import React, { useState, useRef, ChangeEvent, FormEvent } from 'react';
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  ChangeEvent,
+  FormEvent,
+} from 'react';
 
 import './AddProduct.scss';
 
@@ -41,8 +47,47 @@ const AddProduct: React.FC = () => {
     info: '',
   });
 
+  const [errors, setErrors] = useState({
+    name: '',
+    type: '',
+    image: '',
+    size: '',
+    group: '',
+    color: '',
+    description: '',
+    info: '',
+  });
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const newErrors: any = {};
+    if (formData.name.trim().length < 5) {
+      newErrors.name = 'The name must be at least 5 characters long!';
+    }
+    if (!formData.images.main) {
+      newErrors.image = 'Add at least one image!';
+    }
+    if (!formData.type) {
+      newErrors.type = 'Select type!';
+    }
+    if (formData.type === 'tea') {
+      if (!formData.group) newErrors.group = 'Select group!';
+      if (!formData.size) newErrors.size = 'Select size!';
+    }
+    if (formData.description.trim().length < 15) {
+      newErrors.description =
+        'Product description is to short, must be at least 15 letters long!';
+    }
+    if (formData.info.trim().length < 15) {
+      newErrors.info =
+        'Product info is to short, must be at least 15 letters long!';
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
 
     try {
       const response = await fetch(`http://localhost:8080/admin/product/`, {
@@ -67,6 +112,7 @@ const AddProduct: React.FC = () => {
         description: '',
         info: '',
       });
+      setErrors(newErrors);
 
       if (formRef.current) {
         formRef.current.reset();
@@ -83,7 +129,7 @@ const AddProduct: React.FC = () => {
 
     setFormData((prevValue) => ({
       ...prevValue,
-      [id]: id === 'price' ? +value : value,
+      [id]: id === 'price' ? (+value < 1 ? 1 : +value) : value,
     }));
   };
   const handleImageChange = (
@@ -145,11 +191,15 @@ const AddProduct: React.FC = () => {
       ? (additionalInfo = (
           <>
             <label htmlFor='group'>Choose group:</label>
+            {errors.group && <p className='invalid'>{errors.group}</p>}
             <select
               name='group'
               id='group'
               defaultValue='default'
               onChange={handleInputChange}
+              style={
+                errors.group ? { borderColor: 'red' } : { borderColor: 'gray' }
+              }
             >
               <option value='default' disabled>
                 Select group
@@ -159,11 +209,15 @@ const AddProduct: React.FC = () => {
               <option value='special-edition'>Special Edition</option>
             </select>
             <label htmlFor='size'>Choose size:</label>
+            {errors.size && <p className='invalid'>{errors.size}</p>}
             <select
               name='size'
               id='size'
               defaultValue='default'
               onChange={handleInputChange}
+              style={
+                errors.size ? { borderColor: 'red' } : { borderColor: 'gray' }
+              }
             >
               <option value='default' disabled>
                 Select size
@@ -204,11 +258,57 @@ const AddProduct: React.FC = () => {
         ));
   }
 
+  useEffect(() => {
+    if (formData.name.trim().length >= 5) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        name: '',
+      }));
+    }
+    if (formData.type) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        type: '',
+      }));
+    }
+    if (formData.type === 'tea') {
+      if (formData.group)
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          group: '',
+        }));
+      if (formData.size)
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          size: '',
+        }));
+    }
+    if (formData.images.main) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        image: '',
+      }));
+    }
+    if (formData.description.trim().length >= 15) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        description: '',
+      }));
+    }
+    if (formData.info.trim().length >= 15) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        info: '',
+      }));
+    }
+  }, [formData]);
+
   return (
     <div className='add-product'>
       <h2>Add product</h2>
       <form ref={formRef} onSubmit={handleSubmit}>
         <label htmlFor='name'>Name</label>
+        {errors.name && <p className='invalid'>{errors.name}</p>}
         <input
           type='text'
           id='name'
@@ -216,22 +316,26 @@ const AddProduct: React.FC = () => {
           onChange={handleInputChange}
           onBlur={handleInputChange}
           value={formData.name}
+          style={errors.name ? { borderColor: 'red' } : { borderColor: 'gray' }}
         />
-        <label htmlFor='price'>Price</label>
+        <label htmlFor='price'>Price ($)</label>
         <input
           type='number'
           id='price'
-          min={1}
+          min={1.0}
+          step={0.01}
           onChange={handleInputChange}
           onBlur={handleInputChange}
-          value={formData.price}
+          value={formData.price.toFixed(2)}
         />
         <label htmlFor='type'>Choose type:</label>
+        {errors.type && <p className='invalid'>{errors.type}</p>}
         <select
           name='type'
           id='type'
           defaultValue='default'
           onChange={handleInputChange}
+          style={errors.type ? { borderColor: 'red' } : { borderColor: 'gray' }}
         >
           <option value='default' disabled>
             Select type
@@ -241,11 +345,15 @@ const AddProduct: React.FC = () => {
         </select>
         {additionalInfo}
         <label htmlFor='main'>Add image:</label>
+        {errors.image && <p className='invalid'>{errors.image}</p>}
         <input
           type='file'
           id='main'
           name='main'
           onChange={(e) => handleImageChange(e, 'main')}
+          style={
+            errors.image ? { border: '1px solid red' } : { border: 'none' }
+          }
         />
         <label htmlFor='hover'>Add hover-image(Optional):</label>
         <input
@@ -255,20 +363,28 @@ const AddProduct: React.FC = () => {
           onChange={(e) => handleImageChange(e, 'hover')}
         />
         <label htmlFor='description'>Product description:</label>
+        {errors.description && <p className='invalid'>{errors.description}</p>}
         <textarea
           name='description'
           id='description'
           placeholder='Enter product description...'
           onChange={handleInputChange}
           onBlur={handleInputChange}
+          style={
+            errors.description
+              ? { borderColor: 'red' }
+              : { borderColor: 'gray' }
+          }
         ></textarea>
-        <label htmlFor='info'>Product info:</label>
+        <label htmlFor='info'>Product information:</label>
+        {errors.info && <p className='invalid'>{errors.info}</p>}
         <textarea
           name='info'
           id='info'
           placeholder='Enter product information...'
           onChange={handleInputChange}
           onBlur={handleInputChange}
+          style={errors.info ? { borderColor: 'red' } : { borderColor: 'gray' }}
         ></textarea>
         <button type='submit'>Add</button>
       </form>
