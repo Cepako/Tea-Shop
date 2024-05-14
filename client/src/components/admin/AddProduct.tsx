@@ -5,6 +5,8 @@ import React, {
   ChangeEvent,
   FormEvent,
 } from 'react';
+import { ToastContainer, toast, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './AddProduct.scss';
 
@@ -34,6 +36,7 @@ const availableColors = [
 
 const AddProduct: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState<FormDataInterface>({
     name: '',
@@ -58,8 +61,35 @@ const AddProduct: React.FC = () => {
     info: '',
   });
 
+  const notifySuccess = () =>
+    toast.success('Product added!', {
+      position: 'top-center',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+      transition: Zoom,
+    });
+  const notifyError = (errorMessage: string) => {
+    toast.error(errorMessage, {
+      position: 'top-center',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+      transition: Zoom,
+    });
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     const newErrors: any = {};
     if (formData.name.trim().length < 5) {
@@ -86,6 +116,7 @@ const AddProduct: React.FC = () => {
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
+      setIsSubmitting(false);
       return;
     }
 
@@ -98,9 +129,10 @@ const AddProduct: React.FC = () => {
         body: JSON.stringify(formData),
       });
       if (!response.ok) {
+        notifyError('Failed to add product.');
         throw new Error('Failed to add product');
       }
-      console.log('Product added successfully');
+      notifySuccess();
       setFormData({
         name: '',
         price: 1,
@@ -118,8 +150,10 @@ const AddProduct: React.FC = () => {
         formRef.current.reset();
       }
     } catch (error) {
+      notifyError('Failed to add product. Please try again later.');
       console.error('Could not add product', error);
     }
+    setIsSubmitting(false);
   };
 
   const handleInputChange = (
@@ -376,8 +410,24 @@ const AddProduct: React.FC = () => {
           onBlur={handleInputChange}
           className={errors.info ? 'invalid' : ''}
         ></textarea>
-        <button type='submit'>Add</button>
+        <button type='submit' disabled={isSubmitting}>
+          {isSubmitting ? 'Adding...' : 'Add'}
+        </button>
       </form>
+      <ToastContainer
+        position='top-center'
+        autoClose={3000}
+        limit={1}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme='dark'
+        transition={Zoom}
+      />
     </div>
   );
 };
