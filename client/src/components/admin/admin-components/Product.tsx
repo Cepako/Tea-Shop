@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 
 import Modal, { ModalMethods } from '../../Modal';
 import './Product.scss';
+import { useNavigate } from 'react-router-dom';
 
 interface ProductProps {
   details: {
@@ -24,7 +25,11 @@ const Product: React.FC<ProductProps> = ({ details }) => {
 
   const dialog = useRef<ModalMethods>(null);
 
-  const handleEditButton = async () => {};
+  const navigate = useNavigate();
+
+  const handleEditButton = () => {
+    navigate(`/admin/${_id}/edit`);
+  };
 
   const handleDeleteButton = async () => {
     try {

@@ -8,7 +8,8 @@ import React, {
 import { ToastContainer, toast, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import './AddProduct.scss';
+import './ProductForm.scss';
+import { useNavigate } from 'react-router-dom';
 
 interface FormDataInterface {
   name: string;
@@ -25,6 +26,11 @@ interface FormDataInterface {
   info: string;
 }
 
+interface ProductFormProps {
+  isEdit?: boolean;
+  id?: string;
+}
+
 const availableColors = [
   'Black',
   'Violet',
@@ -34,14 +40,16 @@ const availableColors = [
   'Light-Green',
 ];
 
-const AddProduct: React.FC = () => {
+const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState<FormDataInterface>({
     name: '',
     price: 1,
-    type: '',
+    type: 'default',
     images: {
       main: null,
     },
@@ -61,10 +69,23 @@ const AddProduct: React.FC = () => {
     info: '',
   });
 
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const response = await fetch(`http://localhost:8080/admin/product/${id}`);
+      if (!response.ok) {
+      } else {
+        const data = await response.json();
+        setFormData(data.product);
+      }
+    };
+
+    if (isEdit) fetchProduct();
+  }, [isEdit, id]);
+
   const notifySuccess = () =>
-    toast.success('Product added!', {
+    toast.success(isEdit ? 'Product edited!' : 'Product added!', {
       position: 'top-center',
-      autoClose: 3000,
+      autoClose: isEdit ? 500 : 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: false,
@@ -119,39 +140,67 @@ const AddProduct: React.FC = () => {
       setIsSubmitting(false);
       return;
     }
+    if (!isEdit) {
+      try {
+        const response = await fetch(`http://localhost:8080/admin/product/`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+        if (!response.ok) {
+          notifyError('Failed to add product.');
+          throw new Error('Failed to add product');
+        }
+        notifySuccess();
+        setFormData({
+          name: '',
+          price: 1,
+          type: 'default',
+          images: {
+            main: null,
+          },
+          color: ['', ''],
+          description: '',
+          info: '',
+        });
+        setErrors(newErrors);
 
-    try {
-      const response = await fetch(`http://localhost:8080/admin/product/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      if (!response.ok) {
-        notifyError('Failed to add product.');
-        throw new Error('Failed to add product');
+        if (formRef.current) {
+          formRef.current.reset();
+        }
+      } catch (error) {
+        notifyError('Failed to add product. Please try again later.');
+        console.error('Could not add product', error);
       }
-      notifySuccess();
-      setFormData({
-        name: '',
-        price: 1,
-        type: '',
-        images: {
-          main: null,
-        },
-        color: ['', ''],
-        description: '',
-        info: '',
-      });
-      setErrors(newErrors);
+    } else {
+      try {
+        const response = await fetch(
+          `http://localhost:8080/admin/product/${id}`,
+          {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+          }
+        );
+        if (!response.ok) {
+          notifyError('Failed to edit product.');
+          throw new Error('Failed to edit product');
+        }
+        notifySuccess();
+        setErrors(newErrors);
 
-      if (formRef.current) {
-        formRef.current.reset();
+        if (formRef.current) {
+          formRef.current.reset();
+        }
+      } catch (error) {
+        notifyError('Failed to edit product. Please try again later.');
+        console.error('Could not edit product', error);
       }
-    } catch (error) {
-      notifyError('Failed to add product. Please try again later.');
-      console.error('Could not add product', error);
+      setTimeout(() => navigate('/admin/products'), 1000);
     }
     setIsSubmitting(false);
   };
@@ -220,7 +269,7 @@ const AddProduct: React.FC = () => {
 
   let additionalInfo = <></>;
 
-  if (formData.type !== '') {
+  if (formData.type !== 'default') {
     formData.type === 'tea'
       ? (additionalInfo = (
           <>
@@ -229,7 +278,7 @@ const AddProduct: React.FC = () => {
             <select
               name='group'
               id='group'
-              defaultValue='default'
+              value={isEdit ? formData.group : formData.group ?? 'default'}
               onChange={handleInputChange}
               className={errors.group ? 'invalid' : ''}
             >
@@ -245,7 +294,7 @@ const AddProduct: React.FC = () => {
             <select
               name='size'
               id='size'
-              defaultValue='default'
+              value={isEdit ? formData.size : formData.size ?? 'default'}
               onChange={handleInputChange}
               className={errors.size ? 'invalid' : ''}
             >
@@ -264,7 +313,9 @@ const AddProduct: React.FC = () => {
             <select
               name='first-color'
               id='first-color'
-              defaultValue='default'
+              value={
+                isEdit ? formData.color![0] : formData.color![0] ?? 'default'
+              }
               onChange={handleFirstColorChange}
             >
               <option value='default' disabled>
@@ -276,7 +327,9 @@ const AddProduct: React.FC = () => {
             <select
               name='second-color'
               id='second-color'
-              defaultValue='default'
+              value={
+                isEdit ? formData.color![1] : formData.color![1] ?? 'default'
+              }
               onChange={handleSecondColorChange}
             >
               <option value='default' disabled>
@@ -335,7 +388,7 @@ const AddProduct: React.FC = () => {
 
   return (
     <div className='add-product'>
-      <h2>Add product</h2>
+      <h2>{isEdit ? 'Edit product' : 'Add product'}</h2>
       <form ref={formRef} onSubmit={handleSubmit}>
         <label htmlFor='name'>Name</label>
         {errors.name && <p className='invalid'>{errors.name}</p>}
@@ -363,7 +416,7 @@ const AddProduct: React.FC = () => {
         <select
           name='type'
           id='type'
-          defaultValue='default'
+          value={formData.type}
           onChange={handleInputChange}
           className={errors.type ? 'invalid' : ''}
         >
@@ -398,6 +451,7 @@ const AddProduct: React.FC = () => {
           placeholder='Enter product description...'
           onChange={handleInputChange}
           onBlur={handleInputChange}
+          value={formData.description}
           className={errors.description ? 'invalid' : ''}
         ></textarea>
         <label htmlFor='info'>Product information:</label>
@@ -408,10 +462,17 @@ const AddProduct: React.FC = () => {
           placeholder='Enter product information...'
           onChange={handleInputChange}
           onBlur={handleInputChange}
+          value={formData.info}
           className={errors.info ? 'invalid' : ''}
         ></textarea>
         <button type='submit' disabled={isSubmitting}>
-          {isSubmitting ? 'Adding...' : 'Add'}
+          {isEdit
+            ? isSubmitting
+              ? 'Editing...'
+              : 'Edit'
+            : isSubmitting
+            ? 'Adding...'
+            : 'Add'}
         </button>
       </form>
       <ToastContainer
@@ -432,4 +493,4 @@ const AddProduct: React.FC = () => {
   );
 };
 
-export default AddProduct;
+export default ProductForm;

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Modal, { ModalMethods } from '../Modal';
 import userIcon from '../../assets/user-icon.svg';
@@ -29,10 +29,6 @@ const Menu: React.FC = () => {
     setMenuStatus('menu');
     body.style.overflow = 'auto';
   };
-
-  useEffect(() => {
-    body.style.overflow = 'auto';
-  }, []);
 
   return (
     <>

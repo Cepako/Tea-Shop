@@ -17,9 +17,10 @@ import AdminLayout from './components/admin/AdminLayout';
 import Products, {
   loader as productsLoader,
 } from './components/admin/Products';
-import AddProduct from './components/admin/AddProduct';
+import ProductForm from './components/admin/ProductForm';
 import Users from './components/admin/Users';
 import Orders from './components/admin/Orders';
+import EditProduct from './components/admin/EditProduct';
 
 const router = createBrowserRouter([
   {
@@ -43,8 +44,13 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       { index: true, element: <AdminPanel /> },
-      { path: 'products', element: <Products />, loader: productsLoader },
-      { path: 'product', element: <AddProduct /> },
+      {
+        path: 'products',
+        element: <Products />,
+        loader: productsLoader,
+      },
+      { path: 'product', element: <ProductForm isEdit={false} /> },
+      { path: ':productId/edit', element: <EditProduct /> },
       { path: 'users', element: <Users /> },
       { path: 'orders', element: <Orders /> },
     ],
