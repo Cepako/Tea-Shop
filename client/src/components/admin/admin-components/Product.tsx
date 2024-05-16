@@ -16,11 +16,17 @@ interface ProductProps {
       hover: string;
     };
   };
+  onProductDeleted: () => void;
+  notifySuccess: (message: string) => void;
+  notifyError: (message: string) => void;
 }
 
-//obsluga buttonow!!
-
-const Product: React.FC<ProductProps> = ({ details }) => {
+const Product: React.FC<ProductProps> = ({
+  details,
+  onProductDeleted,
+  notifySuccess,
+  notifyError,
+}) => {
   const { _id, type, group, name, price, images } = details;
 
   const dialog = useRef<ModalMethods>(null);
@@ -36,9 +42,17 @@ const Product: React.FC<ProductProps> = ({ details }) => {
       const res = await fetch(`http://localhost:8080/admin/product/${_id}`, {
         method: 'DELETE',
       });
+      if (!res.ok) {
+        notifyError('Failed to delete product.');
+        throw new Error('Failed to delete product');
+      }
+
       const resData = await res.json();
-      console.log(resData.message);
+      onProductDeleted();
+
+      notifySuccess(resData.message);
     } catch (err) {
+      notifyError('Failed to delete product. Please try again later.');
       console.log(err);
     }
     dialog.current?.close();
