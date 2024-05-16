@@ -5,12 +5,13 @@ import './Modal.scss';
 
 export interface ModalMethods {
   open: () => void;
+  close: () => void;
 }
 
-const Modal = forwardRef<ModalMethods, { children: ReactNode }>(function Modal(
-  { children },
-  ref
-) {
+const Modal = forwardRef<
+  ModalMethods,
+  { children: ReactNode; closeButtonValue: string; className?: string }
+>(function Modal({ children, closeButtonValue, className }, ref) {
   const dialog = useRef<HTMLDialogElement>(null);
 
   useImperativeHandle(ref, () => {
@@ -18,14 +19,17 @@ const Modal = forwardRef<ModalMethods, { children: ReactNode }>(function Modal(
       open() {
         dialog.current?.showModal();
       },
+      close() {
+        dialog.current?.close();
+      },
     };
   });
 
   return createPortal(
-    <dialog ref={dialog} className='modal'>
+    <dialog ref={dialog} className={`modal ${className}`}>
       {children}
       <form method='dialog'>
-        <button>Got It</button>
+        <button>{closeButtonValue}</button>
       </form>
     </dialog>,
     document.getElementById('modal')!

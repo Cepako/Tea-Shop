@@ -119,7 +119,7 @@ const Product: React.FC<PInterface> = ({
   return (
     <div className='tea-product'>
       {breadCrumbs}
-      <Modal ref={dialog}>
+      <Modal ref={dialog} closeButtonValue='Got it'>
         <h2>We can't accept online orders right now</h2>
         <p>Please contact us to complete your purchase.</p>
       </Modal>

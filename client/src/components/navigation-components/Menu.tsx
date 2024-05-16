@@ -36,7 +36,7 @@ const Menu: React.FC = () => {
 
   return (
     <>
-      <Modal ref={dialog}>
+      <Modal ref={dialog} closeButtonValue='Got it'>
         <h2>I will add this function in the near future</h2>
         <p>Please be patient</p>
       </Modal>

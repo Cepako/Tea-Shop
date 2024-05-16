@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
+import Modal, { ModalMethods } from '../../Modal';
 import './Product.scss';
 
 interface ProductProps {
@@ -21,6 +22,8 @@ interface ProductProps {
 const Product: React.FC<ProductProps> = ({ details }) => {
   const { _id, type, group, name, price, images } = details;
 
+  const dialog = useRef<ModalMethods>(null);
+
   const handleEditButton = async () => {};
 
   const handleDeleteButton = async () => {
@@ -33,22 +36,31 @@ const Product: React.FC<ProductProps> = ({ details }) => {
     } catch (err) {
       console.log(err);
     }
+    dialog.current?.close();
   };
 
   return (
-    <tr className='admin-product'>
-      <td>{images.main}</td>
-      <td>{name}</td>
-      <td>{`$${price.toFixed(2)}`}</td>
-      <td>{type}</td>
-      <td>{group}</td>
-      <td>
-        <button onClick={handleEditButton}>Edit</button>
-      </td>
-      <td>
-        <button onClick={handleDeleteButton}>Delete</button>
-      </td>
-    </tr>
+    <>
+      <Modal className='product-modal' ref={dialog} closeButtonValue='Close'>
+        <h2>Are you sure you want to delete this product?</h2>
+        <button className='delete' onClick={handleDeleteButton}>
+          Confirm
+        </button>
+      </Modal>
+      <tr className='admin-product'>
+        <td>{images.main}</td>
+        <td>{name}</td>
+        <td>{`$${price.toFixed(2)}`}</td>
+        <td>{type}</td>
+        <td>{group}</td>
+        <td>
+          <button onClick={handleEditButton}>Edit</button>
+        </td>
+        <td>
+          <button onClick={() => dialog.current?.open()}>Delete</button>
+        </td>
+      </tr>
+    </>
   );
 };
 

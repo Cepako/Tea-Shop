@@ -20,7 +20,7 @@ const OrderSummary: React.FC = () => {
     <div className='order-summary'>
       {viewHeader && <h3>Order summary</h3>}
       <div>
-        <Modal ref={dialog}>
+        <Modal ref={dialog} closeButtonValue='Got it'>
           <h2>We can't accept online orders right now</h2>
           <p>Please contact us to complete your purchase.</p>
         </Modal>
