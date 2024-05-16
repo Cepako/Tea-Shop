@@ -314,7 +314,11 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
               name='first-color'
               id='first-color'
               value={
-                isEdit ? formData.color![0] : formData.color![0] ?? 'default'
+                isEdit
+                  ? formData.color![0]
+                  : formData.color![0] === ''
+                  ? 'default'
+                  : formData.color![0]
               }
               onChange={handleFirstColorChange}
             >
@@ -328,7 +332,11 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
               name='second-color'
               id='second-color'
               value={
-                isEdit ? formData.color![1] : formData.color![1] ?? 'default'
+                isEdit
+                  ? formData.color![1]
+                  : formData.color![1] === ''
+                  ? 'default'
+                  : formData.color![1]
               }
               onChange={handleSecondColorChange}
             >
