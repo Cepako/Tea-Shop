@@ -25,8 +25,27 @@ exports.postProduct = (req, res, next) => {
     throw error;
   }
 
-  const { type, group, name, price, size, color, images, description, info } =
-    req.body;
+  const { type, group, name, price, size, color, description, info } = req.body;
+
+  if (!req.files || !req.files['main']) {
+    const error = new Error('No files provided');
+    error.statusCode = 422;
+    throw error;
+  }
+
+  const mainImage = req.files['main'][0];
+  if (!mainImage) {
+    const error = new Error('Main image is required');
+    error.statusCode = 422;
+    throw error;
+  }
+
+  const hoverImage = req.files['hover'] ? req.files['hover'][0] : null;
+
+  const images = {
+    main: mainImage.path,
+    hover: hoverImage ? hoverImage.path : null,
+  };
 
   const product = new Product({
     type,
@@ -34,7 +53,7 @@ exports.postProduct = (req, res, next) => {
     name,
     price,
     size,
-    color,
+    color: color ? color.split(',') : [],
     images,
     description,
     info,
@@ -75,10 +94,22 @@ exports.updateProduct = (req, res, next) => {
     error.statusCode = 422;
     throw error;
   }
+  const mainImage = req.files['main'][0];
+  if (!mainImage) {
+    const error = new Error('Main image is required');
+    error.statusCode = 422;
+    throw error;
+  }
 
+  const hoverImage = req.files['hover'] ? req.files['hover'][0] : null;
+
+  const images = {
+    main: mainImage.path,
+    hover: hoverImage ? hoverImage.path : null,
+  };
   const prodId = req.params.prodId;
-  const { type, group, name, price, size, color, images, description, info } =
-    req.body;
+  const { type, group, name, price, size, color, description, info } = req.body;
+
   Product.findById(prodId)
     .then((prod) => {
       if (!prod) {

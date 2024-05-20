@@ -2,6 +2,7 @@ const express = require('express');
 const { body } = require('express-validator');
 
 const adminController = require('../controllers/admin');
+const upload = require('../middleware/uploadMiddleware');
 
 const router = express.Router();
 
@@ -13,10 +14,22 @@ const validateProductInputs = [
 ];
 
 router.get('/products', adminController.getProducts);
-router.post('/product', validateProductInputs, adminController.postProduct);
+router.post(
+  '/product',
+  upload.fields([
+    { name: 'main', maxCount: 1 },
+    { name: 'hover', maxCount: 1 },
+  ]),
+  validateProductInputs,
+  adminController.postProduct
+);
 router.get('/product/:prodId', adminController.getProduct);
 router.put(
   '/product/:prodId',
+  upload.fields([
+    { name: 'main', maxCount: 1 },
+    { name: 'hover', maxCount: 1 },
+  ]),
   validateProductInputs,
   adminController.updateProduct
 );
