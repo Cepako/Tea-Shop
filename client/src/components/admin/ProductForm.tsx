@@ -140,69 +140,61 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
       setIsSubmitting(false);
       return;
     }
-    if (!isEdit) {
-      try {
-        const response = await fetch(`http://localhost:8080/admin/product/`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
-        if (!response.ok) {
-          notifyError('Failed to add product.');
-          throw new Error('Failed to add product');
-        }
-        notifySuccess();
-        setFormData({
-          name: '',
-          price: 1,
-          type: 'default',
-          images: {
-            main: null,
-          },
-          color: ['', ''],
-          description: '',
-          info: '',
-        });
-        setErrors(newErrors);
 
-        if (formRef.current) {
-          formRef.current.reset();
-        }
-      } catch (error) {
-        notifyError('Failed to add product. Please try again later.');
-        console.error('Could not add product', error);
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('price', formData.price.toString());
+      formDataToSend.append('type', formData.type);
+      if (formData.group) formDataToSend.append('group', formData.group);
+      if (formData.size) formDataToSend.append('size', formData.size);
+      formDataToSend.append('description', formData.description);
+      formDataToSend.append('info', formData.info);
+      if (formData.images.main)
+        formDataToSend.append('main', formData.images.main);
+      if (formData.images.hover) {
+        formDataToSend.append('hover', formData.images.hover);
       }
-    } else {
-      try {
-        const response = await fetch(
-          `http://localhost:8080/admin/product/${id}`,
-          {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          }
-        );
-        if (!response.ok) {
-          notifyError('Failed to edit product.');
-          throw new Error('Failed to edit product');
+      if (formData.color && formData.color[0]) {
+        formDataToSend.append('color', formData.color.join(','));
+      }
+      const response = await fetch(
+        `http://localhost:8080/admin/product/${isEdit ? id : ''}`,
+        {
+          method: `${isEdit ? 'PUT' : 'POST'}`,
+          body: formDataToSend,
         }
-        notifySuccess();
-        setErrors(newErrors);
+      );
+      if (!response.ok) {
+        notifyError(`Failed to ${isEdit ? 'edit' : 'add'} product.`);
+        throw new Error(`Failed to ${isEdit ? 'edit' : 'add'} product.`);
+      }
+      notifySuccess();
+      setFormData({
+        name: '',
+        price: 1,
+        type: 'default',
+        images: {
+          main: null,
+        },
+        color: ['', ''],
+        description: '',
+        info: '',
+      });
+      setErrors(newErrors);
 
-        if (formRef.current) {
-          formRef.current.reset();
-        }
-      } catch (error) {
-        notifyError('Failed to edit product. Please try again later.');
-        console.error('Could not edit product', error);
+      if (formRef.current) {
+        formRef.current.reset();
       }
-      setTimeout(() => navigate('/admin/products'), 1000);
+      if (isEdit) setTimeout(() => navigate('/admin/products'), 1000);
+    } catch (error) {
+      notifyError(
+        `Failed to ${isEdit ? 'edit' : 'add'} product. Please try again later.`
+      );
+      console.error(`Could not ${isEdit ? 'edit' : 'add'} product`, error);
+    } finally {
+      setIsSubmitting(false);
     }
-    setIsSubmitting(false);
   };
 
   const handleInputChange = (
@@ -225,7 +217,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
         ...prevValue,
         images: {
           ...prevValue.images,
-          [imageName]: file.name,
+          [imageName]: file,
         },
       }));
   };
