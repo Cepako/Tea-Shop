@@ -96,19 +96,7 @@ exports.updateProduct = (req, res, next) => {
     error.statusCode = 422;
     throw error;
   }
-  const mainImage = req.files['main'][0];
-  if (!mainImage) {
-    const error = new Error('Main image is required');
-    error.statusCode = 422;
-    throw error;
-  }
 
-  const hoverImage = req.files['hover'] ? req.files['hover'][0] : null;
-
-  const images = {
-    main: mainImage.path,
-    hover: hoverImage ? hoverImage.path : null,
-  };
   const prodId = req.params.prodId;
   const { type, group, name, price, size, color, description, info } = req.body;
 
@@ -119,13 +107,28 @@ exports.updateProduct = (req, res, next) => {
         error.statusCode = 404;
         throw error;
       }
+      if (req.files && req.files['main']) {
+        fileHelper.deleteFile(prod.images.main);
+        const mainImage = req.files['main'][0];
+        if (!mainImage) {
+          const error = new Error('Main image is required');
+          error.statusCode = 422;
+          throw error;
+        }
+        prod.images.main = mainImage.path;
+      }
+      if (req.files && req.files['hover']) {
+        if (prod.images.hover) fileHelper.deleteFile(prod.images.hover);
+        const hoverImage = req.files['hover'][0];
+        prod.images.hover = hoverImage ? hoverImage.path : null;
+      }
+
       prod.type = type;
       prod.group = group;
       prod.name = name;
       prod.price = price;
       prod.size = size;
       prod.color = color;
-      prod.images = images;
       prod.description = description;
       prod.info = info;
 
