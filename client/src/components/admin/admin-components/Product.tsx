@@ -71,7 +71,7 @@ const Product: React.FC<ProductProps> = ({
         <td>{name}</td>
         <td>{`$${price.toFixed(2)}`}</td>
         <td>{type}</td>
-        <td>{group}</td>
+        <td>{group === 'default' ? '' : group}</td>
         <td>
           <button onClick={handleEditButton}>Edit</button>
         </td>

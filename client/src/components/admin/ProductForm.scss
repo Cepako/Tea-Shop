@@ -26,7 +26,8 @@
     }
     input[type='text'],
     input[type='number'],
-    textarea {
+    textarea[name='description'],
+    textarea[name='info'] {
       border: 1px solid gray;
       &:focus {
         border: 1px solid orange;
@@ -73,8 +74,13 @@
         background-color: #716767;
       }
     }
-    .invalid {
+    input.invalid,
+    select.invalid,
+    textarea.invalid {
       border: 1px solid red;
+    }
+    input#main {
+      border: none;
     }
     p.invalid {
       margin-bottom: 3px;

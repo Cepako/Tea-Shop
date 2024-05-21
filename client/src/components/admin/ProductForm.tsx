@@ -75,7 +75,12 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
       if (!response.ok) {
       } else {
         const data = await response.json();
-        setFormData(data.product);
+        setFormData({
+          ...data.product,
+          color: data.product.color[0]
+            ? data.product.color[0].split(',')
+            : ['', ''],
+        });
       }
     };
 
@@ -119,7 +124,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
     if (!formData.images.main) {
       newErrors.image = 'Add at least one image!';
     }
-    if (!formData.type) {
+    if (formData.type === 'default') {
       newErrors.type = 'Select type!';
     }
     if (formData.type === 'tea') {
@@ -202,6 +207,17 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
   ) => {
     let { id, value } = e.target;
 
+    if (id === 'type') {
+      setFormData((prevValue) => ({
+        ...prevValue,
+        [id]: value,
+        color: ['', ''],
+        group: 'default',
+        size: 'default',
+      }));
+      return;
+    }
+
     setFormData((prevValue) => ({
       ...prevValue,
       [id]: id === 'price' ? (+value < 1 ? 1 : +value) : value,
@@ -226,7 +242,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
     let { value } = e.target;
     setFormData((prevValue) => ({
       ...prevValue,
-      color: [value, ''],
+      color: [value, prevValue.color ? prevValue.color[1] : ''],
     }));
   };
   const handleSecondColorChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -305,13 +321,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
             <select
               name='first-color'
               id='first-color'
-              value={
-                isEdit
-                  ? formData.color![0]
-                  : formData.color![0] === ''
-                  ? 'default'
-                  : formData.color![0]
-              }
+              value={formData.color![0] === '' ? 'default' : formData.color![0]}
               onChange={handleFirstColorChange}
             >
               <option value='default' disabled>
@@ -323,13 +333,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
             <select
               name='second-color'
               id='second-color'
-              value={
-                isEdit
-                  ? formData.color![1]
-                  : formData.color![1] === ''
-                  ? 'default'
-                  : formData.color![1]
-              }
+              value={formData.color![1] === '' ? 'default' : formData.color![1]}
               onChange={handleSecondColorChange}
             >
               <option value='default' disabled>

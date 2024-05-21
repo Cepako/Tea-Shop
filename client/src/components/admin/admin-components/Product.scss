@@ -1,5 +1,8 @@
 .admin-product {
   text-align: center;
+  td:nth-of-type(1) ~ td {
+    text-transform: capitalize;
+  }
   button {
     padding: 5px 15px;
     color: white;
