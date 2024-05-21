@@ -1,5 +1,7 @@
 const Product = require('../models/product');
 
+const fileHelper = require('../util/file');
+
 const { validationResult } = require('express-validator');
 
 exports.getProducts = (req, res, next) => {
@@ -142,6 +144,8 @@ exports.deleteProduct = (req, res, next) => {
   const prodId = req.params.prodId;
   Product.findByIdAndDelete(prodId)
     .then((result) => {
+      fileHelper.deleteFile(result.images.main);
+      if (result.images.hover) fileHelper.deleteFile(result.images.hover);
       res.status(200).json({ message: 'Deleted product.' });
     })
     .catch((err) => {
