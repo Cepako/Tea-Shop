@@ -3,8 +3,17 @@
   td:nth-of-type(1) ~ td {
     text-transform: capitalize;
   }
+  td {
+    width: 15%;
+    height: 125px;
+    img {
+      width: 45%;
+      max-height: 100%;
+      border: 1px solid black;
+    }
+  }
   button {
-    padding: 5px 15px;
+    padding: 10px 25px;
     color: white;
     background-color: #242a35;
     border: none;

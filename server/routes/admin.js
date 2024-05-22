@@ -8,7 +8,7 @@ const router = express.Router();
 
 const validateProductInputs = [
   body('type').isIn(['tea', 'extras']),
-  body('name').trim().isLength({ min: 5 }),
+  body('name').trim().isLength({ min: 3 }),
   body('description').trim().isLength({ min: 15 }),
   body('info').trim().isLength({ min: 15 }),
 ];

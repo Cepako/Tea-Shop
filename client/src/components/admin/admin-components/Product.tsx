@@ -67,7 +67,12 @@ const Product: React.FC<ProductProps> = ({
         </button>
       </Modal>
       <tr className='admin-product'>
-        <td>{images.main}</td>
+        <td>
+          <img
+            src={`http://localhost:8080/images/${images.main}`}
+            alt='product foto'
+          />
+        </td>
         <td>{name}</td>
         <td>{`$${price.toFixed(2)}`}</td>
         <td>{type}</td>

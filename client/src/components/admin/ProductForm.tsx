@@ -118,8 +118,8 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
     setIsSubmitting(true);
 
     const newErrors: any = {};
-    if (formData.name.trim().length < 5) {
-      newErrors.name = 'The name must be at least 5 characters long!';
+    if (formData.name.trim().length < 3) {
+      newErrors.name = 'The name must be at least 3 characters long!';
     }
     if (!formData.images.main) {
       newErrors.image = 'Add at least one image!';

@@ -45,8 +45,8 @@ exports.postProduct = (req, res, next) => {
   const hoverImage = req.files['hover'] ? req.files['hover'][0] : null;
 
   const images = {
-    main: mainImage.path,
-    hover: hoverImage ? hoverImage.path : null,
+    main: mainImage.filename,
+    hover: hoverImage ? hoverImage.filename : null,
   };
 
   const product = new Product({
@@ -115,12 +115,12 @@ exports.updateProduct = (req, res, next) => {
           error.statusCode = 422;
           throw error;
         }
-        prod.images.main = mainImage.path;
+        prod.images.main = mainImage.filename;
       }
       if (req.files && req.files['hover']) {
         if (prod.images.hover) fileHelper.deleteFile(prod.images.hover);
         const hoverImage = req.files['hover'][0];
-        prod.images.hover = hoverImage ? hoverImage.path : null;
+        prod.images.hover = hoverImage ? hoverImage.filename : null;
       }
 
       prod.type = type;

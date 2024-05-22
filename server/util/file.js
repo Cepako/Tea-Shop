@@ -1,7 +1,8 @@
 const fs = require('fs');
+const path = require('path');
 
 const deleteFile = (filePath) => {
-  fs.unlink(filePath, (err) => {
+  fs.unlink(path.join(__dirname, '../images', filePath), (err) => {
     if (err) throw err;
   });
 };
