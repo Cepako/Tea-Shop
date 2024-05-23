@@ -24,6 +24,12 @@
       outline: none;
       text-transform: capitalize;
     }
+    img {
+      margin-left: 10px;
+      height: 100px;
+      width: 100px;
+      border: 1px solid black;
+    }
     input[type='text'],
     input[type='number'],
     textarea[name='description'],

@@ -58,6 +58,11 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
     info: '',
   });
 
+  const [imageURLs, setImageURLs] = useState({
+    main: '',
+    hover: '',
+  });
+
   const [errors, setErrors] = useState({
     name: '',
     type: '',
@@ -81,11 +86,41 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
             ? data.product.color[0].split(',')
             : ['', ''],
         });
+        if (data.product.images.main) {
+          setImageURLs((prev) => ({
+            ...prev,
+            main: `http://localhost:8080/images/${data.product.images.main}`,
+          }));
+        }
+        if (data.product.images.hover) {
+          setImageURLs((prev) => ({
+            ...prev,
+            hover: `http://localhost:8080/images/${data.product.images.hover}`,
+          }));
+        }
       }
     };
 
-    if (isEdit) fetchProduct();
+    if (isEdit && id) fetchProduct();
   }, [isEdit, id]);
+
+  useEffect(() => {
+    if (formData.images.main && formData.images.main instanceof File) {
+      const mainFile = formData.images.main;
+      const mainURL = URL.createObjectURL(mainFile);
+      setImageURLs((prev) => ({ ...prev, main: mainURL }));
+      return () => URL.revokeObjectURL(mainURL);
+    }
+  }, [formData.images.main]);
+
+  useEffect(() => {
+    if (formData.images.hover && formData.images.hover instanceof File) {
+      const hoverFile = formData.images.hover;
+      const hoverURL = URL.createObjectURL(hoverFile);
+      setImageURLs((prev) => ({ ...prev, hover: hoverURL }));
+      return () => URL.revokeObjectURL(hoverURL);
+    }
+  }, [formData.images.hover]);
 
   const notifySuccess = () =>
     toast.success(isEdit ? 'Product edited!' : 'Product added!', {
@@ -186,6 +221,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
         description: '',
         info: '',
       });
+      setImageURLs({ main: '', hover: '' });
       setErrors(newErrors);
 
       if (formRef.current) {
@@ -432,6 +468,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
         </select>
         {additionalInfo}
         <label htmlFor='main'>Add image:</label>
+        {imageURLs.main && <img src={imageURLs.main} alt='Product' />}
         {errors.image && <p className='invalid'>{errors.image}</p>}
         <input
           type='file'
@@ -441,6 +478,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
           className={errors.image ? 'invalid' : ''}
         />
         <label htmlFor='hover'>Add hover-image(Optional):</label>
+        {imageURLs.hover && <img src={imageURLs.hover} alt='Product' />}
         <input
           type='file'
           id='hover'
