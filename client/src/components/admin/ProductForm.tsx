@@ -42,6 +42,8 @@ const availableColors = [
 
 const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
   const formRef = useRef<HTMLFormElement>(null);
+  const mainFileInputRef = useRef<HTMLInputElement | null>(null);
+  const hoverFileInputRef = useRef<HTMLInputElement | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const navigate = useNavigate();
@@ -273,6 +275,19 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
         },
       }));
   };
+  const deleteImageHandler = (type: string) => {
+    setFormData((prevValue) => ({
+      ...prevValue,
+      images: { ...prevValue.images, [type]: null },
+    }));
+    setImageURLs((prevValue) => ({ ...prevValue, [type]: '' }));
+    if (type === 'main' && mainFileInputRef.current) {
+      mainFileInputRef.current.value = '';
+    }
+    if (type === 'hover' && hoverFileInputRef.current) {
+      hoverFileInputRef.current.value = '';
+    }
+  };
 
   const handleFirstColorChange = (e: ChangeEvent<HTMLSelectElement>) => {
     let { value } = e.target;
@@ -468,21 +483,43 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
         </select>
         {additionalInfo}
         <label htmlFor='main'>Add image:</label>
-        {imageURLs.main && <img src={imageURLs.main} alt='Product' />}
+        {imageURLs.main && (
+          <div className='img'>
+            <span
+              className='remove-button'
+              onClick={() => deleteImageHandler('main')}
+            >
+              <span className='caption'>Delete image</span>❌
+            </span>
+            <img src={imageURLs.main} alt='Product' />
+          </div>
+        )}
         {errors.image && <p className='invalid'>{errors.image}</p>}
         <input
           type='file'
           id='main'
           name='main'
+          ref={mainFileInputRef}
           onChange={(e) => handleImageChange(e, 'main')}
           className={errors.image ? 'invalid' : ''}
         />
         <label htmlFor='hover'>Add hover-image(Optional):</label>
-        {imageURLs.hover && <img src={imageURLs.hover} alt='Product' />}
+        {imageURLs.hover && (
+          <div className='img'>
+            <span
+              className='remove-button'
+              onClick={() => deleteImageHandler('hover')}
+            >
+              <span className='caption'>Delete image</span>❌
+            </span>
+            <img src={imageURLs.hover} alt='Product' />
+          </div>
+        )}
         <input
           type='file'
           id='hover'
           name='hover'
+          ref={hoverFileInputRef}
           onChange={(e) => handleImageChange(e, 'hover')}
         />
         <label htmlFor='description'>Product description:</label>

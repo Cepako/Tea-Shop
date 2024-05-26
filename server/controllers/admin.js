@@ -121,6 +121,9 @@ exports.updateProduct = (req, res, next) => {
         if (prod.images.hover) fileHelper.deleteFile(prod.images.hover);
         const hoverImage = req.files['hover'][0];
         prod.images.hover = hoverImage ? hoverImage.filename : null;
+      }else if(prod.images.hover){
+        fileHelper.deleteFile(prod.images.hover);
+        prod.images.hover = null;
       }
 
       prod.type = type;
