@@ -36,6 +36,9 @@ const Product: React.FC<ProductProps> = ({
   const handleEditButton = () => {
     navigate(`/admin/${_id}/edit`);
   };
+  const handleViewDetails = () => {
+    navigate(`/admin/${_id}`);
+  };
 
   const handleDeleteButton = async () => {
     try {
@@ -79,6 +82,9 @@ const Product: React.FC<ProductProps> = ({
         <td>{group === 'default' ? '' : group}</td>
         <td>
           <button onClick={handleEditButton}>Edit</button>
+        </td>
+        <td>
+          <button onClick={handleViewDetails}>Details</button>
         </td>
         <td>
           <button onClick={() => dialog.current?.open()}>Delete</button>

@@ -20,6 +20,7 @@ import Products, {
 import ProductForm from './components/admin/ProductForm';
 import Users from './components/admin/Users';
 import Orders from './components/admin/Orders';
+import AdminProductDetails from './components/admin/AdminProductDetails';
 import EditProduct from './components/admin/EditProduct';
 
 const router = createBrowserRouter([
@@ -50,6 +51,7 @@ const router = createBrowserRouter([
         loader: productsLoader,
       },
       { path: 'product', element: <ProductForm isEdit={false} /> },
+      { path: ':productId', element: <AdminProductDetails /> },
       { path: ':productId/edit', element: <EditProduct /> },
       { path: 'users', element: <Users /> },
       { path: 'orders', element: <Orders /> },

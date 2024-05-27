@@ -1,12 +1,13 @@
-.admin-panel{
-    position: relative;
-    min-height: 100vh;
-    div.products,
-    div.add-product{
-        position: absolute;
-        left: 15%;
-        top: 0;
-        width: 85%;
-        padding: 15px;
-    }
+.admin-panel {
+  position: relative;
+  min-height: 100vh;
+  div.products,
+  div.add-product,
+  div.admin-prod-details {
+    position: absolute;
+    left: 15%;
+    top: 0;
+    width: 85%;
+    padding: 15px;
+  }
 }
