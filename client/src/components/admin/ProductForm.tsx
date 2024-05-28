@@ -76,6 +76,8 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
     info: '',
   });
 
+  const [removeHoverImage, setRemoveHoverImage] = useState(false);
+
   useEffect(() => {
     const fetchProduct = async () => {
       const response = await fetch(`http://localhost:8080/admin/product/${id}`);
@@ -197,6 +199,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
       if (formData.images.hover) {
         formDataToSend.append('hover', formData.images.hover);
       }
+      if (removeHoverImage) {
+        formDataToSend.append('removeHoverImage', 'true');
+      }
       if (formData.color && formData.color[0]) {
         formDataToSend.append('color', formData.color.join(','));
       }
@@ -281,6 +286,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
       images: { ...prevValue.images, [type]: null },
     }));
     setImageURLs((prevValue) => ({ ...prevValue, [type]: '' }));
+    if (type === 'hover') {
+      setRemoveHoverImage(true);
+    }
     if (type === 'main' && mainFileInputRef.current) {
       mainFileInputRef.current.value = '';
     }
