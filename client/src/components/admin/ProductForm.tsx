@@ -86,9 +86,10 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
         const data = await response.json();
         setFormData({
           ...data.product,
-          color: data.product.color[0]
-            ? data.product.color[0].split(',')
-            : ['', ''],
+          color:
+            data.product.color[0] || data.product.color[1]
+              ? [data.product.color[0], data.product.color[1]]
+              : ['', ''],
         });
         if (data.product.images.main) {
           setImageURLs((prev) => ({

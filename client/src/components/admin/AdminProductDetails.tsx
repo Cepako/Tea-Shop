@@ -45,9 +45,10 @@ const AdminProductDetails: React.FC = () => {
         const data = await response.json();
         setProdData({
           ...data.product,
-          color: data.product.color
-            ? [data.product.color[0], data.product.color[1]]
-            : ['', ''],
+          color:
+            data.product.color[0] || data.product.color[1]
+              ? [data.product.color[0], data.product.color[1]]
+              : ['', ''],
         });
         if (data.product.images.main) {
           setImageURLs((prev) => ({

@@ -55,7 +55,7 @@ exports.postProduct = (req, res, next) => {
     name,
     price,
     size,
-    color: color ? color.split(',') : [],
+    color: color ? color.split(',') : ['', ''],
     images,
     description,
     info,
@@ -131,7 +131,7 @@ exports.updateProduct = (req, res, next) => {
       prod.name = name;
       prod.price = price;
       prod.size = size;
-      prod.color = color;
+      prod.color = color ? color.split(',') : ['', ''];
       prod.description = description;
       prod.info = info;
 
