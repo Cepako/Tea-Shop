@@ -179,6 +179,9 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
       newErrors.info =
         'Product info is to short, must be at least 15 letters long!';
     }
+    if (formData.color && formData.color[1] && !formData.color[0]) {
+      newErrors.color = 'You have to choose first color before!';
+    }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -264,7 +267,14 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
 
     setFormData((prevValue) => ({
       ...prevValue,
-      [id]: id === 'price' ? (+value < 1 ? 1 : +value) : value,
+      [id]:
+        id === 'price'
+          ? +value < 1
+            ? 1
+            : +value > 1000
+            ? 1000
+            : +value
+          : value,
     }));
   };
   const handleImageChange = (
@@ -307,12 +317,11 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
   };
   const handleSecondColorChange = (e: ChangeEvent<HTMLSelectElement>) => {
     let { value } = e.target;
-    if (formData.color && formData.color[0]) {
-      setFormData((prevValue) => ({
-        ...prevValue,
-        color: [prevValue.color ? prevValue.color[0] : '', value],
-      }));
-    }
+
+    setFormData((prevValue) => ({
+      ...prevValue,
+      color: [prevValue.color ? prevValue.color[0] : '', value],
+    }));
   };
 
   const firstColorOptions = availableColors.map((color) => (
@@ -334,6 +343,16 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
       {color}
     </option>
   ));
+
+  const deleteColorHandler = (id: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      color:
+        id === 'first'
+          ? ['', prev.color ? prev.color[1] : '']
+          : [prev.color ? prev.color[0] : '', ''],
+    }));
+  };
 
   let additionalInfo = <></>;
 
@@ -378,29 +397,54 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
       : (additionalInfo = (
           <>
             <label htmlFor='first-color'>Choose first color:</label>
-            <select
-              name='first-color'
-              id='first-color'
-              value={formData.color![0] === '' ? 'default' : formData.color![0]}
-              onChange={handleFirstColorChange}
-            >
-              <option value='default' disabled>
-                Select first color
-              </option>
-              {firstColorOptions}
-            </select>
+            <div className='color'>
+              <select
+                name='first-color'
+                id='first-color'
+                value={
+                  formData.color![0] === '' ? 'default' : formData.color![0]
+                }
+                onChange={handleFirstColorChange}
+              >
+                <option value='default' disabled>
+                  Select first color
+                </option>
+                {firstColorOptions}
+              </select>
+              {formData.color && formData.color[0] && (
+                <span
+                  className='remove-button'
+                  onClick={() => deleteColorHandler('first')}
+                >
+                  <span className='caption'>Delete first color</span>❌
+                </span>
+              )}
+            </div>
             <label htmlFor='second-color'>Choose second color:</label>
-            <select
-              name='second-color'
-              id='second-color'
-              value={formData.color![1] === '' ? 'default' : formData.color![1]}
-              onChange={handleSecondColorChange}
-            >
-              <option value='default' disabled>
-                Select second color
-              </option>
-              {secondColorOptions}
-            </select>
+            {errors.color && <p className='invalid'>{errors.color}</p>}
+            <div className='color'>
+              <select
+                name='second-color'
+                id='second-color'
+                value={
+                  formData.color![1] === '' ? 'default' : formData.color![1]
+                }
+                onChange={handleSecondColorChange}
+              >
+                <option value='default' disabled>
+                  Select second color
+                </option>
+                {secondColorOptions}
+              </select>
+              {formData.color && formData.color[1] && (
+                <span
+                  className='remove-button'
+                  onClick={() => deleteColorHandler('second')}
+                >
+                  <span className='caption'>Delete second color</span>❌
+                </span>
+              )}
+            </div>
           </>
         ));
   }
@@ -448,6 +492,12 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
         info: '',
       }));
     }
+    if (formData.color && formData.color[0]) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        color: '',
+      }));
+    }
   }, [formData]);
 
   return (
@@ -470,6 +520,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
           type='number'
           id='price'
           min={1.0}
+          max={1000}
           step={0.01}
           onChange={handleInputChange}
           onBlur={handleInputChange}

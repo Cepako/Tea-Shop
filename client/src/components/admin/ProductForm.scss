@@ -16,35 +16,6 @@
         height: 100px;
         border: 1px solid black;
       }
-      .remove-button {
-        position: absolute;
-        top: 0;
-        right: 0;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-
-        .caption {
-          display: block;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          font-size: 0.75em;
-          background-color: #fff;
-          padding: 2px 5px;
-          border-radius: 3px;
-          opacity: 0;
-          transition: opacity 0.2s ease-in-out;
-          white-space: nowrap;
-          box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        &:hover {
-          .caption {
-            opacity: 1;
-          }
-        }
-      }
     }
     label {
       position: relative;
@@ -75,8 +46,11 @@
     input[type='file'] {
       border: none;
     }
+    input[type='number'] {
+      width: 20%;
+    }
     select {
-      width: 100%;
+      width: 45%;
       margin-block: 10px;
       padding: 5px;
       padding-left: 7px;
@@ -84,6 +58,43 @@
       font-size: 1em;
       &:focus {
         border: 2px solid black;
+      }
+    }
+    .remove-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      .caption {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        font-size: 0.75em;
+        background-color: #fff;
+        padding: 2px 5px;
+        border-radius: 3px;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+        white-space: nowrap;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      &:hover {
+        .caption {
+          opacity: 1;
+        }
+      }
+    }
+    div.color {
+      position: relative;
+      .remove-button {
+        left: 64%;
+        top: 47.5%;
+        transform: translate(-50%, -50%);
       }
     }
     textarea {
