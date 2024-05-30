@@ -10,8 +10,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import './ProductForm.scss';
 import { useNavigate } from 'react-router-dom';
+import Input from './admin-components/Input';
 
-interface FormDataInterface {
+export interface FormDataInterface {
   name: string;
   price: number;
   type: string;
@@ -24,6 +25,7 @@ interface FormDataInterface {
   color?: [string, string];
   description: string;
   info: string;
+  [key: string]: any;
 }
 
 interface ProductFormProps {
@@ -168,8 +170,10 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
       newErrors.type = 'Select type!';
     }
     if (formData.type === 'tea') {
-      if (!formData.group) newErrors.group = 'Select group!';
-      if (!formData.size) newErrors.size = 'Select size!';
+      if (!formData.group || formData.group === 'default')
+        newErrors.group = 'Select group!';
+      if (!formData.size || formData.size === 'default')
+        newErrors.size = 'Select size!';
     }
     if (formData.description.trim().length < 15) {
       newErrors.description =
@@ -177,7 +181,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
     }
     if (formData.info.trim().length < 15) {
       newErrors.info =
-        'Product info is to short, must be at least 15 letters long!';
+        'Product information is to short, must be at least 15 letters long!';
     }
     if (formData.color && formData.color[1] && !formData.color[0]) {
       newErrors.color = 'You have to choose first color before!';
@@ -249,34 +253,6 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
     }
   };
 
-  const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    let { id, value } = e.target;
-
-    if (id === 'type') {
-      setFormData((prevValue) => ({
-        ...prevValue,
-        [id]: value,
-        color: ['', ''],
-        group: 'default',
-        size: 'default',
-      }));
-      return;
-    }
-
-    setFormData((prevValue) => ({
-      ...prevValue,
-      [id]:
-        id === 'price'
-          ? +value < 1
-            ? 1
-            : +value > 1000
-            ? 1000
-            : +value
-          : value,
-    }));
-  };
   const handleImageChange = (
     e: ChangeEvent<HTMLInputElement>,
     imageName: string
@@ -360,38 +336,32 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
     formData.type === 'tea'
       ? (additionalInfo = (
           <>
-            <label htmlFor='group'>Choose group:</label>
-            {errors.group && <p className='invalid'>{errors.group}</p>}
-            <select
-              name='group'
-              id='group'
-              value={isEdit ? formData.group : formData.group ?? 'default'}
-              onChange={handleInputChange}
-              className={errors.group ? 'invalid' : ''}
-            >
-              <option value='default' disabled>
-                Select group
-              </option>
-              <option value='classic'>Classic</option>
-              <option value='herbal-tea'>Herbal Tea</option>
-              <option value='special-edition'>Special Edition</option>
-            </select>
-            <label htmlFor='size'>Choose size:</label>
-            {errors.size && <p className='invalid'>{errors.size}</p>}
-            <select
-              name='size'
-              id='size'
-              value={isEdit ? formData.size : formData.size ?? 'default'}
-              onChange={handleInputChange}
-              className={errors.size ? 'invalid' : ''}
-            >
-              <option value='default' disabled>
-                Select size
-              </option>
-              <option value='125Gr'>125Gr</option>
-              <option value='200Gr'>200Gr</option>
-              <option value='300Gr'>300Gr</option>
-            </select>
+            <Input
+              inputType='select'
+              htmlFor='group'
+              labelContent='Choose group:'
+              inputError={errors.group}
+              formDataValue={formData}
+              setFormData={setFormData}
+              options={[
+                { value: 'classic', label: 'Classic' },
+                { value: 'herbal-tea', label: 'Herbal Tea' },
+                { value: 'special-edition', label: 'Special Edition' },
+              ]}
+            />
+            <Input
+              inputType='select'
+              htmlFor='size'
+              labelContent='Choose size:'
+              inputError={errors.size}
+              formDataValue={formData}
+              setFormData={setFormData}
+              options={[
+                { value: '125Gr', label: '125Gr' },
+                { value: '200Gr', label: '200Gr' },
+                { value: '300Gr', label: '300Gr' },
+              ]}
+            />
           </>
         ))
       : (additionalInfo = (
@@ -450,25 +420,25 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
   }
 
   useEffect(() => {
-    if (formData.name.trim().length >= 5) {
+    if (formData.name.trim().length >= 3) {
       setErrors((prevErrors) => ({
         ...prevErrors,
         name: '',
       }));
     }
-    if (formData.type) {
+    if (formData.type !== 'default') {
       setErrors((prevErrors) => ({
         ...prevErrors,
         type: '',
       }));
     }
     if (formData.type === 'tea') {
-      if (formData.group)
+      if (formData.group !== 'default')
         setErrors((prevErrors) => ({
           ...prevErrors,
           group: '',
         }));
-      if (formData.size)
+      if (formData.size !== 'default')
         setErrors((prevErrors) => ({
           ...prevErrors,
           size: '',
@@ -504,43 +474,37 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
     <div className='add-product'>
       <h2>{isEdit ? 'Edit product' : 'Add product'}</h2>
       <form ref={formRef} onSubmit={handleSubmit}>
-        <label htmlFor='name'>Name</label>
-        {errors.name && <p className='invalid'>{errors.name}</p>}
-        <input
-          type='text'
-          id='name'
+        <Input
+          inputType='text'
+          htmlFor='name'
+          labelContent='Name'
+          inputError={errors.name}
           placeholder='Enter product name...'
-          onChange={handleInputChange}
-          onBlur={handleInputChange}
-          value={formData.name}
-          className={errors.name ? 'invalid' : ''}
+          setFormData={setFormData}
+          formDataValue={formData}
         />
-        <label htmlFor='price'>Price ($)</label>
-        <input
-          type='number'
-          id='price'
+        <Input
+          inputType='number'
+          htmlFor='price'
+          labelContent='Price ($)'
+          setFormData={setFormData}
+          formDataValue={formData}
           min={1.0}
           max={1000}
           step={0.01}
-          onChange={handleInputChange}
-          onBlur={handleInputChange}
-          value={formData.price.toFixed(2)}
         />
-        <label htmlFor='type'>Choose type:</label>
-        {errors.type && <p className='invalid'>{errors.type}</p>}
-        <select
-          name='type'
-          id='type'
-          value={formData.type}
-          onChange={handleInputChange}
-          className={errors.type ? 'invalid' : ''}
-        >
-          <option value='default' disabled>
-            Select type
-          </option>
-          <option value='tea'>Tea</option>
-          <option value='extras'>Extras</option>
-        </select>
+        <Input
+          inputType='select'
+          htmlFor='type'
+          labelContent='Choose type:'
+          inputError={errors.type}
+          setFormData={setFormData}
+          formDataValue={formData}
+          options={[
+            { value: 'tea', label: 'Tea' },
+            { value: 'extras', label: 'Extras' },
+          ]}
+        />
         {additionalInfo}
         <label htmlFor='main'>Add image:</label>
         {imageURLs.main && (
@@ -582,28 +546,25 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
           ref={hoverFileInputRef}
           onChange={(e) => handleImageChange(e, 'hover')}
         />
-        <label htmlFor='description'>Product description:</label>
-        {errors.description && <p className='invalid'>{errors.description}</p>}
-        <textarea
-          name='description'
-          id='description'
+        <Input
+          inputType='textarea'
+          htmlFor='description'
+          labelContent='Product description:'
+          inputError={errors.description}
           placeholder='Enter product description...'
-          onChange={handleInputChange}
-          onBlur={handleInputChange}
-          value={formData.description}
-          className={errors.description ? 'invalid' : ''}
-        ></textarea>
-        <label htmlFor='info'>Product information:</label>
-        {errors.info && <p className='invalid'>{errors.info}</p>}
-        <textarea
-          name='info'
-          id='info'
+          setFormData={setFormData}
+          formDataValue={formData}
+        />
+        <Input
+          inputType='textarea'
+          htmlFor='info'
+          labelContent='Product information:'
+          inputError={errors.info}
           placeholder='Enter product information...'
-          onChange={handleInputChange}
-          onBlur={handleInputChange}
-          value={formData.info}
-          className={errors.info ? 'invalid' : ''}
-        ></textarea>
+          setFormData={setFormData}
+          formDataValue={formData}
+        />
+
         <button type='submit' disabled={isSubmitting}>
           {isEdit
             ? isSubmitting
