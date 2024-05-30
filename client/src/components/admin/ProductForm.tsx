@@ -462,7 +462,10 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
         info: '',
       }));
     }
-    if (formData.color && formData.color[0]) {
+    if (
+      (formData.color && formData.color[0]) ||
+      (formData.color && !formData.color[1])
+    ) {
       setErrors((prevErrors) => ({
         ...prevErrors,
         color: '',
