@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './ProductForm.scss';
 import { useNavigate } from 'react-router-dom';
 import Input from './admin-components/Input';
+import ImageInputs from './admin-components/ImageInputs';
 
 export interface FormDataInterface {
   name: string;
@@ -44,8 +45,6 @@ const availableColors = [
 
 const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
   const formRef = useRef<HTMLFormElement>(null);
-  const mainFileInputRef = useRef<HTMLInputElement | null>(null);
-  const hoverFileInputRef = useRef<HTMLInputElement | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const navigate = useNavigate();
@@ -250,37 +249,6 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
       console.error(`Could not ${isEdit ? 'edit' : 'add'} product`, error);
     } finally {
       setIsSubmitting(false);
-    }
-  };
-
-  const handleImageChange = (
-    e: ChangeEvent<HTMLInputElement>,
-    imageName: string
-  ) => {
-    const file = e.target.files?.[0];
-    if (file)
-      setFormData((prevValue) => ({
-        ...prevValue,
-        images: {
-          ...prevValue.images,
-          [imageName]: file,
-        },
-      }));
-  };
-  const deleteImageHandler = (type: string) => {
-    setFormData((prevValue) => ({
-      ...prevValue,
-      images: { ...prevValue.images, [type]: null },
-    }));
-    setImageURLs((prevValue) => ({ ...prevValue, [type]: '' }));
-    if (type === 'hover') {
-      setRemoveHoverImage(true);
-    }
-    if (type === 'main' && mainFileInputRef.current) {
-      mainFileInputRef.current.value = '';
-    }
-    if (type === 'hover' && hoverFileInputRef.current) {
-      hoverFileInputRef.current.value = '';
     }
   };
 
@@ -509,45 +477,12 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
           ]}
         />
         {additionalInfo}
-        <label htmlFor='main'>Add image:</label>
-        {imageURLs.main && (
-          <div className='img'>
-            <span
-              className='remove-button'
-              onClick={() => deleteImageHandler('main')}
-            >
-              <span className='caption'>Delete image</span>❌
-            </span>
-            <img src={imageURLs.main} alt='Product' />
-          </div>
-        )}
-        {errors.image && <p className='invalid'>{errors.image}</p>}
-        <input
-          type='file'
-          id='main'
-          name='main'
-          ref={mainFileInputRef}
-          onChange={(e) => handleImageChange(e, 'main')}
-          className={errors.image ? 'invalid' : ''}
-        />
-        <label htmlFor='hover'>Add hover-image(Optional):</label>
-        {imageURLs.hover && (
-          <div className='img'>
-            <span
-              className='remove-button'
-              onClick={() => deleteImageHandler('hover')}
-            >
-              <span className='caption'>Delete image</span>❌
-            </span>
-            <img src={imageURLs.hover} alt='Product' />
-          </div>
-        )}
-        <input
-          type='file'
-          id='hover'
-          name='hover'
-          ref={hoverFileInputRef}
-          onChange={(e) => handleImageChange(e, 'hover')}
+        <ImageInputs
+          inputError={errors.image}
+          setFormData={setFormData}
+          setRemoveHoverImage={setRemoveHoverImage}
+          setImageURLs={setImageURLs}
+          imageURLs={imageURLs}
         />
         <Input
           inputType='textarea'
