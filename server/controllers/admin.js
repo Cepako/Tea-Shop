@@ -1,4 +1,5 @@
 const Product = require('../models/product');
+const User = require('../models/user');
 
 const fileHelper = require('../util/file');
 
@@ -153,6 +154,20 @@ exports.deleteProduct = (req, res, next) => {
       fileHelper.deleteFile(result.images.main);
       if (result.images.hover) fileHelper.deleteFile(result.images.hover);
       res.status(200).json({ message: 'Deleted product.' });
+    })
+    .catch((err) => {
+      if (!err.statusCode) err.statusCode = 500;
+      next(err);
+    });
+};
+
+exports.getUsers = (req, res, next) => {
+  User.find()
+    .then((users) => {
+      res.status(200).json({
+        message: 'Fetched users successfully.',
+        users,
+      });
     })
     .catch((err) => {
       if (!err.statusCode) err.statusCode = 500;

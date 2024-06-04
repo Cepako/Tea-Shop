@@ -59,6 +59,7 @@ const Products: React.FC = () => {
       <table>
         <thead>
           <tr>
+            <th>#</th>
             <th></th>
             <th>Name</th>
             <th>Price</th>
@@ -69,8 +70,9 @@ const Products: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {products.map((prod) => (
+          {products.map((prod, i) => (
             <Product
+              number={++i}
               key={prod._id}
               details={prod}
               onProductDeleted={refreshProducts}

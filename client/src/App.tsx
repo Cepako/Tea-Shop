@@ -18,7 +18,7 @@ import Products, {
   loader as productsLoader,
 } from './components/admin/Products';
 import ProductForm from './components/admin/ProductForm';
-import Users from './components/admin/Users';
+import Users, { loader as usersLoader } from './components/admin/Users';
 import Orders from './components/admin/Orders';
 import AdminProductDetails from './components/admin/AdminProductDetails';
 import EditProduct from './components/admin/EditProduct';
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
       { path: 'product', element: <ProductForm isEdit={false} /> },
       { path: ':productId', element: <AdminProductDetails /> },
       { path: ':productId/edit', element: <EditProduct /> },
-      { path: 'users', element: <Users /> },
+      { path: 'users', element: <Users />, loader: usersLoader },
       { path: 'orders', element: <Orders /> },
     ],
   },

@@ -34,5 +34,6 @@ router.put(
   adminController.updateProduct
 );
 router.delete('/product/:prodId', adminController.deleteProduct);
+router.get('/users', adminController.getUsers);
 
 module.exports = router;

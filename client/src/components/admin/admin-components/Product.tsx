@@ -5,6 +5,7 @@ import './Product.scss';
 import { useNavigate } from 'react-router-dom';
 
 interface ProductProps {
+  number: number;
   details: {
     _id: string;
     type: string;
@@ -22,6 +23,7 @@ interface ProductProps {
 }
 
 const Product: React.FC<ProductProps> = ({
+  number,
   details,
   onProductDeleted,
   notifySuccess,
@@ -70,6 +72,7 @@ const Product: React.FC<ProductProps> = ({
         </button>
       </Modal>
       <tr className='admin-product'>
+        <td>{number}</td>
         <td>
           <img
             src={`http://localhost:8080/images/${images.main}`}
