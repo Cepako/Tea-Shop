@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  ChangeEvent,
-  FormEvent,
-} from 'react';
+import React, { useState, useRef, useEffect, FormEvent } from 'react';
 import { ToastContainer, toast, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -12,6 +6,7 @@ import './ProductForm.scss';
 import { useNavigate } from 'react-router-dom';
 import Input from './admin-components/Input';
 import ImageInputs from './admin-components/ImageInputs';
+import ColorInput from './admin-components/ColorInput';
 
 export interface FormDataInterface {
   name: string;
@@ -252,52 +247,6 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
     }
   };
 
-  const handleFirstColorChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    let { value } = e.target;
-    setFormData((prevValue) => ({
-      ...prevValue,
-      color: [value, prevValue.color ? prevValue.color[1] : ''],
-    }));
-  };
-  const handleSecondColorChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    let { value } = e.target;
-
-    setFormData((prevValue) => ({
-      ...prevValue,
-      color: [prevValue.color ? prevValue.color[0] : '', value],
-    }));
-  };
-
-  const firstColorOptions = availableColors.map((color) => (
-    <option
-      key={color}
-      value={color}
-      disabled={color === (formData.color ? formData.color[1] : '')}
-    >
-      {color}
-    </option>
-  ));
-
-  const secondColorOptions = availableColors.map((color) => (
-    <option
-      key={color}
-      value={color}
-      disabled={color === (formData.color ? formData.color[0] : '')}
-    >
-      {color}
-    </option>
-  ));
-
-  const deleteColorHandler = (id: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      color:
-        id === 'first'
-          ? ['', prev.color ? prev.color[1] : '']
-          : [prev.color ? prev.color[0] : '', ''],
-    }));
-  };
-
   let additionalInfo = <></>;
 
   if (formData.type !== 'default') {
@@ -334,55 +283,21 @@ const ProductForm: React.FC<ProductFormProps> = ({ isEdit = false, id }) => {
         ))
       : (additionalInfo = (
           <>
-            <label htmlFor='first-color'>Choose first color:</label>
-            <div className='color'>
-              <select
-                name='first-color'
-                id='first-color'
-                value={
-                  formData.color![0] === '' ? 'default' : formData.color![0]
-                }
-                onChange={handleFirstColorChange}
-              >
-                <option value='default' disabled>
-                  Select first color
-                </option>
-                {firstColorOptions}
-              </select>
-              {formData.color && formData.color[0] && (
-                <span
-                  className='remove-button'
-                  onClick={() => deleteColorHandler('first')}
-                >
-                  <span className='caption'>Delete first color</span>❌
-                </span>
-              )}
-            </div>
-            <label htmlFor='second-color'>Choose second color:</label>
-            {errors.color && <p className='invalid'>{errors.color}</p>}
-            <div className='color'>
-              <select
-                name='second-color'
-                id='second-color'
-                value={
-                  formData.color![1] === '' ? 'default' : formData.color![1]
-                }
-                onChange={handleSecondColorChange}
-              >
-                <option value='default' disabled>
-                  Select second color
-                </option>
-                {secondColorOptions}
-              </select>
-              {formData.color && formData.color[1] && (
-                <span
-                  className='remove-button'
-                  onClick={() => deleteColorHandler('second')}
-                >
-                  <span className='caption'>Delete second color</span>❌
-                </span>
-              )}
-            </div>
+            <ColorInput
+              htmlFor='first-color'
+              labelContent='Choose first color:'
+              setFormData={setFormData}
+              formDataValue={formData}
+              availableColors={availableColors}
+            />
+            <ColorInput
+              htmlFor='second-color'
+              labelContent='Choose second color:'
+              inputError={errors.color}
+              setFormData={setFormData}
+              formDataValue={formData}
+              availableColors={availableColors}
+            />
           </>
         ));
   }
