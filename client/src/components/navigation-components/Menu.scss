@@ -8,12 +8,15 @@
   background-color: #242a35;
   color: #ffffff;
   transition: 0.5s ease-out;
-  p {
+  a.log-in {
     margin-block: 9%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 300;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
     img {
       margin-right: 1%;
       width: 5%;
@@ -139,7 +142,7 @@
     display: flex;
     justify-content: space-between;
 
-    p {
+    a.log-in {
       position: absolute;
       right: 4%;
       top: 60%;
@@ -199,7 +202,7 @@
 }
 @media screen and (min-width: 1300px) {
   .menu {
-    p {
+    a.log-in {
       img {
         width: 20%;
       }
@@ -212,7 +215,7 @@
 }
 @media screen and (min-width: 1400px) {
   .menu {
-    p {
+    a.log-in {
       right: 2%;
       img {
         width: 15%;

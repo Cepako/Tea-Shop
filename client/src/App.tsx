@@ -22,6 +22,7 @@ import Users, { loader as usersLoader } from './components/admin/Users';
 import Orders from './components/admin/Orders';
 import AdminProductDetails from './components/admin/AdminProductDetails';
 import EditProduct from './components/admin/EditProduct';
+import Login from './components/pages/Login';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
       { path: 'about', element: <About /> },
       { path: 'blog', element: <Blog /> },
       { path: 'contact', element: <Contact /> },
+      { path: 'login', element: <Login /> },
     ],
   },
   {

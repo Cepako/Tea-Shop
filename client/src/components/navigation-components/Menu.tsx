@@ -1,6 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import Modal, { ModalMethods } from '../Modal';
+import React, { useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import userIcon from '../../assets/user-icon.svg';
 
 import './Menu.scss';
@@ -9,8 +8,6 @@ const Menu: React.FC = () => {
   const [isMenuClicked, setIsMenuClicked] = useState(false);
   const [barStatus, setBarsStatus] = useState('burger__bar unclicked');
   const [menuStatus, setMenuStatus] = useState('menu');
-
-  const dialog = useRef<ModalMethods>(null);
 
   const body = document.querySelector('body')! as HTMLBodyElement;
 
@@ -32,20 +29,16 @@ const Menu: React.FC = () => {
 
   return (
     <>
-      <Modal ref={dialog} closeButtonValue='Got it'>
-        <h2>I will add this function in the near future</h2>
-        <p>Please be patient</p>
-      </Modal>
       <div className='burger' onClick={handleBurgerClick}>
         <div className={barStatus}></div>
         <div className={barStatus}></div>
         <div className={barStatus}></div>
       </div>
       <div className={menuStatus}>
-        <p className='log-in' onClick={() => dialog.current?.open()}>
+        <Link to='/login' className='log-in' onClick={closeMenu}>
           <img src={userIcon} alt='user icon' />
           Log In
-        </p>
+        </Link>
         <ul className='list'>
           <li className='list__item'>
             <NavLink to='/teas' onClick={closeMenu}>
