@@ -1,6 +1,8 @@
 const express = require('express');
 const { body } = require('express-validator');
 const authController = require('../controllers/auth');
+const multer = require('multer');
+const upload = multer();
 
 const User = require('../models/user');
 
@@ -28,6 +30,6 @@ router.put(
   ],
   authController.signup
 );
-router.post('/login', authController.login);
+router.post('/login', upload.none(), authController.login);
 
 module.exports = router;

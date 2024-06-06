@@ -25,6 +25,9 @@
     }
     form {
       margin-block: 5%;
+      p.invalid {
+        color: rgb(218, 45, 45);
+      }
       input {
         margin-block: 10px;
         padding: 5px 10px;
@@ -62,6 +65,7 @@
         transition: 0.3s;
         &:hover {
           background-color: #599b13;
+          cursor: pointer;
         }
       }
     }
