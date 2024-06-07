@@ -3,28 +3,16 @@ import { Link } from 'react-router-dom';
 
 import './Login.scss';
 import './Contact.scss';
-import eye from '../../assets/view-icon.svg';
-import eyeOff from '../../assets/eye-password-hide.svg';
+import PasswordInput from './login-components/PasswordInput';
 
 const Login: React.FC = () => {
   const [loginData, setLoginData] = useState({
     email: '',
     password: '',
   });
-  const [type, setType] = useState('password');
-  const [icon, setIcon] = useState(eye);
   const [loginError, setLoginError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleToggleIcon = () => {
-    if (type === 'password') {
-      setType('text');
-      setIcon(eyeOff);
-    } else {
-      setType('password');
-      setIcon(eye);
-    }
-  };
   const handleFormChange = (e: ChangeEvent<HTMLInputElement>) => {
     setLoginError('');
     const { name, value } = e.target;
@@ -77,24 +65,12 @@ const Login: React.FC = () => {
             onChange={(e) => handleFormChange(e)}
             onBlur={(e) => handleFormChange(e)}
           />
-          <div className='password'>
-            <input
-              type={type}
-              value={loginData.password}
-              onChange={(e) => handleFormChange(e)}
-              onBlur={(e) => handleFormChange(e)}
-              name='password'
-              placeholder='Password'
-              required
-            />
-            <span className='icon'>
-              <img
-                src={icon}
-                onClick={handleToggleIcon}
-                alt={type === 'password' ? 'eye' : 'eye off'}
-              />
-            </span>
-          </div>
+          <PasswordInput
+            passValue={loginData.password}
+            handleFormChange={handleFormChange}
+            placeholder='Password'
+            name='password'
+          />
           <button type='submit' disabled={isSubmitting}>
             {isSubmitting ? 'Logging in' : 'Log in'}
           </button>
