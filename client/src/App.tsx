@@ -23,6 +23,7 @@ import Orders from './components/admin/Orders';
 import AdminProductDetails from './components/admin/AdminProductDetails';
 import EditProduct from './components/admin/EditProduct';
 import Login from './components/pages/Login';
+import Signup from './components/pages/Signup';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
       { path: 'blog', element: <Blog /> },
       { path: 'contact', element: <Contact /> },
       { path: 'login', element: <Login /> },
+      { path: 'signup', element: <Signup /> },
     ],
   },
   {

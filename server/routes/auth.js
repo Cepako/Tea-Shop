@@ -10,6 +10,7 @@ const router = express.Router();
 
 router.put(
   '/signup',
+  upload.none(),
   [
     body('email')
       .isEmail()

@@ -20,7 +20,7 @@ const Users: React.FC = () => {
         <tbody>
           {Array.isArray(users) &&
             users.map((user, i) => (
-              <tr>
+              <tr key={user.email}>
                 <td>{++i}</td>
                 <td>{user.email}</td>
                 <td>{user.name}</td>
