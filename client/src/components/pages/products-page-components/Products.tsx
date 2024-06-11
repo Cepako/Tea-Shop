@@ -1,13 +1,30 @@
 import React, { MouseEvent } from 'react';
-import data from '../../../productsData';
-import Card from '../../slider/Card';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { addToCart } from '../../../redux/cart';
 
+import Card from '../../slider/Card';
+
 import './Products.scss';
 
-const Products: React.FC = () => {
+interface ProductsProps {
+  data: {
+    _id: string;
+    type: string;
+    name: string;
+    price: number;
+    images: {
+      main: string;
+      hover: string;
+    };
+    group?: string;
+    size?: string;
+    color?: string[];
+  }[];
+}
+
+const Products: React.FC<ProductsProps> = ({ data }) => {
+  console.log(data);
   const filters = useAppSelector((state) => state.filter);
 
   const location = useLocation();
@@ -44,7 +61,6 @@ const Products: React.FC = () => {
   const productsList =
     location.pathname === '/extras'
       ? data
-          .filter((product) => product.collection === 'extras')
           .filter((product) => {
             if (
               Number(product.price) < filters.extras.price[0] ||
@@ -67,30 +83,38 @@ const Products: React.FC = () => {
           .map((product) => (
             <div key={product.name}>
               <Card
-                product_img={product.product_img}
-                hover_img={product.hover_img}
+                product_img={`http://localhost:8080/images/${product.images.main}`}
+                hover_img={
+                  product.images.hover
+                    ? `http://localhost:8080/images/${product.images.hover}`
+                    : ''
+                }
                 name={product.name}
-                price={product.price}
-                code={product.code}
+                price={`${product.price.toFixed(2)}`}
+                code={product._id}
                 color={product.color}
               />
               <button
-                onClick={() => {
-                  navigate(`/extras/${product.link}`, {
-                    state: { prevPath: '/extras' },
-                  });
-                }}
+                onClick={(e) =>
+                  addToCartHandler(
+                    e as MouseEvent<HTMLButtonElement>,
+                    `http://localhost:8080/images/${product.images.main}`,
+                    product.name,
+                    `${product.price}`,
+                    product._id,
+                    product.size!
+                  )
+                }
               >
                 Add to Cart
               </button>
             </div>
           ))
       : data
-          .filter((product) => product.collection !== 'extras')
           .filter((product) => {
             if (
               filters.teas.collection !== 'all' &&
-              product.collection !== filters.teas.collection
+              product.group !== filters.teas.collection
             ) {
               return false;
             }
@@ -112,21 +136,25 @@ const Products: React.FC = () => {
           .map((product) => (
             <div key={product.name}>
               <Card
-                product_img={product.product_img}
-                hover_img={product.hover_img}
+                product_img={`http://localhost:8080/images/${product.images.main}`}
+                hover_img={
+                  product.images.hover
+                    ? `http://localhost:8080/images/${product.images.hover}`
+                    : ''
+                }
                 name={product.name}
-                price={product.price}
-                code={product.code}
+                price={`${product.price.toFixed(2)}`}
+                code={product._id}
                 size={product.size}
               />
               <button
                 onClick={(e) =>
                   addToCartHandler(
                     e as MouseEvent<HTMLButtonElement>,
-                    product.product_img,
+                    `http://localhost:8080/images/${product.images.main}`,
                     product.name,
-                    product.price,
-                    product.code,
+                    `${product.price}`,
+                    product._id,
                     product.size!
                   )
                 }

@@ -24,6 +24,18 @@
       }
     }
   }
+  .spinner {
+    margin: 25% auto 15%;
+    width: 80%;
+    justify-content: center;
+  }
+  .error {
+    margin: 35% auto 15%;
+    width: 80%;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
 }
 @media screen and (min-width: 500px) {
   .extras-page {
@@ -36,8 +48,24 @@
     }
   }
 }
+@media screen and (min-width: 768px) {
+  .extras-page {
+    .spinner {
+      margin: 15% auto;
+    }
+    .error {
+      margin: 20% auto 15%;
+    }
+  }
+}
 @media screen and (min-width: 1024px) {
   .extras-page {
+    .spinner {
+      margin: 10% auto;
+    }
+    .error {
+      margin: 10% auto;
+    }
     .header {
       &__image {
         background-attachment: fixed;
@@ -60,6 +88,12 @@
 }
 @media screen and (min-width: 1300px) {
   .extras-page {
+    .spinner {
+      margin: 7.5% auto;
+    }
+    .error {
+      margin: 7.5% auto;
+    }
     .header {
       &__image {
         h1 {

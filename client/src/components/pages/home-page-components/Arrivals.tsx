@@ -8,7 +8,7 @@ import './Arrivals.scss';
 
 const Arrivals: React.FC = () => {
   const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState('');
 
   useEffect(() => {

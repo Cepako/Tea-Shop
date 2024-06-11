@@ -66,7 +66,6 @@ const Card: React.FC<CardModel> = ({
   };
 
   let productLink = name.replace('& ', '').replace(/\s+/g, '-').toLowerCase();
-
   return (
     <div
       className='card'
@@ -80,7 +79,7 @@ const Card: React.FC<CardModel> = ({
       <img
         onClick={redirectHandle}
         className='card__img'
-        src={over ? hover_img : product_img}
+        src={over ? (hover_img !== '' ? hover_img : product_img) : product_img}
         alt={over ? 'herbs' : 'teabag'}
       />
 
