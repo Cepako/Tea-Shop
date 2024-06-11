@@ -1,11 +1,13 @@
 export default interface SliderModel {
   removeArrowOnDeviceType: ('desktop' | 'tablet' | 'mobile')[];
   data: {
-    product_img: string;
-    hover_img: string;
+    images: {
+      main: string;
+      hover?: string;
+    };
     name: string;
     price: string;
-    code: string;
+    _id: string;
     size?: string;
     color?: string[];
   }[];

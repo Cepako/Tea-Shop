@@ -27,11 +27,11 @@ const Slider: React.FC<SliderModel> = ({ removeArrowOnDeviceType, data }) => {
   const productsList = data.map((card) => (
     <Card
       key={card.name}
-      product_img={card.product_img}
-      hover_img={card.hover_img}
+      product_img={`http://localhost:8080/images/${card.images.main}`}
+      hover_img={`http://localhost:8080/images/${card.images.hover}`}
       name={card.name}
       price={card.price}
-      code={card.code}
+      code={card._id}
       size={card.size}
       color={card.color}
     />

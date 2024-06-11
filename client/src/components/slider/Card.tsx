@@ -88,7 +88,9 @@ const Card: React.FC<CardModel> = ({
         {name}
       </h3>
 
-      <p className='card__price' onClick={redirectHandle}>{`$${price}`}</p>
+      <p className='card__price' onClick={redirectHandle}>{`$${Number(
+        price
+      ).toFixed(2)}`}</p>
 
       <p className='card__view' onClick={quickView}>
         Quick View
