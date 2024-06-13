@@ -11,6 +11,9 @@
     display: block;
     width: 95%;
     height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    overflow: hidden;
   }
 
   &__name {
@@ -23,9 +26,11 @@
     font-style: italic;
     background-color: #fff;
   }
+
   &__price {
     font-weight: 500;
   }
+
   &__view {
     position: absolute;
     top: 75%;
@@ -39,12 +44,14 @@
     cursor: pointer;
     transition: 0.3s;
   }
+
   &:hover {
     .card__view {
       transform: translateY(-100%);
     }
   }
 }
+
 @media screen and (min-width: 1024px) {
   .card {
     &__view {
@@ -52,6 +59,7 @@
     }
   }
 }
+
 @media screen and (min-width: 1100px) {
   .card {
     &__view {
@@ -59,6 +67,7 @@
     }
   }
 }
+
 @media screen and (min-width: 1200px) {
   .card {
     &__view {
@@ -66,6 +75,7 @@
     }
   }
 }
+
 @media screen and (min-width: 1370px) {
   .card {
     &__view {
@@ -73,6 +83,7 @@
     }
   }
 }
+
 @media screen and (min-width: 1500px) {
   .card {
     &__view {
@@ -80,6 +91,7 @@
     }
   }
 }
+
 @media screen and (min-width: 1600px) {
   .card {
     &__view {
@@ -87,6 +99,7 @@
     }
   }
 }
+
 @media screen and (min-width: 1700px) {
   .card {
     &__view {
@@ -94,6 +107,7 @@
     }
   }
 }
+
 @media screen and (min-width: 1850px) {
   .card {
     &__view {
