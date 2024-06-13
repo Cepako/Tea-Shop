@@ -1,15 +1,16 @@
-import React, { ChangeEvent, MouseEvent, useRef, useState } from 'react';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
-import { useAppDispatch } from '../../../redux/hooks';
-import { addToCart } from '../../../redux/cart';
-import Modal, { ModalMethods } from '../../Modal';
-import ImageChoser from './ImageChoser';
-import ColorInputs from './ColorInputs';
-import Description from './Description';
+import React, { ChangeEvent, MouseEvent, useRef, useState } from "react";
+import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useAppDispatch } from "../../../redux/hooks";
+import { addToCart } from "../../../redux/cart";
+import Modal, { ModalMethods } from "../../Modal";
+import ImageChooser from "./ImageChooser";
+import ColorInputs from "./ColorInputs";
+import Description from "./Description";
 
-import './Product.scss';
+import "./Product.scss";
 
 interface PInterface {
+  type: string;
   name: string;
   price: string;
   code: string;
@@ -22,6 +23,7 @@ interface PInterface {
 
 const Product: React.FC<PInterface> = ({
   name,
+  type,
   price,
   code,
   size,
@@ -31,7 +33,7 @@ const Product: React.FC<PInterface> = ({
   product_description,
 }) => {
   const [productQuantity, setProductQuantity] = useState(1);
-  const [selectedColor, setSelectedColor] = useState('');
+  const [selectedColor, setSelectedColor] = useState("");
   const [displayWarning, setDisplayWarning] = useState(false);
 
   const dialog = useRef<ModalMethods>(null);
@@ -41,21 +43,19 @@ const Product: React.FC<PInterface> = ({
 
   const location = useLocation();
 
-  const type = size === undefined ? 'extras' : 'teas';
-
   const addToCartHandler = (e: MouseEvent) => {
     const afterAdd = () => {
-      if (window.innerWidth < 1024) navigate('/cart');
+      if (window.innerWidth < 1024) navigate("/cart");
       else {
         const cartSideBar = document.querySelector(
-          '.cart-sidebar'
+          ".cart-sidebar",
         ) as HTMLDivElement;
-        if (cartSideBar) cartSideBar.classList.add('active');
+        if (cartSideBar) cartSideBar.classList.add("active");
       }
       e.stopPropagation();
     };
 
-    if (type === 'teas' || color![0] === undefined) {
+    if (type === "tea" || color![0] === undefined) {
       const payload = {
         name,
         price,
@@ -67,7 +67,7 @@ const Product: React.FC<PInterface> = ({
       dispatch(addToCart(payload));
       afterAdd();
     } else {
-      if (selectedColor === '') {
+      if (selectedColor === "") {
         setDisplayWarning(true);
       } else {
         const payload = {
@@ -91,17 +91,17 @@ const Product: React.FC<PInterface> = ({
   };
 
   const breadCrumbs =
-    location.state.prevPath === '/' ? (
-      <p className='tea-product__breadcrumbs'>
-        <Link to='/'>Home</Link> / {name}
+    location.state.prevPath === "/" ? (
+      <p className="tea-product__breadcrumbs">
+        <Link to="/">Home</Link> / {name}
       </p>
     ) : (
-      <p className='tea-product__breadcrumbs'>
-        <Link to='/'>Home</Link> /
-        {type === 'extras' ? (
-          <Link to='/extras'> Extras </Link>
+      <p className="tea-product__breadcrumbs">
+        <Link to="/">Home</Link> /
+        {type === "extras" ? (
+          <Link to="/extras"> Extras </Link>
         ) : (
-          <Link to='/teas'> Teas </Link>
+          <Link to="/teas"> Teas </Link>
         )}
         / {name}
       </p>
@@ -109,7 +109,7 @@ const Product: React.FC<PInterface> = ({
 
   const handleRadioChange = (color: string) => {
     if (selectedColor === color) {
-      setSelectedColor('');
+      setSelectedColor("");
     } else {
       setSelectedColor(color);
       setDisplayWarning(false);
@@ -117,14 +117,14 @@ const Product: React.FC<PInterface> = ({
   };
 
   return (
-    <div className='tea-product'>
+    <div className="tea-product">
       {breadCrumbs}
-      <Modal ref={dialog} closeButtonValue='Got it'>
+      <Modal ref={dialog} closeButtonValue="Got it">
         <h2>We can't accept online orders right now</h2>
         <p>Please contact us to complete your purchase.</p>
       </Modal>
-      {type === 'extras' && color![0] ? (
-        <ImageChoser
+      {type === "extras" && color![0] ? (
+        <ImageChooser
           product_img={product_img}
           hover_img={hover_img}
           name={name}
@@ -132,14 +132,14 @@ const Product: React.FC<PInterface> = ({
           firstColor={color![0]}
         />
       ) : (
-        <img className='tea-product__image' src={product_img} alt='tea bag' />
+        <img className="tea-product__image" src={product_img} alt="tea bag" />
       )}
 
-      <div className='description'>
-        <h2 className='description__name'>{name}</h2>
-        <p className='description__price'>${price}</p>
+      <div className="description">
+        <h2 className="description__name">{name}</h2>
+        <p className="description__price">${Number(price).toFixed(2)}</p>
         <form>
-          {type === 'extras' ? (
+          {type === "extras" ? (
             color![0] && (
               <ColorInputs
                 firstColor={color![0]}
@@ -147,30 +147,30 @@ const Product: React.FC<PInterface> = ({
                 selectedColor={selectedColor}
                 handleRadioChange={handleRadioChange}
                 displayWarning={displayWarning}
-                firstLabel='product-first-color'
-                secondLabel='product-second-color'
+                firstLabel="product-first-color"
+                secondLabel="product-second-color"
               />
             )
           ) : (
             <>
-              <label htmlFor='size'>Size</label>
-              <select name='size' id='size'>
+              <label htmlFor="size">Size</label>
+              <select name="size" id="size">
                 <option value={size}>{size}</option>
               </select>
             </>
           )}
-          <label htmlFor='quantity'>Quantity</label>
+          <label htmlFor="quantity">Quantity</label>
           <input
-            type='number'
-            id='quantity'
+            type="number"
+            id="quantity"
             value={productQuantity}
             onChange={inputHandler}
           />
         </form>
-        <button className='add-to-cart' onClick={addToCartHandler}>
+        <button className="add-to-cart" onClick={addToCartHandler}>
           Add to Cart
         </button>
-        <button className='buy-now' onClick={() => dialog.current?.open()}>
+        <button className="buy-now" onClick={() => dialog.current?.open()}>
           Buy Now
         </button>
         <Description product_description={product_description} />

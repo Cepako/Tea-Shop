@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import './ImageChoser.scss';
+import "./ImageChooser.scss";
 
 interface ImageChoserModel {
   product_img: string;
@@ -10,7 +10,7 @@ interface ImageChoserModel {
   selectedColor: string;
 }
 
-const ImageChoser: React.FC<ImageChoserModel> = ({
+const ImageChooser: React.FC<ImageChoserModel> = ({
   product_img,
   hover_img,
   name,
@@ -25,17 +25,17 @@ const ImageChoser: React.FC<ImageChoserModel> = ({
   }, [selectedColor, firstColor, product_img, hover_img]);
 
   return (
-    <div className='image-choser'>
+    <div className="image-choser">
       <img src={chosenImage} alt={name} />
       {!selectedColor && (
-        <div className='image-choser__dots'>
+        <div className="image-choser__dots">
           <span
             onClick={() => setChosenImage(product_img)}
-            className={chosenImage === product_img ? 'active' : ''}
+            className={chosenImage === product_img ? "active" : ""}
           ></span>
           <span
             onClick={() => setChosenImage(hover_img)}
-            className={chosenImage === hover_img ? 'active' : ''}
+            className={chosenImage === hover_img ? "active" : ""}
           ></span>
         </div>
       )}
@@ -43,4 +43,4 @@ const ImageChoser: React.FC<ImageChoserModel> = ({
   );
 };
 
-export default ImageChoser;
+export default ImageChooser;

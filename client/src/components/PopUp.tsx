@@ -1,15 +1,15 @@
-import React, { MouseEvent, ChangeEvent, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../redux/hooks';
-import { addToCart } from '../redux/cart';
-import ColorInputs from './pages/product-details-components/ColorInputs';
-import ImageChoser from './pages/product-details-components/ImageChoser';
+import React, { MouseEvent, ChangeEvent, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAppSelector, useAppDispatch } from "../redux/hooks";
+import { addToCart } from "../redux/cart";
+import ColorInputs from "./pages/product-details-components/ColorInputs";
+import ImageChooser from "./pages/product-details-components/ImageChooser";
 
-import './PopUp.scss';
+import "./PopUp.scss";
 
 const PopUp: React.FC = () => {
   const [popUpQuantity, setPopUpQuantity] = useState(1);
-  const [selectedColor, setSelectedColor] = useState('');
+  const [selectedColor, setSelectedColor] = useState("");
   const [displayWarning, setDisplayWarning] = useState(false);
 
   const { name, price, code, size, color, product_img, hover_img } =
@@ -21,12 +21,12 @@ const PopUp: React.FC = () => {
   const location = useLocation();
 
   const closePopUp = () => {
-    const wrapperElement = document.querySelector('.wrapper') as HTMLDivElement;
+    const wrapperElement = document.querySelector(".wrapper") as HTMLDivElement;
 
     if (wrapperElement) {
-      wrapperElement.style.display = 'none';
+      wrapperElement.style.display = "none";
       setPopUpQuantity(1);
-      setSelectedColor('');
+      setSelectedColor("");
       setDisplayWarning(false);
     }
   };
@@ -34,9 +34,9 @@ const PopUp: React.FC = () => {
   const addToCartHandler = (e: MouseEvent) => {
     const afterAdd = () => {
       const cartSideBar = document.querySelector(
-        '.cart-sidebar'
+        ".cart-sidebar",
       ) as HTMLDivElement;
-      if (cartSideBar) cartSideBar.classList.add('active');
+      if (cartSideBar) cartSideBar.classList.add("active");
       closePopUp();
       e.stopPropagation();
     };
@@ -52,7 +52,7 @@ const PopUp: React.FC = () => {
       dispatch(addToCart(payload));
       afterAdd();
     } else {
-      if (selectedColor === '') {
+      if (selectedColor === "") {
         setDisplayWarning(true);
       } else {
         const payload = {
@@ -79,20 +79,20 @@ const PopUp: React.FC = () => {
     closePopUp();
     if (size === undefined) {
       navigate(`/extras/${productLink}`, {
-        state: { prevPath: location.pathname === '/' ? '/' : '/extras' },
+        state: { prevPath: location.pathname === "/" ? "/" : "/extras" },
       });
     } else {
       navigate(`/teas/${productLink}`, {
-        state: { prevPath: location.pathname === '/' ? '/' : '/teas' },
+        state: { prevPath: location.pathname === "/" ? "/" : "/teas" },
       });
     }
   };
 
-  const productLink = name.replace('& ', '').replace(/\s+/g, '-').toLowerCase();
+  const productLink = name.replace("& ", "").replace(/\s+/g, "-").toLowerCase();
 
   const handleRadioChange = (color: string) => {
     if (selectedColor === color) {
-      setSelectedColor('');
+      setSelectedColor("");
     } else {
       setSelectedColor(color);
       setDisplayWarning(false);
@@ -100,14 +100,14 @@ const PopUp: React.FC = () => {
   };
 
   return (
-    <div className='wrapper'>
+    <div className="wrapper">
       {size !== undefined || color !== undefined ? (
-        <div className='pop-up'>
-          <span className='pop-up__close' onClick={closePopUp}>
+        <div className="pop-up">
+          <span className="pop-up__close" onClick={closePopUp}>
             x
           </span>
           {size === undefined && color![0] ? (
-            <ImageChoser
+            <ImageChooser
               key={product_img}
               product_img={product_img}
               hover_img={hover_img}
@@ -116,13 +116,13 @@ const PopUp: React.FC = () => {
               firstColor={color![0]}
             />
           ) : (
-            <img src={product_img} alt='tea bag' />
+            <img src={product_img} alt="tea bag" />
           )}
 
-          <div className='details'>
-            <h3 className='details__name'>{name}</h3>
-            <p className='details__price'>${price}</p>
-            <p className='details__code'>{code}</p>
+          <div className="details">
+            <h3 className="details__name">{name}</h3>
+            <p className="details__price">${price}</p>
+            <p className="details__code">{code}</p>
             <form>
               {size === undefined ? (
                 color![0] && (
@@ -132,22 +132,22 @@ const PopUp: React.FC = () => {
                     selectedColor={selectedColor}
                     handleRadioChange={handleRadioChange}
                     displayWarning={displayWarning}
-                    firstLabel='popUp-first-color'
-                    secondLabel='popUp-second-color'
+                    firstLabel="popUp-first-color"
+                    secondLabel="popUp-second-color"
                   />
                 )
               ) : (
                 <>
-                  <label htmlFor='size'>Size</label>
-                  <select name='size' id='size'>
+                  <label htmlFor="size">Size</label>
+                  <select name="size" id="size">
                     <option value={size}>{size}</option>
                   </select>
                 </>
               )}
-              <label htmlFor='quantity'>Quantity</label>
+              <label htmlFor="quantity">Quantity</label>
               <input
-                type='number'
-                id='quantity'
+                type="number"
+                id="quantity"
                 value={popUpQuantity}
                 onChange={inputHandler}
               />
