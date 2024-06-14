@@ -3,31 +3,39 @@
   background-color: #242a35;
   color: white;
   border-bottom: 1px solid black;
+
   &__box {
     padding-bottom: 15%;
     margin: 0 auto;
     width: 90%;
+
     h2 {
       margin-bottom: 5px;
     }
+
     .logo {
       width: 50px;
       height: 50px;
     }
+
     p {
       color: grey;
       font-size: 0.9em;
+
       a {
         color: white;
         font-weight: bold;
         text-decoration: none;
       }
     }
+
     form {
       margin-block: 5%;
+
       p.invalid {
         color: rgb(218, 45, 45);
       }
+
       input {
         margin-block: 10px;
         padding: 5px 10px;
@@ -39,6 +47,7 @@
         border: 1px solid grey;
         outline: none;
       }
+
       .password {
         position: relative;
 
@@ -49,11 +58,13 @@
           display: flex;
           align-items: center;
           height: 100%;
+
           img {
             height: 50%;
           }
         }
       }
+
       button {
         padding: 5px 10px;
         width: 100%;
@@ -63,11 +74,89 @@
         border-radius: 10px;
         font-size: 1.1em;
         transition: 0.3s;
+
         &:hover {
           background-color: #599b13;
           cursor: pointer;
         }
       }
     }
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .login-page {
+    padding-top: 40%;
+
+    &__box {
+      width: 70%;
+    }
+  }
+}
+
+@media screen and (min-width: 675px) {
+  .login-page {
+    padding-top: 40%;
+
+    &__box {
+      width: 60%;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .login-page {
+    padding-top: 30%;
+
+    &__box {
+      width: 45%;
+      padding-bottom: 10%;
+    }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .login-page {
+    padding-top: 25%;
+
+    &__box {
+      width: 40%;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .login-page {
+    padding-top: 20%;
+
+    &__box {
+      width: 35%;
+    }
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .login-page {
+    padding-top: 15%;
+
+    &__box {
+      width: 30%;
+      padding-bottom: 5%;
+    }
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .login-page {
+
+    &__box {
+      width: 25%;
+    }
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .login-page {
+    padding-top: 12.5%;
   }
 }
