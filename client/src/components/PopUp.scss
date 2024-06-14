@@ -7,18 +7,19 @@
   top: 0;
   left: 0;
   background-color: rgba($color: #777, $alpha: 0.5);
+
   .pop-up {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 75%;
-    height: 50%;
-    padding: 2%;
-    padding-bottom: 5%;
+    height: 55%;
+    padding: 2% 2% 5%;
     background-color: #fff;
     display: flex;
     justify-content: space-between;
+
     &__close {
       position: absolute;
       right: 2%;
@@ -27,46 +28,52 @@
       font-weight: 300;
       cursor: pointer;
     }
+
     img {
       width: 50%;
     }
-    .image-choser {
+
+    .image-chooser {
       width: 50%;
+
       img {
         width: 100%;
       }
     }
+
     .color-inputs {
       margin-bottom: 5%;
+
       .warning {
         left: -7%;
       }
     }
+
     .details {
       width: 45%;
+
       &__name {
         font-size: 1.5em;
         font-weight: 500;
         font-style: italic;
       }
+
       &__price {
         margin-top: 5%;
         font-weight: 300;
       }
-      &__code {
-        margin-top: 5%;
-        font-size: 0.9em;
-        font-weight: 100;
-      }
+
       form {
         margin-top: 6%;
         display: flex;
         flex-direction: column;
+
         label {
           margin-bottom: 3%;
           font-size: 0.9em;
           font-weight: 300;
         }
+
         select {
           width: 95%;
           padding: 2%;
@@ -75,6 +82,7 @@
           outline: none;
           font-weight: 300;
         }
+
         input {
           font-weight: 300;
           padding: 2%;
@@ -84,6 +92,7 @@
           outline: none;
         }
       }
+
       button {
         margin-bottom: 4%;
         width: 90%;
@@ -95,11 +104,13 @@
         border: none;
         cursor: pointer;
         transition: 0.5s;
+
         &:hover {
           background-color: rgb(119, 119, 119);
           border-color: rgb(119, 119, 119);
         }
       }
+
       span {
         display: block;
         font-size: 0.9em;
@@ -111,6 +122,7 @@
     }
   }
 }
+
 @media screen and (min-width: 1100px) {
   .wrapper {
     .pop-up {
@@ -118,23 +130,28 @@
     }
   }
 }
+
 @media screen and (min-width: 1300px) {
   .wrapper {
     .pop-up {
       width: 65%;
-      height: 55%;
+      height: 60%;
+
       img {
         width: 52%;
       }
+
       .color-inputs {
         .warning {
           left: -6%;
         }
       }
+
       .details {
         &__name {
           font-size: 1.6em;
         }
+
         &__price {
           font-size: 1.1em;
         }
@@ -143,9 +160,11 @@
           label {
             font-size: 1em;
           }
+
           select {
             font-size: 0.9em;
           }
+
           input {
             font-size: 0.9em;
             padding: 3% 2%;
@@ -155,6 +174,7 @@
     }
   }
 }
+
 @media screen and (min-width: 1500px) {
   .wrapper {
     .pop-up {
@@ -162,19 +182,20 @@
     }
   }
 }
+
 @media screen and (min-width: 1600px) {
   .wrapper {
     .pop-up {
       width: 55%;
-      height: 60%;
+      height: 65%;
     }
   }
 }
+
 @media screen and (min-width: 1900px) {
   .wrapper {
     .pop-up {
-      width: 55%;
-      height: 65%;
+
       .color-inputs {
         .warning {
           left: -5%;
