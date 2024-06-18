@@ -14,7 +14,7 @@ const Signup: React.FC = () => {
         email: '',
         password: '',
         confPassword: '',
-        phoneNumber: '',
+        contact: '',
         address: '',
     })
     const [errors, setErrors] = useState({
@@ -22,7 +22,7 @@ const Signup: React.FC = () => {
         email: '',
         password: '',
         confPassword: '',
-        phoneNumber: '',
+        contact: '',
         address: '',
     })
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -78,7 +78,7 @@ const Signup: React.FC = () => {
         if (signupData.password.trim() !== signupData.confPassword.trim()) {
             newErrors.confPassword = 'Password must be the same!'
         }
-        if (signupData.phoneNumber.replace(/[^0-9]/g, '').slice(2).length < 9) {
+        if (signupData.contact.replace(/[^0-9]/g, '').slice(2).length < 9) {
             newErrors.phoneNumber = 'Please enter a valid phone number!'
         }
         if (signupData.address.length < 5) {
@@ -134,9 +134,7 @@ const Signup: React.FC = () => {
                 confPassword: '',
             }))
         }
-        if (
-            signupData.phoneNumber.replace(/[^0-9]/g, '').slice(2).length === 9
-        ) {
+        if (signupData.contact.replace(/[^0-9]/g, '').slice(2).length === 9) {
             setErrors((prevErrors) => ({
                 ...prevErrors,
                 phoneNumber: '',
@@ -197,11 +195,11 @@ const Signup: React.FC = () => {
                         placeholder="Confirm Password"
                         name="confPassword"
                     />
-                    {errors.phoneNumber && (
-                        <p className="invalid">{errors.phoneNumber}</p>
+                    {errors.contact && (
+                        <p className="invalid">{errors.contact}</p>
                     )}
                     <PhoneNumberInput
-                        phoneValue={signupData.phoneNumber}
+                        phoneValue={signupData.contact}
                         handleFormChange={handleFormChange}
                     />
                     {errors.address && (

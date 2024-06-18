@@ -2,18 +2,22 @@ div.users {
   h2 {
     margin-bottom: 3%;
   }
+
   table {
-    width: 50%;
+    width: 99%;
     border: 1px solid black;
     border-collapse: collapse;
+
     th {
       border: 1px solid black;
       text-align: center;
       padding-block: 1%;
     }
+
     tbody {
       tr {
         border: 1px solid black;
+
         td {
           border: 1px solid black;
           text-align: center;

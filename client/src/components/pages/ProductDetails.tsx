@@ -68,7 +68,7 @@ const ProductDetails: React.FC = () => {
         const fetchProds = async () => {
             try {
                 const response = await fetch(
-                    'http://localhost:8080/shop/products'
+                    'http://localhost:8080/admin/products'
                 )
                 if (!response.ok) {
                 }
