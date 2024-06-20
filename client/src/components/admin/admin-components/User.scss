@@ -5,6 +5,11 @@
     width: 2.5%;
   }
 
+  td:nth-of-type(3),
+  td:nth-of-type(5) {
+    text-transform: capitalize;
+  }
+
   td:nth-last-of-type(1),
   td:nth-last-of-type(2) {
     width: 7.5%;

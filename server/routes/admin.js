@@ -35,8 +35,10 @@ router.put(
 );
 router.delete("/product/:prodId", adminController.deleteProduct);
 router.get("/users", adminController.getUsers);
+router.get("/user/:userId", adminController.getUser);
 router.put(
   "/user/:userId",
+  upload.none(),
   [
     body("contact")
       .trim()

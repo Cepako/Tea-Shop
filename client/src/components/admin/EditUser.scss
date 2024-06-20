@@ -1,0 +1,65 @@
+.edit-user {
+  .user-email {
+    color: darkslategray;
+    font-weight: 300;
+  }
+
+  form {
+    position: relative;
+    margin-bottom: 3%;
+    width: 35%;
+    font-size: 1em;
+
+    label {
+      position: relative;
+      margin-bottom: 10px;
+      display: block;
+      width: 100%;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 5px 5px 5px 7px;
+      font-size: 1em;
+      border-radius: 5px;
+      outline: none;
+      text-transform: capitalize;
+      border: 1px solid gray;
+
+      &:focus {
+        border: 1px solid orange;
+      }
+    }
+
+    button {
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      transform: translateX(-50%);
+      width: 50%;
+      padding: 10px 15px;
+      color: white;
+      background-color: #242a35;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: 0.5s;
+
+      &:hover {
+        background-color: #716767;
+      }
+    }
+
+    p.invalid {
+      margin-bottom: 3px;
+      font-size: 0.8em;
+      color: red;
+      font-weight: bold;
+      border: none;
+    }
+  }
+}
+

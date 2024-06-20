@@ -175,6 +175,21 @@ exports.getUsers = (req, res, next) => {
     });
 };
 
+exports.getUser = (req, res, next) => {
+  const userId = req.params.userId;
+  User.findById(userId)
+    .then((user) => {
+      res.status(200).json({
+        message: "Fetched user successfully.",
+        user,
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) err.statusCode = 500;
+      next(err);
+    });
+};
+
 exports.updateUser = (req, res, next) => {
   const errors = validationResult(req);
 
@@ -185,7 +200,7 @@ exports.updateUser = (req, res, next) => {
   }
 
   const userId = req.params.userId;
-  const { password, name, contact, address } = req.body;
+  const { name, contact, address } = req.body;
 
   User.findById(userId)
     .then((user) => {

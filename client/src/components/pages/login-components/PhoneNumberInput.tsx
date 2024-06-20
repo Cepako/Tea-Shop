@@ -21,7 +21,13 @@ const PhoneNumberInput: React.FC<InputProps> = ({
                 placeholder="Phone Number"
             >
                 {(inputProps: any) => (
-                    <input {...inputProps} type="tel" name="contact" required />
+                    <input
+                        {...inputProps}
+                        type="tel"
+                        name="contact"
+                        id="contact"
+                        required
+                    />
                 )}
             </InputMask>
         </div>

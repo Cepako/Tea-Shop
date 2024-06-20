@@ -1,10 +1,11 @@
 .admin-panel {
   position: relative;
   min-height: 100vh;
+
   div.products,
   div.add-product,
   div.admin-prod-details,
-  div.users {
+  div.users, div.edit-user {
     position: absolute;
     left: 15%;
     top: 0;
