@@ -63,6 +63,7 @@ exports.login = (req, res, next) => {
         message: "Logged in",
         token: token,
         userId: loadedUser._id.toString(),
+        email: loadedUser.email,
       });
     })
     .catch((err) => {

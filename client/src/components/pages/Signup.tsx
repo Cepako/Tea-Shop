@@ -61,7 +61,6 @@ const Signup: React.FC = () => {
             [name]: value,
         }))
     }
-
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setIsSubmitting(true)
@@ -79,7 +78,7 @@ const Signup: React.FC = () => {
             newErrors.confPassword = 'Password must be the same!'
         }
         if (signupData.contact.replace(/[^0-9]/g, '').slice(2).length < 9) {
-            newErrors.phoneNumber = 'Please enter a valid phone number!'
+            newErrors.contact = 'Please enter a valid phone number!'
         }
         if (signupData.address.length < 5) {
             newErrors.address = 'Please enter a valid address!'
@@ -137,7 +136,7 @@ const Signup: React.FC = () => {
         if (signupData.contact.replace(/[^0-9]/g, '').slice(2).length === 9) {
             setErrors((prevErrors) => ({
                 ...prevErrors,
-                phoneNumber: '',
+                contact: '',
             }))
         }
         if (signupData.address.length >= 5) {
@@ -162,6 +161,7 @@ const Signup: React.FC = () => {
                     <input
                         type="text"
                         name="name"
+                        value={signupData.name}
                         placeholder="Username"
                         onChange={(e) => handleFormChange(e)}
                         onBlur={(e) => handleFormChange(e)}
