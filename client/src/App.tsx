@@ -12,6 +12,7 @@ import CartPage from './components/pages/CartPage'
 
 import RootLayout from './components/pages/RootLayout'
 import ErrorPage from './components/pages/Error'
+import AdminRoute from './components/admin/AdminRoute'
 import AdminPanel from './components/admin/AdminPanel'
 import AdminLayout from './components/admin/AdminLayout'
 import Products, { loader as productsLoader } from './components/admin/Products'
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/admin',
-        element: <AdminLayout />,
+        element: <AdminRoute element={AdminLayout} />,
         children: [
             { index: true, element: <AdminPanel /> },
             {

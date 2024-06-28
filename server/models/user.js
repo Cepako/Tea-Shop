@@ -25,6 +25,12 @@ const userSchema = new Schema({
     required: true,
   },
   cart: [cartItemSchema],
+  role: {
+    type: String,
+    enum: ["admin", "user"],
+    default: "user",
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("User", userSchema);

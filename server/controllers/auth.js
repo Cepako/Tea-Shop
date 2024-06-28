@@ -38,7 +38,7 @@ exports.signup = (req, res, next) => {
 exports.login = (req, res, next) => {
   const { email, password } = req.body;
   let loadedUser;
-  User.findOne({ email: email })
+  User.findOne({ email })
     .then((user) => {
       if (!user) {
         const error = new Error("A user with this email could not be found.");
@@ -55,7 +55,11 @@ exports.login = (req, res, next) => {
         throw error;
       }
       const token = jwt.sign(
-        { email: loadedUser.email, userId: loadedUser._id.toString() },
+        {
+          email: loadedUser.email,
+          userId: loadedUser._id.toString(),
+          role: loadedUser.role,
+        },
         "123kop456",
         { expiresIn: "1h" },
       );
@@ -64,6 +68,7 @@ exports.login = (req, res, next) => {
         token: token,
         userId: loadedUser._id.toString(),
         email: loadedUser.email,
+        role: loadedUser.role,
       });
     })
     .catch((err) => {
